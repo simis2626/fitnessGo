@@ -8,17 +8,21 @@ import { AppComponent } from './app.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
+import { WelcomeComponent } from './welcome/welcome.component';
+import {MaterialSharedModule} from "./material-shared/material-shared.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialSharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
