@@ -5,5 +5,6 @@ COPY .angular-cli.json /dkr/build
 COPY package.json /dkr/build
 RUN npm install @angular/cli
 RUN npm install
+COPY . /dkr/build
 EXPOSE 4200
-CMD ['npm', 'start']
+CMD ["npm", "start"]
