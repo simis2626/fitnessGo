@@ -13,12 +13,12 @@ export class UserauthComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getProfile().then((result) => {this.profile = result
-    this.trustedImage = this.domSanit.bypassSecurityTrustResourceUrl(this.profile.picture);
+    this.trustedImage = this.domSanit.bypassSecurityTrustStyle("url('" + this.profile.picture + "')");
 
     });
 
   }
-  trustedImage:SafeResourceUrl;
+  trustedImage:any;
   profile: any;
 
 

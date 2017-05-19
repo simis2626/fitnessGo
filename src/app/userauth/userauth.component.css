@@ -1,0 +1,6 @@
+.img-circular{
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+  border-radius: 25%;
+}

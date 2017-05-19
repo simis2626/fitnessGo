@@ -17,7 +17,7 @@ export class Auth0AuthService {
     audience: 'https://simis2626.au.auth0.com/userinfo',
     redirectUri: 'http://localhost:4200',
     scope: 'openid profile',
-    leeway: 40
+    leeway: 60
   });
 
   constructor(public router: Router, private authLocalService:AuthLocalService, private userService: UserService) {}
@@ -39,7 +39,7 @@ export class Auth0AuthService {
         console.log(err);
       }
     });
-    },30000);
+    },4000);
   }
 
   private setSession(authResult): void {
