@@ -12,9 +12,7 @@ export class AuthLocalService {
 
 
   userLoggedIn(): Promise<boolean>{
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {resolve(this.loginState);}, 1500);
-    });
+    return new Promise((resolve, reject) => {resolve(this.loginState)});
 }
 
   setLoginState(state:boolean){

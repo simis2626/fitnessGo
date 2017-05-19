@@ -27,7 +27,6 @@ export class Auth0AuthService {
   }
 
   public handleAuthentication(): void {
-    setTimeout(() => {
     this.auth0.parseHash((err, authResult) => {
       console.log(err, authResult);
       if (authResult && authResult.accessToken && authResult.idToken) {
@@ -39,7 +38,6 @@ export class Auth0AuthService {
         console.log(err);
       }
     });
-    },4000);
   }
 
   private setSession(authResult): void {
