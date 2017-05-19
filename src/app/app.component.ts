@@ -14,7 +14,16 @@ export class AppComponent implements OnInit{
     this.loginState = false;
     this.auth0service.handleAuthentication();
     this.localAuthService.userLoggedIn().then((result)=> this.loginState = result);
+
+    this.localAuthService.loginStateChange$.subscribe((state) => {
+      this.loginState = state;
+    });
+
   }
+
+
+
+
 
   loginState:boolean
 

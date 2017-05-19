@@ -1,28 +1,25 @@
 import { Injectable } from '@angular/core';
-import {Auth0AuthService} from "./auth0-auth.service";
 
 @Injectable()
 export class UserService {
 
-  constructor(private auth0AuthService:Auth0AuthService) { }
+  constructor() { }
 
   userProfile: any;
 
-  getProfile():Promise<any> {
+  public getProfile(): Promise<any> {
     return new Promise((resolve,reject) => {
       if (this.userProfile) {
-        resolve(this.userProfile)
+        resolve(this.userProfile);
       } else {
-        this.getRemoteProfile((err, profile) => {
+        // this.getRemoteProfile((err, profile) => {
           resolve(this.userProfile);
-        });
+       // });
       }
     });
   }
 
-
-//...
-  public getRemoteProfile(cb): void {
+  /*public getRemoteProfile(cb:any): void {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
       throw new Error('Access token must exist to fetch profile');
@@ -35,9 +32,9 @@ export class UserService {
       }
       cb(err, profile);
     });
-  }
+  }*/
 
-  receiveProfile(profile:any): void {
+  public receiveProfile(profile:any): void {
   this.userProfile = profile;
 
 }
