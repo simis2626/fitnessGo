@@ -1,6 +1,9 @@
 <md-toolbar>
-
   <span>Fitness Tracker</span>
+  <span style="flex: 1 1 auto"></span>
+  <app-add-account *ngIf="!loginState"></app-add-account>
+  <app-userauth *ngIf="loginState"></app-userauth>
+
 
 
 </md-toolbar>
