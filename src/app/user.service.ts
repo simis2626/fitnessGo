@@ -12,27 +12,22 @@ export class UserService {
       if (this.userProfile) {
         resolve(this.userProfile);
       } else {
-        // this.getRemoteProfile((err, profile) => {
+        this.getRemoteProfile(() => {
           resolve(this.userProfile);
-       // });
+        });
       }
     });
   }
 
-  /*public getRemoteProfile(cb:any): void {
+  public getRemoteProfile(cb): void {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
       throw new Error('Access token must exist to fetch profile');
     }
 
     const self = this;
-    this.auth0AuthService.auth0.client.userInfo(accessToken, (err, profile) => {
-      if (profile) {
-        self.userProfile = profile;
-      }
-      cb(err, profile);
-    });
-  }*/
+    cb();
+  }
 
   public receiveProfile(profile:any): void {
   this.userProfile = profile;

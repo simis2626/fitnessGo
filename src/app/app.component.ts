@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   constructor(private localAuthService: AuthLocalService, private auth0service:Auth0AuthService) {}
 
   ngOnInit(){
-    this.loginState = false;
+    this.loginState = this.auth0service.isAuthenticated();
     this.auth0service.handleAuthentication();
     this.localAuthService.userLoggedIn().then((result)=> this.loginState = result);
 
