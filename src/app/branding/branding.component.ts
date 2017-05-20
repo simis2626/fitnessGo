@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class BrandingComponent implements OnInit {
 
   constructor() { }
-
+  brandCaption:string = "Tracking your fitness is easy";
   ngOnInit() {
   }
 
