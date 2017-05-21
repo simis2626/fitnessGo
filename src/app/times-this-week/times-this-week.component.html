@@ -1,3 +1,14 @@
-<p>
-  times-this-week works!
-</p>
+<div class="flex-parent-row times-height">
+  <div class="center-panel times-shading flex-parent-col-rev">
+    <div style="height: 10%"></div>
+    <div class="caption times-caption"><a md-raised-button>View Calendar</a><span style="display: inline-block; width: 6%;"></span></div>
+    <div class="flex-parent-row sub-centre">
+      <div class="">
+        <md-progress-spinner [mode]="'determinate'" [attr.color]="'primary'" [value]="progressValue">
+
+        </md-progress-spinner>
+      </div>
+      <div style="vertical-align: middle"><h3 style="height: 100%; margin: 0; padding-top: 27%">{{progressValue}}% of Goal met.</h3></div>
+    </div>
+  </div>
+</div>

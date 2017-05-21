@@ -6,6 +6,7 @@ import {MdCardModule} from '@angular/material';
 import {MdTabsModule} from '@angular/material';
 import {MdToolbarModule} from '@angular/material';
 import {MdButtonModule} from '@angular/material';
+import {MdProgressSpinnerModule} from '@angular/material';
 
 
 
@@ -16,14 +17,16 @@ import {MdButtonModule} from '@angular/material';
     MdCardModule,
     MdTabsModule,
     MdToolbarModule,
-    MdButtonModule
+    MdButtonModule,
+    MdProgressSpinnerModule
   ],
   exports: [
     MdGridListModule,
     MdCardModule,
     MdTabsModule,
     MdToolbarModule,
-    MdButtonModule
+    MdButtonModule,
+    MdProgressSpinnerModule
   ],
   declarations: []
 })
