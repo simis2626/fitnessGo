@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Panel} from "../Objects/Panel";
 
 @Component({
   selector: 'app-recent-add-widget',
@@ -9,7 +10,14 @@ export class RecentAddWidgetComponent implements OnInit {
 
   constructor() { }
 
+
+
   ngOnInit() {
+
+
   }
+
+  @Input()panel:Panel;
+
 
 }

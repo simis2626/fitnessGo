@@ -19,6 +19,7 @@ import { AddAccountComponent } from './add-account/add-account.component';
 import { AuthLocalService } from './auth-local.service';
 import { Auth0AuthService } from './auth0-auth.service';
 import {UserService} from './user.service';
+import { RecentAddGroupComponent } from './recent-add-group/recent-add-group.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {UserService} from './user.service';
     FABComponent,
     TimesThisWeekComponent,
     RecentAddWidgetComponent,
-    AddAccountComponent
+    AddAccountComponent,
+    RecentAddGroupComponent
   ],
   imports: [
     BrowserModule,
