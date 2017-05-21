@@ -1,8 +1,15 @@
 .branding-image {
   background-image: url('../../assets/running.jpg');
-  width: 100%;
-  height: 40%;
+  max-width: 980px;
+  height: 100%;
   opacity: 0.9;
+  flex: 1 0 auto;
+}
+.flex-parent-row{
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .flex-parent {
