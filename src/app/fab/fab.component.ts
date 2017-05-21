@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: 'app-fab',
@@ -10,6 +10,20 @@ export class FABComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+
+  open: boolean = false;
+  slideUp: boolean = false;
+
+  fabClicked() {
+    this.open = !this.open;
+    console.log("StateChange");
+    setTimeout(() => {
+
+      this.slideUp = !this.slideUp;
+    }, 50)
   }
 
 }

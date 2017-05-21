@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthLocalService } from './auth-local.service'
+import {Component, OnInit} from "@angular/core";
+import {AuthLocalService} from "./auth-local.service";
 import {Auth0AuthService} from "./auth0-auth.service";
+import set = Reflect.set;
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,9 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.loginState = this.auth0service.isAuthenticated();
-    this.auth0service.handleAuthentication();
+    setTimeout(() => {
+      this.auth0service.handleAuthentication();
+    }, 100);
     this.localAuthService.userLoggedIn().then((result)=> this.loginState = result);
 
     this.localAuthService.loginStateChange$.subscribe((state) => {
@@ -22,10 +25,7 @@ export class AppComponent implements OnInit{
   }
 
 
-
-
-
-  loginState:boolean
+  loginState: boolean;
 
   title = 'app works!';
 }

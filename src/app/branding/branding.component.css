@@ -1,8 +1,10 @@
 .branding-image {
   background-image: url('../../assets/running.jpg');
+  max-height: 490px;
 }
 .branding-height{
   height: 40%;
+  align-items: center;
 }
 .branding-caption {
 
