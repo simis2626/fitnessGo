@@ -1,14 +1,7 @@
-Burger Patties
-<md-grid-list cols="3" rowHeight="150px">
-  <md-grid-tile *ngFor="let tile of tiles"
-                 [colspan]="tile.cols"
-                 [rowspan]="tile.rows"
-                 [style.background]="tile.color">
+<!--<app-status></app-status>-->
+<app-branding></app-branding>
+<app-times-this-week></app-times-this-week>
+<app-recent-add-group></app-recent-add-group>
+<app-report-widget></app-report-widget>
+<app-fab></app-fab>
 
-    {{tile.text}}
-
-  </md-grid-tile>
-
-
-
-</md-grid-list>

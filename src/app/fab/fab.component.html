@@ -1,0 +1,10 @@
+<button *ngIf="open" class="setup-slide" [class.slide-up1]="slideUp" md-fab><i class="material-icons">&#xE616;</i>
+</button>
+<button md-fab *ngIf="open" class="setup-slide" [class.slide-up2]="slideUp"><i class="material-icons">&#xE192;</i>
+</button>
+<button md-fab *ngIf="open" class="setup-slide" [class.slide-up3]="slideUp"><i class="material-icons">&#xEB43;</i>
+</button>
+
+<button md-fab class="main-fab" (click)="fabClicked()">
+  <i class="setup-rotate" [class.rotate-go]="open" class="material-icons md-36" [innerHtml]="'&#xE145;'"></i>
+</button>

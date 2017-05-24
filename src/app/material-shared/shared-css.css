@@ -1,0 +1,28 @@
+.flex-parent-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.center-panel{
+  max-width: 980px;
+  height: 100%;
+  opacity: 0.9;
+  flex: 1 0 auto;
+}
+
+.flex-parent-col-rev {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+}
+
+.caption{
+  width: 55%;
+}
+
+.sub-centre{
+  width: 100%;
+}

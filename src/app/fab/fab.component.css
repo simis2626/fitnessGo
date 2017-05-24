@@ -1,0 +1,62 @@
+.main-fab {
+  position: absolute;
+  top: 86%;
+  left: 85%;
+  z-index: 90;
+
+}
+
+.setup-slide {
+  display: block;
+  position: absolute;
+  top: 86%;
+  left: 85%;
+  will-change: transform;
+  transition: transform 0.75s ease-in;
+}
+
+@media screen and (min-width: 1200px) {
+  .main-fab {
+    left: 80%;
+  }
+
+  .setup-slide {
+    left: 80%;
+  }
+}
+
+@media screen and (max-width: 651px) {
+  .main-fab {
+    top: 89%;
+    left: 80%;
+  }
+
+  .setup-slide {
+    top: 89%;
+    left: 80%;
+  }
+}
+
+.setup-rotate {
+  will-change: transform;
+  transition: transform 2s ease-in;
+}
+
+.rotate-go {
+  transform: rotate(45deg) !important;
+}
+
+.slide-up1 {
+  transform: translateY(-67px);
+
+}
+
+.slide-up2 {
+  transform: translateY(-134px);
+
+}
+
+.slide-up3 {
+  transform: translateY(-201px);
+
+}

@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import auth0 from 'auth0-js';
+import {AuthLocalService} from "./auth-local.service";
+import {UserService} from "./user.service";
 
 @Injectable()
 export class Auth0AuthService {
@@ -13,11 +15,12 @@ export class Auth0AuthService {
     domain: 'simis2626.au.auth0.com',
     responseType: 'token id_token',
     audience: 'https://simis2626.au.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/callback',
-    scope: 'openid'
+    redirectUri: 'http://localhost:4200',
+    scope: 'openid profile',
+    leeway: 60
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private authLocalService:AuthLocalService, private userService: UserService) {}
 
   public login(): void {
     this.auth0.authorize();
@@ -25,12 +28,13 @@ export class Auth0AuthService {
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
+      console.log(err, authResult);
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        this.router.navigate(['/home']);
+        this.authLocalService.setLoginState(true);
+        this.userService.receiveProfile(authResult.idTokenPayload);
       } else if (err) {
-        this.router.navigate(['/home']);
         console.log(err);
       }
     });
