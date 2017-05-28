@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {WelcomeComponent} from "./welcome/welcome.component";
+import {WelcomeComponent} from './welcome/welcome.component';
+import {AddWorkoutParentComponent} from './add-workout-parent/add-workout-parent.component';
 
 const routes: Routes = [
   {
-    path: '**',
-    component: WelcomeComponent
+    path: 'workout/add',
+    component: AddWorkoutParentComponent
   },
   {
     path: '',
-    children: []
+    component:WelcomeComponent
   }
 ];
 

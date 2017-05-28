@@ -20,6 +20,7 @@ import { AuthLocalService } from './auth-local.service';
 import { Auth0AuthService } from './auth0-auth.service';
 import {UserService} from './user.service';
 import { RecentAddGroupComponent } from './recent-add-group/recent-add-group.component';
+import { AddWorkoutParentComponent } from './add-workout-parent/add-workout-parent.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RecentAddGroupComponent } from './recent-add-group/recent-add-group.com
     TimesThisWeekComponent,
     RecentAddWidgetComponent,
     AddAccountComponent,
-    RecentAddGroupComponent
+    RecentAddGroupComponent,
+    AddWorkoutParentComponent
   ],
   imports: [
     BrowserModule,
