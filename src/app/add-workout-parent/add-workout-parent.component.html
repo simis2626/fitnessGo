@@ -1,0 +1,55 @@
+<br><div class="flex-parent-row">
+  <div class="center-panel">
+    <md-card><h3>New workout
+    </h3>
+    <form #form1 id="form1" name="form1" action="none">
+
+      <span id="Activity1">
+      <div><md-select (change)="setDirty()" #actSelect placeholder="Activity Name" name="activity" [(ngModel)]="workout.activities[0].activty">
+        <md-option  *ngFor="let act of activitiesOpt" [value]="act">{{act.name}}</md-option>
+      </md-select></div>
+        <div><md-input-container>
+            <input mdInput placeholder="Duration" #Duration name="Duration" id="Duration" [(ngModel)]="workout.activities[0].duration">
+          </md-input-container></div>
+        <div *ngIf="dirty"><div *ngIf="workout.activities[0].activty.cardio">
+          <div><md-input-container>
+            <input mdInput placeholder="Distance" #Distance name="Distance" id="Distance" [(ngModel)]="workout.activities[0].distance">
+          </md-input-container></div>
+<div><md-input-container>
+            <input mdInput placeholder="Intensity" #Intensity name="Intensity" id="Intensity" [(ngModel)]="workout.activities[0].intensity">
+          </md-input-container></div>
+
+
+        </div>
+        <div *ngIf="!workout.activities[0].activty.cardio">
+  <div><md-input-container>
+            <input mdInput placeholder="Weight" #Weight name="Weight" id="" [(ngModel)]="workout.activities[0].weight">
+          </md-input-container></div>
+<div><md-input-container>
+            <input mdInput placeholder="Reps" #Reps name="Reps" id="Reps" [(ngModel)]="workout.activities[0].reps">
+          </md-input-container></div>
+
+
+        </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </span>
+
+
+    </form></md-card>
+
+
+  </div>
+</div>

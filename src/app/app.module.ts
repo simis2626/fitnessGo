@@ -21,6 +21,7 @@ import { Auth0AuthService } from './auth0-auth.service';
 import {UserService} from './user.service';
 import { RecentAddGroupComponent } from './recent-add-group/recent-add-group.component';
 import { AddWorkoutParentComponent } from './add-workout-parent/add-workout-parent.component';
+import {ActivitiesService} from './activities.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { AddWorkoutParentComponent } from './add-workout-parent/add-workout-pare
     BrowserAnimationsModule,
     MaterialSharedModule
   ],
-  providers: [AuthLocalService, Auth0AuthService, UserService],
+  providers: [AuthLocalService, Auth0AuthService, UserService,ActivitiesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

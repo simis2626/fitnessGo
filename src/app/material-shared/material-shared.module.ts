@@ -7,6 +7,8 @@ import {MdTabsModule} from '@angular/material';
 import {MdToolbarModule} from '@angular/material';
 import {MdButtonModule} from '@angular/material';
 import {MdProgressSpinnerModule} from '@angular/material';
+import {MdSelectModule} from '@angular/material';
+import {MdInputModule} from '@angular/material';
 
 
 
@@ -18,7 +20,9 @@ import {MdProgressSpinnerModule} from '@angular/material';
     MdTabsModule,
     MdToolbarModule,
     MdButtonModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdSelectModule,
+    MdInputModule
   ],
   exports: [
     MdGridListModule,
@@ -26,7 +30,9 @@ import {MdProgressSpinnerModule} from '@angular/material';
     MdTabsModule,
     MdToolbarModule,
     MdButtonModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdSelectModule,
+    MdInputModule
   ],
   declarations: []
 })
