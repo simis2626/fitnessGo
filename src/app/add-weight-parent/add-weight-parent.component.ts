@@ -16,12 +16,14 @@ export class AddWeightParentComponent implements OnInit {
   dirty: boolean = false;
   submitting: boolean = false;
   public savingText: string;
-  tme: string[];
+  times: string[];
   weighIn: WeighIn;
+  private today: Date;
 
   ngOnInit() {
-    this.weighIn = new WeighIn(null, new Date(), null, null);
-    this.tme = ["Morning", "Day", "Night"];
+    this.today = new Date();
+    this.weighIn = new WeighIn(null, localStorage.getItem('id_token'), this.today, null, null);
+    this.times = ["Morning", "Day", "Night"];
   }
 
 

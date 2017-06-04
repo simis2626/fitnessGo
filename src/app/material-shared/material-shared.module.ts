@@ -5,15 +5,16 @@ import {
   MdButtonModule,
   MdCardModule,
   MdCheckboxModule,
+  MdDatepickerModule,
   MdGridListModule,
   MdInputModule,
+  MdNativeDateModule,
   MdProgressSpinnerModule,
   MdSelectModule,
   MdSnackBarModule,
   MdTabsModule,
   MdToolbarModule
 } from "@angular/material";
-
 
 @NgModule({
   imports: [
@@ -27,7 +28,9 @@ import {
     MdSelectModule,
     MdInputModule,
     MdCheckboxModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
   exports: [
     MdGridListModule,
@@ -39,7 +42,9 @@ import {
     MdSelectModule,
     MdInputModule,
     MdCheckboxModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
   declarations: []
 })
