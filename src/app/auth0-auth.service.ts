@@ -1,9 +1,9 @@
 // src/app/auth/auth.service.ts
 
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import 'rxjs/add/operator/filter';
-import auth0 from 'auth0-js';
+import {Injectable} from "@angular/core";
+import {Router} from "@angular/router";
+import "rxjs/add/operator/filter";
+import auth0 from "auth0-js";
 import {AuthLocalService} from "./auth-local.service";
 import {UserService} from "./user.service";
 
@@ -53,8 +53,9 @@ export class Auth0AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    this.authLocalService.setLoginState(false);
     // Go back to the home route
-    this.router.navigate(['/']);
+    //this.router.navigate(['/']);
   }
 
   public isAuthenticated(): boolean {

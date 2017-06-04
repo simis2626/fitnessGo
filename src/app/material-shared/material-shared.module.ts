@@ -8,6 +8,7 @@ import {
   MdDatepickerModule,
   MdGridListModule,
   MdInputModule,
+  MdMenuModule,
   MdNativeDateModule,
   MdProgressSpinnerModule,
   MdSelectModule,
@@ -30,7 +31,8 @@ import {
     MdCheckboxModule,
     MdSnackBarModule,
     MdDatepickerModule,
-    MdNativeDateModule
+    MdNativeDateModule,
+    MdMenuModule
   ],
   exports: [
     MdGridListModule,
@@ -44,7 +46,8 @@ import {
     MdCheckboxModule,
     MdSnackBarModule,
     MdDatepickerModule,
-    MdNativeDateModule
+    MdNativeDateModule,
+    MdMenuModule
   ],
   declarations: []
 })

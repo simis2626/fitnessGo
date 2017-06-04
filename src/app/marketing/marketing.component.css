@@ -1,0 +1,21 @@
+.marketing-height {
+  height: 50%;
+  align-items: center;
+}
+
+md-card-title {
+  color: #5C8CAC;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 400;
+}
+
+img {
+  height: 120px;
+  width: 120px !important;
+  margin: 0 5px 16px 5px;
+}
+
+md-card {
+  margin: 20px;
+  padding: 15px;
+}

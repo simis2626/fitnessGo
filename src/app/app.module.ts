@@ -24,6 +24,7 @@ import {AddWorkoutParentComponent} from "./add-workout-parent/add-workout-parent
 import {ActivitiesService} from "./activities.service";
 import {AddWeightParentComponent} from "./add-weight-parent/add-weight-parent.component";
 import {WeighInService} from "./weigh-in.service";
+import {MarketingComponent} from "./marketing/marketing.component";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {WeighInService} from "./weigh-in.service";
     AddAccountComponent,
     RecentAddGroupComponent,
     AddWorkoutParentComponent,
-    AddWeightParentComponent
+    AddWeightParentComponent,
+    MarketingComponent
   ],
   imports: [
     BrowserModule,

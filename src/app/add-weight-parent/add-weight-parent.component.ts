@@ -6,7 +6,7 @@ import {WeighIn} from "../Objects/WeighIn";
 @Component({
   selector: 'app-add-weight-parent',
   templateUrl: './add-weight-parent.component.html',
-  styleUrls: ['./add-weight-parent.component.css']
+  styleUrls: ['./add-weight-parent.component.css', '../material-shared/shared-css.css']
 })
 export class AddWeightParentComponent implements OnInit {
 
