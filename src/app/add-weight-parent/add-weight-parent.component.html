@@ -1,0 +1,40 @@
+<br>
+<div *ngIf="submitting" class="flex-parent-row">
+  <div class="center-panel savingSpinner">
+    <div style="text-align: center"><h2>{{savingText}}</h2></div>
+    <md-spinner style="align-self: center">
+
+    </md-spinner>
+  </div>
+</div>
+<form *ngIf="!submitting" #form1="ngForm" id="form1" name="form1" (ngSubmit)="onSubmit()">
+  <div class="flex-parent-row">
+    <div class="center-panel">
+      <md-card><h3>New Weigh-In
+      </h3>
+        <div>
+          <md-input-container>
+            <input mdInput placeholder="Date" #Date name="Date" id="Date"
+                   [(ngModel)]="weighIn.date" type="date">
+          </md-input-container>
+        </div>
+        <div>
+          <md-select (change)="setDirty()" #timeSelect placeholder="Time" name="time" id="time"
+                     [(ngModel)]="weighIn.time">
+            <md-option *ngFor="let tme of times" [value]="tme">{{tme}}</md-option>
+          </md-select>
+        </div>
+        <div>
+          <md-input-container>
+            <input mdInput placeholder="Weight" #weight name="weight" id="weight"
+                   [(ngModel)]="weighIn.weight" type="">
+          </md-input-container>
+        </div>
+        <button md-raised-button color="primary" type="submit">
+          Save
+        </button>
+      </md-card>
+    </div>
+  </div>
+  <br>
+</form>

@@ -1,15 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
 
-import {MdGridListModule} from '@angular/material';
-import {MdCardModule} from '@angular/material';
-import {MdTabsModule} from '@angular/material';
-import {MdToolbarModule} from '@angular/material';
-import {MdButtonModule} from '@angular/material';
-import {MdProgressSpinnerModule} from '@angular/material';
-import {MdSelectModule} from '@angular/material';
-import {MdInputModule} from '@angular/material';
-
+import {
+  MdButtonModule,
+  MdCardModule,
+  MdCheckboxModule,
+  MdGridListModule,
+  MdInputModule,
+  MdProgressSpinnerModule,
+  MdSelectModule,
+  MdSnackBarModule,
+  MdTabsModule,
+  MdToolbarModule
+} from "@angular/material";
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import {MdInputModule} from '@angular/material';
     MdButtonModule,
     MdProgressSpinnerModule,
     MdSelectModule,
-    MdInputModule
+    MdInputModule,
+    MdCheckboxModule,
+    MdSnackBarModule
   ],
   exports: [
     MdGridListModule,
@@ -32,7 +37,9 @@ import {MdInputModule} from '@angular/material';
     MdButtonModule,
     MdProgressSpinnerModule,
     MdSelectModule,
-    MdInputModule
+    MdInputModule,
+    MdCheckboxModule,
+    MdSnackBarModule
   ],
   declarations: []
 })

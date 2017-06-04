@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 
 @Injectable()
 export class UserService {
@@ -10,11 +10,11 @@ export class UserService {
   public getProfile(): Promise<any> {
     return new Promise((resolve,reject) => {
       if (this.userProfile) {
+        localStorage.setItem('fitnessProfile', JSON.stringify(this.userProfile));
         resolve(this.userProfile);
       } else {
-        this.getRemoteProfile(() => {
-          resolve(this.userProfile);
-        });
+        this.userProfile = JSON.parse(localStorage.getItem('fitnessProfile'));
+        resolve(this.userProfile);
       }
     });
   }

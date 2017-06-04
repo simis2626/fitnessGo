@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {UserService} from "../user.service";
-import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-userauth',
@@ -12,9 +12,12 @@ export class UserauthComponent implements OnInit {
   constructor(private userService:UserService, private domSanit:DomSanitizer) { }
 
   ngOnInit() {
-    this.userService.getProfile().then((result) => {this.profile = result
-    this.trustedImage = this.domSanit.bypassSecurityTrustStyle("url('" + this.profile.picture + "')");
+    this.userService.getProfile().then((result) => {
+      this.profile = result;
 
+      if (this.profile) {
+        this.trustedImage = this.domSanit.bypassSecurityTrustStyle("url('" + this.profile.picture + "')");
+      }
     });
 
   }
