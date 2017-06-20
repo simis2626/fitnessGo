@@ -5,6 +5,7 @@ import {Workout} from "../Objects/Workout";
 import {ActivityWO} from "../Objects/ActivityWO";
 import {MdSnackBar} from "@angular/material";
 import {Router} from "@angular/router";
+import {WorkoutsService} from "../workouts.service";
 
 
 @Component({
@@ -14,7 +15,7 @@ import {Router} from "@angular/router";
 })
 export class AddWorkoutParentComponent implements OnInit {
 
-  constructor(public activityService: ActivitiesService, public snackBar: MdSnackBar, private router: Router) {
+  constructor(public activityService: ActivitiesService, public workoutService: WorkoutsService, public snackBar: MdSnackBar, private router: Router) {
   }
   public activitiesOpt:Activity[];
 
@@ -51,14 +52,20 @@ export class AddWorkoutParentComponent implements OnInit {
   onSubmit() {
     this.savingText = "Saving...";
     this.submitting = true;
-    setTimeout(() => {
-      this.savingText = "Done!";
-      this.snackBar.open("Saved", null, {duration: 3000});
-      setTimeout(() => {
-        this.router.navigateByUrl('/');
-      }, 1500);
+    this.workoutService.addWorkout(this.workout).then((result) => {
+        if (result) {
+          this.savingText = "Done!";
+          this.snackBar.open("Saved", null, {duration: 3000});
+          setTimeout(() => {
+            this.router.navigateByUrl('/');
+          }, 800);
+        } else {
+          this.submitting = false;
+          this.snackBar.open("An error occurred. Try again.", null, {duration: 3000});
+        }
 
 
-    }, 4000);
+      }
+    );
   }
 }

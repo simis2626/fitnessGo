@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {UserService} from "../user.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Auth0AuthService} from "../auth0-auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-userauth',
@@ -10,7 +11,7 @@ import {Auth0AuthService} from "../auth0-auth.service";
 })
 export class UserauthComponent implements OnInit {
 
-  constructor(private userService: UserService, private domSanit: DomSanitizer, private auth0Service: Auth0AuthService) {
+  constructor(private userService: UserService, private domSanit: DomSanitizer, private auth0Service: Auth0AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -28,6 +29,7 @@ export class UserauthComponent implements OnInit {
 
   triggerLogout() {
     this.auth0Service.logout();
+    this.router.navigateByUrl('/');
 
 
   }
