@@ -28,11 +28,14 @@ export class ActivitiesService {
 
   getActivityList():Promise<Activity[]>{
     return new Promise((resolve,reject) => {
-
+      if (this.activities.length > 0) {
+        resolve(this.activities);
+      } else {
       this.http.get('/api/activity', this.options).map(this.extractData).subscribe((results) => {
-        console.log(results);
+        this.activities = results;
         resolve(results);
       });
+      }
 
     });
   }
