@@ -7,7 +7,6 @@ import {ActivityWO} from "./ActivityWO";
 export class Workout {
 
   constructor(
-    public _id?:number,
     public _userid?: string,
     public duration?:number,
     public date?:Date,

@@ -26,7 +26,7 @@ export class AddWorkoutParentComponent implements OnInit {
 
 
   ngOnInit() {
-    this.workout = new Workout(null, localStorage.getItem('id_token'), null, new Date(), null, null);
+    this.workout = new Workout(localStorage.getItem('id_token'), null, new Date(), null, null);
     this.workout.activities = [];
     this.workout.activities.push(new ActivityWO(null,null,null,null,null,null,null,null));
     this.activityService.getActivityList()
