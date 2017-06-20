@@ -52,20 +52,31 @@ export class AddWorkoutParentComponent implements OnInit {
   onSubmit() {
     this.savingText = "Saving...";
     this.submitting = true;
-    this.workoutService.addWorkout(this.workout).then((result) => {
-        if (result) {
-          this.savingText = "Done!";
-          this.snackBar.open("Saved", null, {duration: 3000});
-          setTimeout(() => {
-            this.router.navigateByUrl('/');
-          }, 800);
-        } else {
-          this.submitting = false;
-          this.snackBar.open("An error occurred. Try again.", null, {duration: 3000});
+    new Promise((resolve, reject) => {
+      this.workout.activities.map((act) => {
+        act.date = this.workout.date;
+      });
+      resolve();
+
+    }).then(() => {
+      this.workoutService.addWorkout(this.workout).then((result) => {
+          if (result) {
+            this.savingText = "Done!";
+            this.snackBar.open("Saved", null, {duration: 3000});
+            setTimeout(() => {
+              this.router.navigateByUrl('/');
+            }, 800);
+          } else {
+            this.submitting = false;
+            this.snackBar.open("An error occurred. Try again.", null, {duration: 3000});
+          }
+
+
         }
+      );
 
 
-      }
-    );
+    })
+
   }
 }

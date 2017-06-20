@@ -5,8 +5,7 @@
 
 export class WeighIn {
 
-  constructor(public _id?: number,
-              public _userid?: string,
+  constructor(public _userid?: string,
               public date?: Date,
               public weight?: number,
               public time?: string) {

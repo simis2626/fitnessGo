@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {MdSnackBar} from "@angular/material";
 import {WeighIn} from "../Objects/WeighIn";
+import {WeighInService} from "../weigh-in.service";
 
 @Component({
   selector: 'app-add-weight-parent',
@@ -10,7 +11,7 @@ import {WeighIn} from "../Objects/WeighIn";
 })
 export class AddWeightParentComponent implements OnInit {
 
-  constructor(public snackBar: MdSnackBar, private router: Router) {
+  constructor(public snackBar: MdSnackBar, public weighinService: WeighInService, private router: Router) {
   }
 
   dirty: boolean = false;
@@ -22,7 +23,7 @@ export class AddWeightParentComponent implements OnInit {
 
   ngOnInit() {
     this.today = new Date();
-    this.weighIn = new WeighIn(null, localStorage.getItem('id_token'), this.today, null, null);
+    this.weighIn = new WeighIn(localStorage.getItem('id_token'), this.today, null, null);
     this.times = ["Morning", "Day", "Night"];
   }
 
@@ -35,15 +36,21 @@ export class AddWeightParentComponent implements OnInit {
   onSubmit() {
     this.savingText = "Saving...";
     this.submitting = true;
-    setTimeout(() => {
-      this.savingText = "Done!";
-      this.snackBar.open("Saved", null, {duration: 3000});
-      setTimeout(() => {
-        this.router.navigateByUrl('/');
-      }, 1500);
+    this.weighinService.addWeighin(this.weighIn).then((result) => {
+        if (result) {
+          this.savingText = "Done!";
+          this.snackBar.open("Saved", null, {duration: 3000});
+          setTimeout(() => {
+            this.router.navigateByUrl('/');
+          }, 800);
+        } else {
+          this.submitting = false;
+          this.snackBar.open("An error occurred. Try again.", null, {duration: 3000});
+        }
 
 
-    }, 4000);
+      }
+    );
   }
 
 }
