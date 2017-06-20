@@ -52,6 +52,8 @@ export class AddWorkoutParentComponent implements OnInit {
   onSubmit() {
     this.savingText = "Saving...";
     this.submitting = true;
+    this.workout.date = new Date(this.workout.date);
+
     new Promise((resolve, reject) => {
       this.workout.activities.map((act) => {
         act.date = this.workout.date;
