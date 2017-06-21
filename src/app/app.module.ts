@@ -26,6 +26,7 @@ import {AddWeightParentComponent} from "./add-weight-parent/add-weight-parent.co
 import {WeighInService} from "./weigh-in.service";
 import {MarketingComponent} from "./marketing/marketing.component";
 import {WorkoutsService} from "./workouts.service";
+import {TargetWOService} from "./target-wo.service";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import {WorkoutsService} from "./workouts.service";
     BrowserAnimationsModule,
     MaterialSharedModule
   ],
-  providers: [AuthLocalService, Auth0AuthService, UserService, ActivitiesService, WeighInService, WorkoutsService],
+  providers: [AuthLocalService, Auth0AuthService, UserService, ActivitiesService, WeighInService, WorkoutsService, TargetWOService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
