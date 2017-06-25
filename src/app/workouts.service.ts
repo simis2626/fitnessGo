@@ -42,8 +42,8 @@ export class WorkoutsService {
 
   workoutsThisWeek(_userid:string):Promise<Workout[]>{
     var dtNow = new Date();
-    var dtMonday:Date;
-    var dtSunday:Date;
+    var dtMonday = new Date();
+    var dtSunday = new Date();
 
 
 
