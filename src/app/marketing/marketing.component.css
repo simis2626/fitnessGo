@@ -19,3 +19,9 @@ md-card {
   margin: 20px;
   padding: 15px;
 }
+
+@media screen and (max-width: 760px) or (max-height: 910px){
+  .marketing-height{
+    height: 83%;
+  }
+}

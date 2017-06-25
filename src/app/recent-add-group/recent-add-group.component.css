@@ -2,6 +2,13 @@
   height: 20%;
 }
 
+@media screen and (max-height: 600px) {
+  .recent-group-height {
+    height: 30%;
+  }
+
+}
+
 .center-color {
   background-color: #673ab7;
 }

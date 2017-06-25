@@ -29,6 +29,12 @@
                      [(ngModel)]="workout.stretchesDone">Stretches Done?
         </md-checkbox>
       </div>
+      <div>
+        <md-input-container>
+          <input mdInput placeholder="Average Effort" #avgEffort name="avgEffort" id="avgEffort"
+                 [(ngModel)]="workout.averageEffort" type="number"><span mdSuffix>%</span>
+        </md-input-container>
+      </div>
     </md-card>
   </div>
   </div>

@@ -11,6 +11,7 @@ export class Workout {
     public duration?:number,
     public date?:Date,
     public stretchesDone?:boolean,
+    public averageEffort?: number,
     public activities?:ActivityWO[]
   )
   {}
