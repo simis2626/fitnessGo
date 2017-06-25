@@ -40,6 +40,29 @@ export class WorkoutsService {
 
   }
 
+  workoutsThisWeek(_userid:string):Promise<Workout[]>{
+    var dtNow = new Date();
+    var dtMonday:Date;
+    var dtSunday:Date;
+
+
+
+    return new Promise((resolve,reject) => {
+      dtMonday = dtNow;
+      while (dtMonday.getDay() != 1){
+         dtMonday.setDate(dtMonday.getDate() -1);
+        console.log(dtMonday);
+      }
+      dtSunday = dtNow;
+      dtSunday.setDate(dtMonday.getDate() + 6);
+      console.log(dtSunday);
+      this.http.post('/api/workout/from' + dtMonday + '/to/' + dtSunday, {_userid:_userid},this.options).map(this.extractData)
+        .subscribe((results) => {
+          resolve(results);
+        });
+    })
+}
+
 
 
 }

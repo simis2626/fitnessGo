@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {WorkoutsService} from "../workouts.service";
+import {TargetWOService} from "../target-wo.service";
+import {Workout} from "../Objects/Workout";
+import {Target} from "../Objects/Target";
 
 @Component({
   selector: 'app-times-this-week',
@@ -7,10 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimesThisWeekComponent implements OnInit {
 
-  constructor() { }
+  wrkouts:Workout[];
+  trgt:Target;
+  cnt:number;
+  usrid:string;
+  public progressValue:number;
+
+
+  constructor(private workoutService:WorkoutsService, private targetService:TargetWOService) { }
 
   ngOnInit() {
+    this.usrid = localStorage.getItem('id_token');
+    Promise.all([
+      this.targetService.getTarget(this.usrid),
+      this.workoutService.workoutsThisWeek(this.usrid)
+      ]).then((results) => {
+      this.trgt = results[0];
+      this.wrkouts = results[1];
+      this.cnt = this.wrkouts.length;
+      this.progressValue = (this.cnt/this.trgt.number) *100;
+    })
+
+
   }
 
-  public progressValue:number = 50;
+
 }

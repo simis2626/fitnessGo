@@ -21,6 +21,7 @@ export class UserService {
 
 
   saveUser(user): Promise<boolean> {
+    user._userid = localStorage.getItem('id_token');
     return new Promise((resolve, reject) => {
 
       this.http.post('/api/user/', JSON.stringify(user), this.options).map(this.extractData).subscribe((results) => {
