@@ -31,7 +31,7 @@ export class TimesThisWeekComponent implements OnInit {
       this.wrkouts = results[1];
       this.cnt = this.wrkouts.length;
       console.log(this.cnt, this.trgt.number );
-      this.progressValue = (this.cnt/this.trgt.number) * 100;
+      this.progressValue = Math.round((this.cnt/this.trgt.number) * 100);
       console.log(this.progressValue);
       this.ready = true;
     })
