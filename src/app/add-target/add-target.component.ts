@@ -22,7 +22,7 @@ export class AddTargetComponent implements OnInit {
 
   ngOnInit() {
     this.today = new Date();
-    this.target = new Target(null,localStorage.getItem('id_token'), this.today);
+    this.target = new Target(null,localStorage.getItem('id_sub'), this.today);
 
   }
 

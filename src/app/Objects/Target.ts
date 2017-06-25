@@ -6,7 +6,7 @@
 export class Target {
 
   constructor(public number: number,
-              public _userid:string,
+              public _userid: string,
               public date?: Date) {
   }
 }

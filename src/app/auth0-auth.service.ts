@@ -46,6 +46,7 @@ export class Auth0AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('id_sub',authResult.idTokenPayload.sub);
   }
 
   public logout(): void {

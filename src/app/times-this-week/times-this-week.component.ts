@@ -23,7 +23,7 @@ export class TimesThisWeekComponent implements OnInit {
   constructor(private workoutService:WorkoutsService, private targetService:TargetWOService) { }
 
   ngOnInit() {
-    this.usrid = localStorage.getItem('id_token');
+    this.usrid = localStorage.getItem('id_sub');
     Promise.all([
       this.targetService.getTarget(this.usrid),
       this.workoutService.workoutsThisWeek(this.usrid)

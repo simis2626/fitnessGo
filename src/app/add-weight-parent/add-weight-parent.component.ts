@@ -23,7 +23,7 @@ export class AddWeightParentComponent implements OnInit {
 
   ngOnInit() {
     this.today = new Date();
-    this.weighIn = new WeighIn(localStorage.getItem('id_token'), this.today, null, null);
+    this.weighIn = new WeighIn(localStorage.getItem('id_sub'), this.today, null, null);
     this.times = ["Morning", "Day", "Night"];
   }
 
