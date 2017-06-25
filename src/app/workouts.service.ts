@@ -48,20 +48,13 @@ export class WorkoutsService {
 
 
     return new Promise((resolve,reject) => {
-      dtMonday = dtNow;
+      dtMonday.setDate(dtNow.getDate());
       while (dtMonday.getDay() != 1){
          dtMonday.setDate(dtMonday.getDate() - 1);
-         console.log(dtMonday);
       }
-      console.log(dtMonday);
-      dtSunday = dtNow;
-      console.log(dtMonday);
-      dtNow = dtMonday;
-      console.log(dtMonday);
-      dtSunday.setDate(dtNow.getDate() + 6);
-      console.log(dtMonday);
+
+      dtSunday.setDate(dtMonday.getDate() + 6);
       console.log(dtMonday.toISOString().substr(0,10), dtSunday.toISOString().substr(0,10));
-      console.log(dtMonday);
       this.http.post('/api/workout/from/' + dtMonday.toISOString().substr(0,10) + '/to/' + dtSunday.toISOString().substr(0,10), {_userid:_userid},this.options).map(this.extractData)
         .subscribe((results) => {
           console.log(dtMonday);
