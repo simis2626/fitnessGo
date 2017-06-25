@@ -4,7 +4,7 @@
     <div class="caption times-caption"><a md-raised-button routerLink="target/add" color="primary">Set Target</a>
       <span style="display: inline-block; width: 3%;"></span>
       <a md-raised-button>View Calendar</a><span style="display: inline-block; width: 6%;"></span></div>
-    <div class="flex-parent-row sub-centre">
+    <div *ngIf="ready" class="flex-parent-row sub-centre">
       <div class="">
         <md-progress-spinner [mode]="'determinate'" [attr.color]="'primary'" [value]="progressValue">
 

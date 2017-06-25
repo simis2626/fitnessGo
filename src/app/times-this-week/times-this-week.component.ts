@@ -16,6 +16,7 @@ export class TimesThisWeekComponent implements OnInit {
   cnt:number;
   usrid:string;
   public progressValue:number;
+  ready:boolean = false;
 
 
   constructor(private workoutService:WorkoutsService, private targetService:TargetWOService) { }
@@ -30,6 +31,7 @@ export class TimesThisWeekComponent implements OnInit {
       this.wrkouts = results[1];
       this.cnt = this.wrkouts.length;
       this.progressValue = (this.cnt/this.trgt.number) *100;
+      this.ready = true;
     })
 
 
