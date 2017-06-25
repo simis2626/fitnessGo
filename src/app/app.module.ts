@@ -28,6 +28,7 @@ import {MarketingComponent} from "./marketing/marketing.component";
 import {WorkoutsService} from "./workouts.service";
 import {TargetWOService} from "./target-wo.service";
 import { AddTargetComponent } from './add-target/add-target.component';
+import { ActivityaddComponent } from './activityadd/activityadd.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AddTargetComponent } from './add-target/add-target.component';
     AddWorkoutParentComponent,
     AddWeightParentComponent,
     MarketingComponent,
-    AddTargetComponent
+    AddTargetComponent,
+    ActivityaddComponent
   ],
   imports: [
     BrowserModule,

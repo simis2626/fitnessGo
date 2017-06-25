@@ -31,10 +31,9 @@ export class TimesThisWeekComponent implements OnInit {
       this.trgt = results[0];
       this.wrkouts = results[1];
       this.cnt = this.wrkouts.length;
-      console.log(this.cnt, this.trgt.number );
       this.progressValue = Math.round((this.cnt/this.trgt.number) * 100);
-      this.spincolor = this.progressValue >= 100 ? "#0db721": "#5c8cac"
-      console.log(this.progressValue);
+      this.spincolor = this.progressValue >99 ? "#0db721": "#5c8cac"
+
       this.ready = true;
     })
 
