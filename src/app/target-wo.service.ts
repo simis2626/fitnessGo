@@ -44,7 +44,7 @@ export class TargetWOService {
     return new Promise((resolve, reject) => {
 
       this.http.get('/api/targetwo/' + _userId).map(this.extractData).subscribe((results) => {
-          resolve(results);
+          resolve(results[0]);
         }
       )
     })
