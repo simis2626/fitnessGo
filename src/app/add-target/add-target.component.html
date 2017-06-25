@@ -1,0 +1,27 @@
+
+<br>
+<div *ngIf="submitting" class="flex-parent-row">
+  <div class="center-panel savingSpinner">
+    <div style="text-align: center"><h2>{{savingText}}</h2></div>
+    <md-spinner style="align-self: center">
+
+    </md-spinner>
+  </div>
+</div>
+<form *ngIf="!submitting" #form1="ngForm" id="form1" name="form1" (ngSubmit)="onSubmit()">
+  <div class="flex-parent-row">
+    <div class="center-panel">
+      <md-card><h3>Set goal: How many workouts per week?
+      </h3>
+          <md-input-container>
+            <input mdInput placeholder="Workouts" #WO name="WO" id="WO"
+                   [(ngModel)]="target.number" type="number"><span mdSuffix>per week</span>
+          </md-input-container>
+        <button md-raised-button color="primary" type="submit">
+          Save
+        </button>
+      </md-card>
+    </div>
+  </div>
+  <br>
+</form>
