@@ -5,7 +5,8 @@
 
 export class Target {
 
-  constructor(public number: string,
-              public date?: boolean) {
+  constructor(public number: number,
+              public _userid:string,
+              public date?: Date) {
   }
 }

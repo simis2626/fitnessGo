@@ -3,7 +3,12 @@ import {RouterModule, Routes} from "@angular/router";
 import {WelcomeComponent} from "./welcome/welcome.component";
 import {AddWorkoutParentComponent} from "./add-workout-parent/add-workout-parent.component";
 import {AddWeightParentComponent} from "./add-weight-parent/add-weight-parent.component";
+import {AddTargetComponent} from "./add-target/add-target.component";
 const routes: Routes = [
+  {
+    path: 'target/add',
+    component: AddTargetComponent
+  },
   {
     path: 'workout/add',
     component: AddWorkoutParentComponent

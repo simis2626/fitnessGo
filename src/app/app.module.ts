@@ -27,6 +27,7 @@ import {WeighInService} from "./weigh-in.service";
 import {MarketingComponent} from "./marketing/marketing.component";
 import {WorkoutsService} from "./workouts.service";
 import {TargetWOService} from "./target-wo.service";
+import { AddTargetComponent } from './add-target/add-target.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {TargetWOService} from "./target-wo.service";
     RecentAddGroupComponent,
     AddWorkoutParentComponent,
     AddWeightParentComponent,
-    MarketingComponent
+    MarketingComponent,
+    AddTargetComponent
   ],
   imports: [
     BrowserModule,
