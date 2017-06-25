@@ -7,11 +7,15 @@
     </md-spinner>
   </div>
 </div>
+<app-activityadd (actAdded)="refreshList()" *ngIf="addingListActivity"></app-activityadd>
 <form *ngIf="!submitting" #form1="ngForm" id="form1" name="form1" (ngSubmit)="onSubmit()">
   <div class="flex-parent-row">
   <div class="center-panel">
     <md-card><h3>New Workout
     </h3>
+      <button md-raised-button type="button" [style.background-color]="'#818B98'" (click)="showAddActivity()">
+        Add Activity
+      </button>
       <div>
         <md-input-container>
           <input mdInput placeholder="Total Duration" #TotalDuration name="TotalDuration" id="TotalDuration"

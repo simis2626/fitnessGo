@@ -6,7 +6,6 @@
 export class Activity {
 
   constructor(
-    public _id:number,
     public name:string,
     public cardio:boolean
 

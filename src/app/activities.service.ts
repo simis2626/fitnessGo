@@ -40,6 +40,24 @@ export class ActivitiesService {
     });
   }
 
+  addActivity(act:Activity):Promise<boolean>{
+
+    return new Promise((resolve,reject) => {
+    this.http.post('/api/activity',JSON.stringify(act),this.options).map(this.extractData).subscribe((results) => {
+      if(results){
+        if (this.activities.length>0){
+          this.activities = [];
+        }
+        resolve(true);
+      }else{
+        resolve(false);
+      }
+    });
+    });
+
+
+  }
+
 
 
 

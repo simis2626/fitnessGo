@@ -23,6 +23,7 @@ export class AddWorkoutParentComponent implements OnInit {
   dirty:boolean = false;
   submitting: boolean = false;
   public savingText: string;
+  addingListActivity:boolean;
 
 
   ngOnInit() {
@@ -33,6 +34,18 @@ export class AddWorkoutParentComponent implements OnInit {
       .then((results) => {
       this.activitiesOpt = results;
     });
+  }
+
+  showAddActivity(){
+    this.addingListActivity = true;
+  }
+
+  refreshList(){
+    this.activityService.getActivityList()
+      .then((results) => {
+        this.activitiesOpt = results;
+      });
+    this.addingListActivity = false;
   }
 
 
