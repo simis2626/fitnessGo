@@ -4,7 +4,7 @@ import {Activity} from "../Objects/Activity";
 import {Workout} from "../Objects/Workout";
 import {ActivityWO} from "../Objects/ActivityWO";
 import {MdSnackBar} from "@angular/material";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {WorkoutsService} from "../workouts.service";
 
 
@@ -15,7 +15,7 @@ import {WorkoutsService} from "../workouts.service";
 })
 export class AddWorkoutParentComponent implements OnInit {
 
-  constructor(public activityService: ActivitiesService, public workoutService: WorkoutsService, public snackBar: MdSnackBar, private router: Router) {
+  constructor(public activityService: ActivitiesService, public workoutService: WorkoutsService, public snackBar: MdSnackBar, private router: Router, private route:ActivatedRoute) {
   }
   public activitiesOpt:Activity[];
 
@@ -24,16 +24,57 @@ export class AddWorkoutParentComponent implements OnInit {
   submitting: boolean = false;
   public savingText: string;
   addingListActivity:boolean;
+  sub;
+  activityID;
+
+
+
+  lookForActivity(ele,ind,arr){
+
+    return ele._id == this.activityID;
+
+  }
+
+
+
 
 
   ngOnInit() {
     this.workout = new Workout(localStorage.getItem('id_sub'), null, new Date(), null,null, null);
     this.workout.activities = [];
-    this.workout.activities.push(new ActivityWO(null,null,null,null,null,null,null,null));
-    this.activityService.getActivityList()
-      .then((results) => {
-      this.activitiesOpt = results;
-    });
+    this.sub = this.route
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        this.activityID = +params['activity'] || 0;
+        if(this.activityID == 0){
+          this.workout.activities.push(new ActivityWO(null,null,null,null,null,null,null,null));
+          this.activityService.getActivityList()
+            .then((results) => {
+              this.activitiesOpt = results;
+            });
+        }else{
+          this.activityService.getActivityList()
+            .then((results) => {
+              this.activitiesOpt = results;
+              let quickAct = this.activitiesOpt.find(this.lookForActivity);
+              this.workout.activities.push(new ActivityWO(null,quickAct,null,null,null,null,null,null))
+
+
+
+
+
+            });
+        }
+
+
+
+
+
+
+      });
+
+
   }
 
   showAddActivity(){
