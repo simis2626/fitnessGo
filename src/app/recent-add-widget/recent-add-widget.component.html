@@ -1,8 +1,6 @@
-<div class="recent-widget-box" [style.background-color]="panel.color">
-  <a class="a-aug" style="padding: 0px !important;" md-button>
+<div class="recent-widget-box">
+  <a class="a-aug" style="padding: 0px !important;" md-button [routerLink]="'/workout/add'" >
     <md-card class="card-aug" style="">
-      <span class="inline-check"><i class="material-icons md-60" [innerHTML]="panel.icon"></i></span>
-      <span style="width: 2%"></span>
       <h3 class="inline-check">{{panel.name}}</h3></md-card>
   </a>
 </div>

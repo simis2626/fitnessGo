@@ -6,9 +6,7 @@ export class Panel {
 
   constructor(
     public _id:number,
-    public name:string,
-    public icon:string,
-    public color:string
+    public name:string
 
   )  {}
 

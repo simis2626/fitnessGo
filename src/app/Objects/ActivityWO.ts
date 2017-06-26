@@ -8,7 +8,7 @@ export class ActivityWO {
 
   constructor(
     public _id?:number,
-    public activty?:Activity,
+    public activity?:Activity,
     public date?:Date,
     public duration?:number,
     public intensity?: number,

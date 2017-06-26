@@ -1,6 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions} from "@angular/http";
 import {Workout} from "./Objects/Workout";
+import {Activity} from "./Objects/Activity";
+import {Panel} from "./Objects/Panel";
 
 @Injectable()
 export class WorkoutsService {
@@ -62,6 +64,31 @@ export class WorkoutsService {
         });
     })
 }
+
+  popularActivities(_userid:string):Promise<Panel[]>{
+
+    return new Promise((resolve,reject) => {
+
+
+      this.http.get('/api/workout/activity/frequency/' + _userid, this.options).map(this.extractData).subscribe( (results) =>{
+        let milk:Panel[] = [];
+        for (let i =0; i< results.length;i++){
+          milk.push(new Panel(results[i]._id.id,results[i]._id.name));
+        }
+
+        resolve(milk);
+      });
+
+
+
+
+
+    });
+
+
+
+
+  }
 
 
 

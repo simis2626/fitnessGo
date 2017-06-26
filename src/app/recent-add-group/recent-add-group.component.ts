@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Panel} from "../Objects/Panel";
+import {WorkoutsService} from "../workouts.service";
 
 @Component({
   selector: 'app-recent-add-group',
@@ -8,14 +9,15 @@ import {Panel} from "../Objects/Panel";
 })
 export class RecentAddGroupComponent implements OnInit {
 
-  constructor() {
+  constructor(private workoutService:WorkoutsService) {
   }
 
   ngOnInit() {
-    console.log("ng on init working");
-    this.panels.push(new Panel(9877654456, 'Running', '&#xE566;', '#241E1B'));
-    this.panels.push(new Panel(9877654457, 'Walking', '&#xE536;', '#241E1B'));
-    this.panels.push(new Panel(9877654458, 'Biking', '&#xE52F;', '#241E1B'));
+    this.workoutService.popularActivities(localStorage.getItem('id_sub')).then( (results) =>{
+      this.panels.push(...results);
+    })
+
+
   }
 
   public panels: Panel[] = [];
