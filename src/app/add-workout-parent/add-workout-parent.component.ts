@@ -46,8 +46,9 @@ export class AddWorkoutParentComponent implements OnInit {
       .queryParams
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
-        this.activityID = +params['activity'] || 0;
+        this.activityID = params['activity'] || 0;
         if(this.activityID == 0){
+          console.log("activity ID === 0");
           this.workout.activities.push(new ActivityWO(null,null,null,null,null,null,null,null));
           this.activityService.getActivityList()
             .then((results) => {
@@ -56,6 +57,7 @@ export class AddWorkoutParentComponent implements OnInit {
         }else{
           this.activityService.getActivityList()
             .then((results) => {
+            console.log("activityID = " + this.activityID);
               this.activitiesOpt = results;
               let quickAct = this.activitiesOpt.find(this.lookForActivity);
               this.workout.activities.push(new ActivityWO(null,quickAct,null,null,null,null,null,null))
