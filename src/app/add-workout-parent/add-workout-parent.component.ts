@@ -59,7 +59,7 @@ export class AddWorkoutParentComponent implements OnInit {
             .then((results) => {
             console.log("activityID = " + this.activityID);
               this.activitiesOpt = results;
-              let quickAct = this.activitiesOpt.find(this.lookForActivity);
+              let quickAct = this.activitiesOpt.find(this.lookForActivity, this);
               this.workout.activities.push(new ActivityWO(null,quickAct,null,null,null,null,null,null))
 
 
