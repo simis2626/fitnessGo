@@ -27,12 +27,12 @@
 
 @media screen and (max-width: 651px) {
   .main-fab {
-    top: 89%;
+    top: 75%;
     left: 80%;
   }
 
   .setup-slide {
-    top: 89%;
+    top: 75%;
     left: 80%;
   }
 }
