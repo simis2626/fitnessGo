@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from "@angular/core";
 import {MdSnackBar} from "@angular/material";
 import {TargetWOService} from "../target-wo.service";
 import {Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {Target} from "../Objects/Target";
   templateUrl: './add-target.component.html',
   styleUrls: ['./add-target.component.css', '../material-shared/shared-css.css']
 })
-export class AddTargetComponent implements OnInit {
+export class AddTargetComponent implements OnInit, AfterViewInit {
 
   constructor(public snackBar: MdSnackBar, public targetService: TargetWOService, private router: Router) {
   }
@@ -23,6 +23,13 @@ export class AddTargetComponent implements OnInit {
   ngOnInit() {
     this.today = new Date();
     this.target = new Target(null,localStorage.getItem('id_sub'), this.today);
+
+
+  }
+
+
+  ngAfterViewInit() {
+    window.scroll(0, 0);
 
   }
 

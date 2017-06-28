@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {AfterViewInit, Component, OnInit} from "@angular/core";
 import {ActivitiesService} from "../activities.service";
 import {Activity} from "../Objects/Activity";
 import {Workout} from "../Objects/Workout";
@@ -13,7 +13,7 @@ import {WorkoutsService} from "../workouts.service";
   templateUrl: './add-workout-parent.component.html',
   styleUrls: ['./add-workout-parent.component.css','../material-shared/shared-css.css']
 })
-export class AddWorkoutParentComponent implements OnInit {
+export class AddWorkoutParentComponent implements OnInit, AfterViewInit {
 
   constructor(public activityService: ActivitiesService, public workoutService: WorkoutsService, public snackBar: MdSnackBar, private router: Router, private route:ActivatedRoute) {
   }
@@ -76,6 +76,11 @@ this.setDirty();
 
       });
 
+
+  }
+
+  ngAfterViewInit() {
+    window.scroll(0, 0);
 
   }
 

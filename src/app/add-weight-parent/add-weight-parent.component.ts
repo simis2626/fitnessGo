@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {AfterViewInit, Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {MdSnackBar} from "@angular/material";
 import {WeighIn} from "../Objects/WeighIn";
@@ -9,7 +9,7 @@ import {WeighInService} from "../weigh-in.service";
   templateUrl: './add-weight-parent.component.html',
   styleUrls: ['./add-weight-parent.component.css', '../material-shared/shared-css.css']
 })
-export class AddWeightParentComponent implements OnInit {
+export class AddWeightParentComponent implements OnInit, AfterViewInit {
 
   constructor(public snackBar: MdSnackBar, public weighinService: WeighInService, private router: Router) {
   }
@@ -25,8 +25,13 @@ export class AddWeightParentComponent implements OnInit {
     this.today = new Date();
     this.weighIn = new WeighIn(localStorage.getItem('id_sub'), this.today, null, null);
     this.times = ["Morning", "Day", "Night"];
+
   }
 
+  ngAfterViewInit() {
+    window.scroll(0, 0);
+
+  }
 
   setDirty() {
     this.dirty = true;

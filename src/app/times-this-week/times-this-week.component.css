@@ -16,9 +16,6 @@
 }
 
 @media (max-height: 780px), (max-width: 580px) {
-  .times-height {
-    height: 35%;
-  }
   .condense {
     width: 30%;
   }
