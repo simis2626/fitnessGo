@@ -15,7 +15,7 @@
   width: 40% !important;
 }
 
-@media screen and (max-height: 780px) or (max-width: 580px) {
+@media (max-height: 780px), (max-width: 580px) {
   .times-height {
     height: 35%;
   }
