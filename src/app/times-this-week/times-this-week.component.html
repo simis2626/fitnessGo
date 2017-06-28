@@ -10,7 +10,7 @@
                 fill="transparent"></circle>
         <circle transform="rotate(-90 50 50)" stroke-linecap="round" cx="50" cy="50" r="40" stroke="green"
                 stroke-dasharray="251" stroke-dashoffset="251" stroke-width="10" stroke-opacity="1" fill-opacity="0">
-          <animate attributeName="stroke-dashoffset" from="251" [attr.to]="251 - ((100-progressValue)/100 *251)"
+          <animate attributeName="stroke-dashoffset" from="251" [attr.to]="((100-progressValue)/100 *251)"
                    dur="3s" repeatCount="1" fill="freeze"></animate>
         </circle>
         <text x="35" y="55" font-weight="bold" font-family="'Roboto', sans-serif;">{{progressValue}}%</text>
