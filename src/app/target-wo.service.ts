@@ -46,12 +46,12 @@ export class TargetWOService {
   getTarget(_userId: string): Promise<Target> {
     return new Promise((resolve, reject) => {
       if (this.currentTarget && this.getsValid) {
-        resolve(this.currentTarget);
+        return resolve(this.currentTarget);
       }
       this.http.get('/api/targetwo/' + _userId).map(this.extractData).subscribe((results) => {
         this.currentTarget = results[0];
         this.getsValid = true;
-          resolve(results[0]);
+        return resolve(results[0]);
         }
       )
     })

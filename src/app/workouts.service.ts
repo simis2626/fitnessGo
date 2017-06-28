@@ -54,7 +54,7 @@ export class WorkoutsService {
 
     return new Promise((resolve,reject) => {
       if (this.getsValid && this.thisWeekWorkouts) {
-        resolve(this.thisWeekWorkouts);
+        return resolve(this.thisWeekWorkouts);
       }
       dtMonday.setDate(dtNow.getDate());
       while (dtMonday.getDay() != 1){
@@ -68,7 +68,7 @@ export class WorkoutsService {
           console.log(dtMonday);
           this.thisWeekWorkouts = results;
           this.getsValid = true;
-          resolve(results);
+          return resolve(results);
         });
     })
 }
@@ -77,7 +77,7 @@ export class WorkoutsService {
 
     return new Promise((resolve,reject) => {
       if (this.getsValid && this.popularworkouts) {
-        resolve(this.popularworkouts);
+        return resolve(this.popularworkouts);
       }
 
       this.http.get('/api/workout/activity/frequency/' + _userid, this.options).map(this.extractData).subscribe( (results) =>{
@@ -87,7 +87,7 @@ export class WorkoutsService {
         }
         this.popularworkouts = milk;
         this.getsValid = true;
-        resolve(milk);
+        return resolve(milk);
       });
 
 
