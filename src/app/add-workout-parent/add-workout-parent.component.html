@@ -60,7 +60,7 @@
             <input mdInput placeholder="Duration" #Duration{{ndx}} name="{{ndx}}Duration" id="{{ndx}}Duration"
                    [(ngModel)]="act.duration"><span mdSuffix>min</span>
           </md-input-container></div>
-        <div *ngIf="act.activty ? act.activty.cardio: true">
+        <div *ngIf="act.activity ? act.activty.cardio: true">
           <div><md-input-container>
             <input mdInput placeholder="Distance" #Distance{{ndx}} name="{{ndx}}Distance" id="{{ndx}}Distance"
                    [(ngModel)]="act.distance"><span mdSuffix>m</span>
@@ -73,7 +73,7 @@
 
 
         </div>
-        <div *ngIf="act.activty ? !act.activty.cardio : false">
+        <div *ngIf="act.activity ? !act.activty.cardio : false">
   <div><md-input-container>
             <input mdInput placeholder="Weight" #Weight{{ndx}} name="{{ndx}}Weight" id="{{ndx}}Weight"
                    [(ngModel)]="act.weight"><span mdSuffix>kg</span>
