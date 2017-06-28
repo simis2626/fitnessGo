@@ -8,6 +8,7 @@ export class TargetWOService {
   headers: Headers;
   options: RequestOptions;
   currentTarget: Target;
+  getsValid: boolean;
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -23,6 +24,7 @@ export class TargetWOService {
 
   changeTarget(target: Target): Promise<boolean> {
     this.currentTarget = null;
+    this.getsValid = false;
     return new Promise((resolve, reject) => {
 
       this.http.post('/api/targetwo/', JSON.stringify(target), this.options).map(this.extractData).subscribe((results) => {
@@ -43,11 +45,12 @@ export class TargetWOService {
 
   getTarget(_userId: string): Promise<Target> {
     return new Promise((resolve, reject) => {
-      if (this.currentTarget) {
+      if (this.currentTarget && this.getsValid) {
         resolve(this.currentTarget);
       }
       this.http.get('/api/targetwo/' + _userId).map(this.extractData).subscribe((results) => {
         this.currentTarget = results[0];
+        this.getsValid = true;
           resolve(results[0]);
         }
       )

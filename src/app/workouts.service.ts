@@ -67,6 +67,7 @@ export class WorkoutsService {
         .subscribe((results) => {
           console.log(dtMonday);
           this.thisWeekWorkouts = results;
+          this.getsValid = true;
           resolve(results);
         });
     })
@@ -85,6 +86,7 @@ export class WorkoutsService {
           milk.push(new Panel(results[i]._id.id,results[i]._id.name));
         }
         this.popularworkouts = milk;
+        this.getsValid = true;
         resolve(milk);
       });
 

@@ -12,6 +12,7 @@ export class ActivitiesService {
 
   headers: Headers;
   options: RequestOptions;
+  getsValid: boolean;
 
   constructor(private http: Http) {
     this.activities = [];
