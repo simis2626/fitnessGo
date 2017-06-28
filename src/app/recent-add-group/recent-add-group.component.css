@@ -1,12 +1,6 @@
 .recent-group-height {
   height: 20%;
-}
-
-@media screen and (max-height: 600px) {
-  .recent-group-height {
-    height: 30%;
-  }
-
+  min-height: 150px;
 }
 
 .center-color {

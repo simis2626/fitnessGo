@@ -2,9 +2,7 @@
 <div *ngIf="submitting" class="flex-parent-row">
   <div class="center-panel savingSpinner">
     <div style="text-align: center"><h2>{{savingText}}</h2></div>
-    <md-spinner style="align-self: center">
-
-    </md-spinner>
+    <app-load-spinner></app-load-spinner>
   </div>
 </div>
 <app-activityadd (actAdded)="refreshList()" *ngIf="addingListActivity"></app-activityadd>

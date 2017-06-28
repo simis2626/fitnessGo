@@ -27,8 +27,9 @@ import {WeighInService} from "./weigh-in.service";
 import {MarketingComponent} from "./marketing/marketing.component";
 import {WorkoutsService} from "./workouts.service";
 import {TargetWOService} from "./target-wo.service";
-import { AddTargetComponent } from './add-target/add-target.component';
-import { ActivityaddComponent } from './activityadd/activityadd.component';
+import {AddTargetComponent} from "./add-target/add-target.component";
+import {ActivityaddComponent} from "./activityadd/activityadd.component";
+import {LoadSpinnerComponent} from "./load-spinner/load-spinner.component";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ActivityaddComponent } from './activityadd/activityadd.component';
     AddWeightParentComponent,
     MarketingComponent,
     AddTargetComponent,
-    ActivityaddComponent
+    ActivityaddComponent,
+    LoadSpinnerComponent
   ],
   imports: [
     BrowserModule,
