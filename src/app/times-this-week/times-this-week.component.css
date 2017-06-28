@@ -14,11 +14,11 @@
   text-align: right;
   width: 40% !important;
 }
-@media screen and (max-height: 520px) and (max-width: 470px){
+
+@media screen and (max-height: 780px) or (max-width: 580px) {
   .times-height {
     height: 35%;
   }
-
   .condense {
     width: 30%;
   }
