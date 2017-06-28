@@ -8,7 +8,7 @@
       <svg height="100" width="100" style="">
         <circle r="40" cx="50" cy="50" stroke="rgba(100,100,100,0.1)" stroke-width="10" stroke-opacity="1"
                 fill="transparent"></circle>
-        <circle transform="rotate(-90 50 50)" stroke-linecap="round" cx="50" cy="50" r="40" stroke="green"
+        <circle transform="rotate(-90 50 50)" stroke-linecap="round" cx="50" cy="50" r="40" [stroke]="getColor()"
                 stroke-dasharray="251" stroke-dashoffset="251" stroke-width="10" stroke-opacity="1" fill-opacity="0">
           <animate attributeName="stroke-dashoffset" from="251" [attr.to]="((100-progressValue)/100 *251)"
                    dur="3s" repeatCount="1" fill="freeze"></animate>

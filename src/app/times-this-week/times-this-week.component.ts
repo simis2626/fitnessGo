@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {WorkoutsService} from "../workouts.service";
 import {TargetWOService} from "../target-wo.service";
 import {Workout} from "../Objects/Workout";
@@ -39,6 +39,23 @@ export class TimesThisWeekComponent implements OnInit {
 
 
   }
+
+
+  getColor() {
+    if (this.progressValue < 33) {
+      return 'red';
+    } else if (this.progressValue >= 33 && this.progressValue < 66) {
+      return 'orange';
+    } else if (this.progressValue >= 66 && this.progressValue < 90) {
+      return 'rgb(230,250,52)';
+    } else {
+      return 'green';
+    }
+
+
+  }
+
+
 
 
 }
