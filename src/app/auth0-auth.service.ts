@@ -30,6 +30,7 @@ export class Auth0AuthService {
     this.auth0.parseHash((err, authResult) => {
       console.log(err, authResult);
       if (authResult && authResult.accessToken && authResult.idToken) {
+        console.log(authResult.expiresIn);
         window.location.hash = '';
         this.setSession(authResult);
         this.authLocalService.setLoginState(true);
@@ -42,7 +43,7 @@ export class Auth0AuthService {
 
   private setSession(authResult): void {
     // Set the time that the access token will expire at
-    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    const expiresAt = JSON.stringify((authResult.expiresIn * 604800) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);

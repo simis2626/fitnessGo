@@ -27,9 +27,5 @@ export class AppComponent implements OnInit{
     });
 
   }
-
-
   loginState: boolean;
-
-  title = 'app works!';
 }
