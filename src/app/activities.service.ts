@@ -8,7 +8,7 @@ import "rxjs/add/operator/map";
 export class ActivitiesService {
 
   private activities:Activity[];
-
+  private stats: any;
 
   headers: Headers;
   options: RequestOptions;
@@ -59,7 +59,16 @@ export class ActivitiesService {
 
   }
 
+  getStats(_userid: string): Promise<any> {
 
+    return new Promise((resolve, reject) => {
+      this.http.get('/api/activity/stats/weights' + _userid, this.options).map(this.extractData).subscribe((results) => {
+        resolve(results);
+      });
+    });
+
+
+  }
 
 
 

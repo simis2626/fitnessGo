@@ -4,6 +4,7 @@ import {WelcomeComponent} from "./welcome/welcome.component";
 import {AddWorkoutParentComponent} from "./add-workout-parent/add-workout-parent.component";
 import {AddWeightParentComponent} from "./add-weight-parent/add-weight-parent.component";
 import {AddTargetComponent} from "./add-target/add-target.component";
+import {StatsComponent} from "./stats/stats.component";
 const routes: Routes = [
   {
     path: 'target/add',
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'weigh-in/add',
     component: AddWeightParentComponent
+  },
+  {
+    path: 'activity/stats',
+    component: StatsComponent
   },
   {
     path: '',

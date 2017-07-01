@@ -1,0 +1,5 @@
+<md-select (change)="populateTable()" #{{ndx}}actSelect placeholder="Activity Name" name="{{ndx}}activity"
+           id="{{ndx}}act"
+           [(ngModel)]="selectedActivity">
+  <md-option *ngFor="let act1 of activitylist" [value]="act1">{{act1}}</md-option>
+</md-select>

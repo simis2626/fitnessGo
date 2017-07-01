@@ -30,6 +30,7 @@ import {TargetWOService} from "./target-wo.service";
 import {AddTargetComponent} from "./add-target/add-target.component";
 import {ActivityaddComponent} from "./activityadd/activityadd.component";
 import {LoadSpinnerComponent} from "./load-spinner/load-spinner.component";
+import {StatsComponent} from "./stats/stats.component";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {LoadSpinnerComponent} from "./load-spinner/load-spinner.component";
     MarketingComponent,
     AddTargetComponent,
     ActivityaddComponent,
-    LoadSpinnerComponent
+    LoadSpinnerComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
