@@ -62,7 +62,7 @@ export class ActivitiesService {
   getStats(_userid: string): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.get('/api/activity/stats/weights' + _userid, this.options).map(this.extractData).subscribe((results) => {
+      this.http.get('/api/activity/stats/weights/' + _userid, this.options).map(this.extractData).subscribe((results) => {
         resolve(results);
       });
     });
