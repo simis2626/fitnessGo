@@ -1,5 +1,30 @@
-<md-select (change)="populateTable()" #actSelect placeholder="Activity Name" name="activity"
+<div class="flex-parent-row">
+  <div class="center-panel">
+    <md-card><h3>Personal best and recent performance
+    </h3>
+
+      >
+      <md-select (change)="populateTable()" #actSelect placeholder="Activity Name" name="activity"
 
            [(ngModel)]="selectedActivity">
   <md-option *ngFor="let act1 of activitylist" [value]="act1">{{act1}}</md-option>
 </md-select>
+      <table>
+        <colgroup>
+          <col style="background-color: #8dc9ff">
+          <col span="2">
+        </colgroup>
+        <tr>
+          <th>Weight</th>
+          <th>Personal best</th>
+          <th>Most recent</th>
+        </tr>
+        <tr *ngFor="let row of realTableStructure">
+          <td *ngFor="let cell of row">{{cell}}</td>
+        </tr>
+      </table>
+
+
+    </md-card>
+  </div>
+</div>
