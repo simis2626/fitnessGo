@@ -24,10 +24,9 @@
         <tbody>
         <tr *ngFor="let row of realTableStructure">
           <ng-container *ngFor="let cell of row; let ndx = index">
-            <th *ngIf="ndx == 0">{{cell}}</th>
-            <td *ngIf="ndx != 0">{{cell}}</td>
+            <th *ngIf="ndx < 1">{{cell}}</th>
+            <td *ngIf="ndx > 0">{{cell}}</td>
           </ng-container>
-
         </tr>
         </tbody>
       </table>
