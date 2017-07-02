@@ -60,7 +60,7 @@ export class StatsComponent implements OnInit {
     }
     value = 0;
     for (let weight of filteredRecentArray) {
-      this.tableStructure[value][2] = weight.reps + '\n' + new Date(weight.mostRecent).toDateString();
+      this.tableStructure[value][2] = weight.reps + '&#13;&#10;' + new Date(weight.mostRecent).toDateString();
       value++;
     }
     this.realTableStructure = this.tableStructure;
