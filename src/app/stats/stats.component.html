@@ -23,10 +23,10 @@
         </thead>
         <tbody>
         <tr *ngFor="let row of realTableStructure">
-          <template *ngFor="let cell of row; let ndx = index">
+          <ng-template *ngFor="let cell of row; let ndx = index">
             <th *ngIf="ndx == 0">{{cell}}</th>
             <td *ngIf="ndx != 0">{{cell}}</td>
-          </template>
+          </ng-template>
 
         </tr>
         </tbody>
