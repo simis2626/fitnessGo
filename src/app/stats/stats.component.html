@@ -14,14 +14,22 @@
           <col style="background-color: #8dc9ff">
           <col span="2">
         </colgroup>
+        <thead>
         <tr>
           <th>Weight</th>
           <th>Personal best</th>
           <th>Most recent</th>
         </tr>
+        </thead>
+        <tbody>
         <tr *ngFor="let row of realTableStructure">
-          <td *ngFor="let cell of row">{{cell}}</td>
+          <template *ngFor="let cell of row; let ndx = index">
+            <th *ngIf="ndx == 0">{{cell}}</th>
+            <td *ngIf="ndx != 0">{{cell}}</td>
+          </template>
+
         </tr>
+        </tbody>
       </table>
 
 
