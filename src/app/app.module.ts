@@ -31,6 +31,7 @@ import {AddTargetComponent} from "./add-target/add-target.component";
 import {ActivityaddComponent} from "./activityadd/activityadd.component";
 import {LoadSpinnerComponent} from "./load-spinner/load-spinner.component";
 import {StatsComponent} from "./stats/stats.component";
+import {FitbitSuccessComponent} from "./fitbit-success/fitbit-success.component";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {StatsComponent} from "./stats/stats.component";
     AddTargetComponent,
     ActivityaddComponent,
     LoadSpinnerComponent,
-    StatsComponent
+    StatsComponent,
+    FitbitSuccessComponent
   ],
   imports: [
     BrowserModule,

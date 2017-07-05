@@ -5,6 +5,7 @@ import {AddWorkoutParentComponent} from "./add-workout-parent/add-workout-parent
 import {AddWeightParentComponent} from "./add-weight-parent/add-weight-parent.component";
 import {AddTargetComponent} from "./add-target/add-target.component";
 import {StatsComponent} from "./stats/stats.component";
+import {FitbitSuccessComponent} from "./fitbit-success/fitbit-success.component";
 const routes: Routes = [
   {
     path: 'target/add',
@@ -13,6 +14,9 @@ const routes: Routes = [
   {
     path: 'workout/add',
     component: AddWorkoutParentComponent
+  }, {
+    path: 'fitbit_success',
+    component: FitbitSuccessComponent
   },
   {
     path: 'weigh-in/add',
