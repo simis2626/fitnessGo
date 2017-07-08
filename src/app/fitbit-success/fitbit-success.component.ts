@@ -9,14 +9,20 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class FitbitSuccessComponent implements OnInit {
 
+  code: any;
+  sub: any;
+
   ngOnInit() {
-    console.log(this.route.snapshot.paramMap.keys);
-    this.storeFitbitAuth(this.route.snapshot.paramMap.get('code'));
-    setTimeout(() => {
-      console.log(this.route);
-      console.log(this.route.params);
-      console.log(this.route.snapshot.params);
-    })
+    this.sub = this.route
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        this.code = params['code'] || '0';
+        if (this.code != '0') {
+          this.storeFitbitAuth(this.code);
+        }
+      });
+
   }
 
   headers: Headers;
