@@ -10,7 +10,13 @@ import {ActivatedRoute} from "@angular/router";
 export class FitbitSuccessComponent implements OnInit {
 
   ngOnInit() {
+    console.log(this.route.snapshot.paramMap.keys);
     this.storeFitbitAuth(this.route.snapshot.paramMap.get('code'));
+    setTimeout(() => {
+      console.log(this.route);
+      console.log(this.route.params);
+      console.log(this.route.snapshot.params);
+    })
   }
 
   headers: Headers;
