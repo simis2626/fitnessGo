@@ -46,8 +46,6 @@ ngAfterViewInit() {
       return 0;
     };
 
-
-    console.log(this.selectedActivity);
     this.tableStructure = [[], []];
     let filteredPBArray = this.weightStats.personalBests.filter(function (act) {
       return act._id.name == this.selectedActivity;
@@ -69,6 +67,7 @@ ngAfterViewInit() {
       this.tableStructure[value][2] = weight.reps + '<br>' + new Date(weight.mostRecent).toDateString();
       value++;
     }
+    this.realTableStructure = [[], []];
     this.realTableStructure = this.tableStructure;
   }
 
