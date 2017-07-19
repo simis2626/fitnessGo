@@ -1,11 +1,21 @@
-table {
-  border-length: 0.2em;
-  border-collapse: collapse;
 
+md-card{
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    border-style:solid;
+  border-collapse: collapse;
+ 
 }
 
 td {
   text-align: center;
+}
+th {
+  padding: 10px;  
 }
 
 tbody {
