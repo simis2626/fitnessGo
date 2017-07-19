@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, AfterViewInit} from "@angular/core";
 import {ActivitiesService} from "../activities.service";
 
 @Component({
@@ -6,10 +6,16 @@ import {ActivitiesService} from "../activities.service";
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.css', '../material-shared/shared-css.css']
 })
-export class StatsComponent implements OnInit {
+export class StatsComponent implements OnInit, AfterViewInit {
 
   constructor(private activityService: ActivitiesService) {
   }
+
+ngAfterViewInit() {
+    window.scroll(0, 0);
+
+  }
+
 
   weightStats: any;
   activitylist: any[];
@@ -60,7 +66,7 @@ export class StatsComponent implements OnInit {
     }
     value = 0;
     for (let weight of filteredRecentArray) {
-      this.tableStructure[value][2] = weight.reps + '&#13;&#10;' + new Date(weight.mostRecent).toDateString();
+      this.tableStructure[value][2] = weight.reps + '<br>' + new Date(weight.mostRecent).toDateString();
       value++;
     }
     this.realTableStructure = this.tableStructure;
