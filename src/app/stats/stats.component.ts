@@ -69,6 +69,7 @@ ngAfterViewInit() {
     }
     this.realTableStructure = [[], []];
     this.realTableStructure = this.tableStructure;
+    console.log(this.realTableStructure);
   }
 
 
