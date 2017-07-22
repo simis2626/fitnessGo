@@ -55,16 +55,16 @@
         <md-option *ngFor="let act1 of activitiesOpt" [value]="act1">{{act1.name}}</md-option>
       </md-select></div>
         <div><md-input-container>
-            <input mdInput placeholder="Duration" #Duration{{ndx}} name="{{ndx}}Duration" id="{{ndx}}Duration"
+            <input mdInput placeholder="Duration" type="number" #Duration{{ndx}} name="{{ndx}}Duration" id="{{ndx}}Duration"
                    [(ngModel)]="act.duration"><span mdSuffix>min</span>
           </md-input-container></div>
         <div *ngIf="act.activity ? act.activity.cardio: true">
           <div><md-input-container>
-            <input mdInput placeholder="Distance" #Distance{{ndx}} name="{{ndx}}Distance" id="{{ndx}}Distance"
+            <input mdInput placeholder="Distance" type="number" #Distance{{ndx}} name="{{ndx}}Distance" id="{{ndx}}Distance"
                    [(ngModel)]="act.distance"><span mdSuffix>m</span>
           </md-input-container></div>
 <div><md-input-container>
-            <input mdInput placeholder="Intensity" #Intensity{{ndx}} name="{{ndx}}Intensity" id="{{ndx}}Intensity"
+            <input mdInput placeholder="Intensity" type="number" #Intensity{{ndx}} name="{{ndx}}Intensity" id="{{ndx}}Intensity"
                    [(ngModel)]="act.intensity">
   <md-hint align="end">1 to 10</md-hint>
           </md-input-container></div>
@@ -73,11 +73,11 @@
         </div>
         <div *ngIf="act.activity ? !act.activity.cardio : false">
   <div><md-input-container>
-            <input mdInput placeholder="Weight" #Weight{{ndx}} name="{{ndx}}Weight" id="{{ndx}}Weight"
+            <input mdInput placeholder="Weight" type="number" #Weight{{ndx}} name="{{ndx}}Weight" id="{{ndx}}Weight"
                    [(ngModel)]="act.weight"><span mdSuffix>kg</span>
           </md-input-container></div>
 <div><md-input-container>
-            <input mdInput placeholder="Reps" #Reps name="{{ndx}}Reps" id="{{ndx}}Reps" [(ngModel)]="act.reps">
+            <input mdInput placeholder="Reps" type="number" #Reps name="{{ndx}}Reps" id="{{ndx}}Reps" [(ngModel)]="act.reps">
           </md-input-container></div>
 
 
