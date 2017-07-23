@@ -7,7 +7,7 @@
            [(ngModel)]="selectedActivity">
   <md-option *ngFor="let act1 of activitylist" [value]="act1">{{act1}}</md-option>
 </md-select>
-      <table>
+      <table *ngIf="!selectedCardio">
         <colgroup>
           <col style="background-color: #8dc9ff">
           <col span="2">
@@ -29,7 +29,7 @@
         </tr>
         </tbody>
       </table>
-    <table>
+      <table *ngIf="selectedCardio">
         <colgroup>
           <col style="background-color: #8dc9ff">
           <col span="2">

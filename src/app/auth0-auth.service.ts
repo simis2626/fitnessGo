@@ -15,7 +15,7 @@ export class Auth0AuthService {
     domain: 'simis2626.au.auth0.com',
     responseType: 'token id_token',
     audience: 'https://simis2626.au.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200',
+    redirectUri: 'http://fitness.techtoedip.com:81',
     scope: 'openid profile',
     leeway: 60
   });
