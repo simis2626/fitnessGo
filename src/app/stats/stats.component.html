@@ -29,6 +29,28 @@
         </tr>
         </tbody>
       </table>
+    <table>
+        <colgroup>
+          <col style="background-color: #8dc9ff">
+          <col span="2">
+        </colgroup>
+        <thead>
+        <tr>
+          <th>Duration</th>
+          <th>Personal best</th>
+          <th>Most recent</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let row of realTableStructure">
+          <ng-container *ngFor="let cell of row; let ndx = index">
+            <th *ngIf="ndx < 1">{{cell}}</th>
+            <td *ngIf="ndx == 1">{{cell}}</td>
+            <td *ngIf="ndx > 1" [innerHTML]='cell'></td>
+          </ng-container>
+        </tr>
+        </tbody>
+      </table>
 
 
     </md-card>

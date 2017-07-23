@@ -16,7 +16,7 @@ ngAfterViewInit() {
 
   }
 
-
+    selectedCardio:boolean;
   weightStats: any;
   activitylist: any[];
   selectedActivity: string;
