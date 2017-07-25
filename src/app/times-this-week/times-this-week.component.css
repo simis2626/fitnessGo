@@ -9,6 +9,7 @@
 
 .times-height{
   height: 20%;
+  min-height: 230px;
 }
 .times-caption{
   text-align: right;

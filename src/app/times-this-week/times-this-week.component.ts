@@ -54,17 +54,65 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit {
       let data = [{
         x: [],
         y: [],
+        marker: {color: []},
         type: 'bar'
       }];
       data[0].x = [];
       data[0].y = [];
+      data[0].marker.color = [];
       this.dayData.forEach((obj) => {
         console.log(obj);
-        data[0].x.push(obj._id.dayOfWeek);
+        let day: string;
+        switch (obj._id.dayOfWeek) {
+          case 1: {
+            day = 'Mon';
+            break;
+          }
+          case 2: {
+            day = 'Tue';
+            break;
+          }
+          case 3: {
+            day = 'Wed';
+            break;
+          }
+          case 4: {
+            day = 'Thu';
+            break;
+          }
+          case 5: {
+            day = 'Fri';
+            break;
+          }
+          case 6: {
+            day = 'Sat';
+            break;
+          }
+          case 7: {
+            day = 'Sun';
+            break;
+          }
+        }
+        let marker = obj.stretchesBool ? 'green' : 'orange';
+
+
+        data[0].x.push(day);
         data[0].y.push(obj.duration);
+        data[0].marker.color.push(marker);
       });
       console.log(data[0]);
-      Plotly.newPlot('dayGraph', data);
+      let layout = {
+        title: 'Workout time each day',
+        font: {
+          family: 'Raleway, sans-serif'
+        },
+        showlegend: false,
+        xaxis: {
+          tickangle: -45
+        },
+        bargap: 0.05
+      };
+      Plotly.newPlot('dayGraph', data, layout);
     });
   }
 
