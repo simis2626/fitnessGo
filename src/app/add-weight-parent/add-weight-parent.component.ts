@@ -11,15 +11,15 @@ import {WeighInService} from "../weigh-in.service";
 })
 export class AddWeightParentComponent implements OnInit, AfterViewInit {
 
-  constructor(public snackBar: MdSnackBar, public weighinService: WeighInService, private router: Router) {
-  }
-
   dirty: boolean = false;
   submitting: boolean = false;
   public savingText: string;
   times: string[];
   weighIn: WeighIn;
   private today: Date;
+
+  constructor(public snackBar: MdSnackBar, public weighinService: WeighInService, private router: Router) {
+  }
 
   ngOnInit() {
     this.today = new Date();

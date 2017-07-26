@@ -2,7 +2,8 @@
   <span routerLink="/">Fitness Tracker</span>
   <span style="flex: 1 1 auto"></span>
   <app-add-account *ngIf="!loginState"></app-add-account>
-  <app-userauth *ngIf="loginState" style="width:200px; display: inline-flex; flex-direction: row-reverse; align-items: center; flex-wrap: nowrap"></app-userauth>
+  <app-userauth *ngIf="loginState"
+                style="width:200px; display: inline-flex; flex-direction: row-reverse; align-items: center; flex-wrap: nowrap"></app-userauth>
 </md-toolbar>
 <router-outlet class="router-height"></router-outlet>
 

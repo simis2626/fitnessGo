@@ -14,12 +14,6 @@ export class WeighInService {
 
   }
 
-  private extractData(res) {
-    let body = res.json();
-    return body || {};
-  }
-
-
   addWeighin(weighin: WeighIn): Promise<boolean> {
     return new Promise((resolve, reject) => {
 
@@ -37,6 +31,11 @@ export class WeighInService {
     });
 
 
+  }
+
+  private extractData(res) {
+    let body = res.json();
+    return body || {};
   }
 
 

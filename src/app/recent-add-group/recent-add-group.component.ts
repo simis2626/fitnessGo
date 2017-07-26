@@ -9,18 +9,18 @@ import {WorkoutsService} from "../workouts.service";
 })
 export class RecentAddGroupComponent implements OnInit {
 
-  constructor(private workoutService:WorkoutsService) {
+  public panels: Panel[] = [];
+
+  constructor(private workoutService: WorkoutsService) {
   }
 
   ngOnInit() {
-    this.workoutService.popularActivities(localStorage.getItem('id_sub')).then( (results) =>{
+    this.workoutService.popularActivities(localStorage.getItem('id_sub')).then((results) => {
       this.panels.push(...results);
     })
 
 
   }
-
-  public panels: Panel[] = [];
 
 
 }

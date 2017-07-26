@@ -1,4 +1,3 @@
-
 <br>
 <div *ngIf="submitting" class="flex-parent-row">
   <div class="center-panel savingSpinner">
@@ -11,10 +10,10 @@
     <div class="center-panel">
       <md-card><h3>Set goal: How many workouts per week?
       </h3>
-          <md-input-container>
-            <input mdInput placeholder="Workouts" #WO name="WO" id="WO"
-                   [(ngModel)]="target.number" type="number"><span mdSuffix>per week</span>
-          </md-input-container>
+        <md-input-container>
+          <input mdInput placeholder="Workouts" #WO name="WO" id="WO"
+                 [(ngModel)]="target.number" type="number"><span mdSuffix>per week</span>
+        </md-input-container>
         <button md-raised-button color="primary" type="submit">
           Save
         </button>

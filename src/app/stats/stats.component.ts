@@ -8,21 +8,21 @@ import {ActivitiesService} from "../activities.service";
 })
 export class StatsComponent implements OnInit, AfterViewInit {
 
-  constructor(private activityService: ActivitiesService) {
-  }
-
-ngAfterViewInit() {
-    window.scroll(0, 0);
-
-  }
-
-    selectedCardio:boolean;
+  selectedCardio: boolean;
   weightStats: any;
   activitylist: any[];
   activityCardio: any[];
   selectedActivity: string;
   tableStructure: any[];
   realTableStructure: any[];
+
+  constructor(private activityService: ActivitiesService) {
+  }
+
+  ngAfterViewInit() {
+    window.scroll(0, 0);
+
+  }
 
   ngOnInit() {
     this.activitylist = [];
@@ -121,25 +121,6 @@ ngAfterViewInit() {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  }
+}
 
 

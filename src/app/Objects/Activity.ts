@@ -5,9 +5,7 @@
 
 export class Activity {
 
-  constructor(
-    public name:string,
-    public cardio:boolean
-
-  )  {}
+  constructor(public name: string,
+              public cardio: boolean) {
+  }
 }
