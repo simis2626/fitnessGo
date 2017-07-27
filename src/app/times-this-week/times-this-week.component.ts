@@ -103,10 +103,10 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
       let prevDayofWeek: number;
       let count: number = 1;
       this.dayData.forEach((obj) => {
-
+        console.log(obj);
         while (obj._id.dayOfWeek > (prevDayofWeek + 1) || (obj._id.dayOfWeek == 1 && prevDayofWeek != 7)) {
           let day2: string = getDay(prevDayofWeek + 1);
-          data[0].x.push(count + ' - ' + day2);
+          data[0].x.push('Skipped' + ' - ' + day2);
           data[0].y.push(0);
           data[0].marker.color.push('red');
           count++;
@@ -115,9 +115,11 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
 
 
         let marker = obj.stretchesBool ? 'green' : 'orange';
-
+        let dateObj = new Date(obj._id.date);
+        let dayDate = dateObj.getDate();
+        let monthDate = dateObj.getMonth() + 1;
         let day = getDay(obj._id.dayOfWeek);
-        data[0].x.push(obj._id.date.getDate() + '/' + (obj._id.date.getMonth() + 1) + ' - ' + day);
+        data[0].x.push(dayDate + '/' + monthDate + ' - ' + day);
         data[0].y.push(obj.duration);
         data[0].marker.color.push(marker);
         prevDayofWeek = obj._id.dayOfWeek;
