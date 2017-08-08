@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions} from "@angular/http";
 import {Workout} from "./Objects/Workout";
 import {Panel} from "./Objects/Panel";
-import {GraphDataSet} from "./Objects/GraphDataSet";
 
 @Injectable()
 export class WorkoutsService {
@@ -10,7 +9,6 @@ export class WorkoutsService {
   headers: Headers;
   options: RequestOptions;
   thisWeekWorkouts: Workout[];
-  graphData: any[];
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -74,55 +72,6 @@ export class WorkoutsService {
         });
     })
 }
-
-
-  getDayGraphData(_userid: string): Promise<any[]> {
-    return new Promise((resolve, reject) => {
-
-      this._getGraphData(_userid).then((result) => {
-        return resolve(result.dayData)
-      });
-
-    });
-
-
-  }
-
-  getWeekGraphData(_userid: string): Promise<any[]> {
-
-    return new Promise((resolve, reject) => {
-      this._getGraphData(_userid).then((result) => {
-        return resolve(result.weekData)
-      });
-    });
-
-
-  }
-
-
-  _getGraphData(_userid: string): Promise<GraphDataSet> {
-
-    return new Promise((resolve, reject) => {
-      if (this.getsValid && this.graphData) {
-        return resolve(this.graphData);
-      }
-
-      this.http.get('/api/workout/hist/' + _userid + '/' + 10, this.options).map(this.extractData).subscribe((results) => {
-        let milk = [];
-        /*for (let i =0; i< results.length;i++){
-          milk.push(new Panel(results[i]._id.id,results[i]._id.name));
-        }*/
-        milk = results[0];
-        this.graphData = milk;
-        this.getsValid = true;
-        return resolve(milk);
-      });
-
-
-    });
-
-
-  }
 
   popularActivities(_userid:string):Promise<Panel[]>{
 
