@@ -60,7 +60,7 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit {
       data[0].y = [];
       this.dayData.forEach((obj) => {
         console.log(obj);
-        data[0].x.push(obj._id.dayOfWeek);
+        data[0].x.push(obj._id.date);
         data[0].y.push(obj.duration);
       });
       console.log(data[0]);
