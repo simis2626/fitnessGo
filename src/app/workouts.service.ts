@@ -99,7 +99,7 @@ export class WorkoutsService {
         return resolve(this.graphData);
       }
 
-      this.http.get('/api/workout/hist/' + _userid + '/' + 5, this.options).map(this.extractData).subscribe((results) => {
+      this.http.get('/api/workout/hist/' + _userid + '/' + 6, this.options).map(this.extractData).subscribe((results) => {
         let milk = [];
         /*for (let i =0; i< results.length;i++){
           milk.push(new Panel(results[i]._id.id,results[i]._id.name));
