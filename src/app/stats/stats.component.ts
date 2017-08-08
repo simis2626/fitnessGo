@@ -106,7 +106,7 @@ ngAfterViewInit() {
       let tempArray: any[];
       for (let duration of filteredPBArray) {
         tempArray = [];
-        tempArray.push(duration._id.duration + ' - ' + duration + 2 + ' min');
+        tempArray.push(duration._id.duration + 2 + ' min');
         tempArray.push(duration.distance + 'm');
         this.tableStructure.push(tempArray);
       }
