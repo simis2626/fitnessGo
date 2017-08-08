@@ -101,15 +101,14 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
       data[0].marker.color = [];
 
       let prevDayofWeek: number;
-      let count: number = 1;
+
       this.dayData.forEach((obj) => {
 
         while (obj._id.dayOfWeek > (prevDayofWeek + 1) || (obj._id.dayOfWeek == 1 && prevDayofWeek != 7)) {
           let day2: string = getDay(prevDayofWeek + 1);
-          data[0].x.push(count + ' - ' + day2);
+          data[0].x.push(day2);
           data[0].y.push(0);
           data[0].marker.color.push('red');
-          count++;
           prevDayofWeek++;
         }
 
@@ -117,11 +116,10 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
         let marker = obj.stretchesBool ? 'green' : 'orange';
 
         let day = getDay(obj._id.dayOfWeek);
-        data[0].x.push(obj._id.date.getDate() + '/' + (obj._id.date.getMonth() + 1) + ' - ' + day);
+        data[0].x.push(day);
         data[0].y.push(obj.duration);
         data[0].marker.color.push(marker);
         prevDayofWeek = obj._id.dayOfWeek;
-        count++;
       });
       let layout = {
         title: 'Workout time each day',
@@ -134,7 +132,7 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
         },
         bargap: 0.05
       };
-      console.log(data);
+
       Plotly.newPlot(this.dayGraph.nativeElement, data, layout, {displayModeBar: false});
 
 

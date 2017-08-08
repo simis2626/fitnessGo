@@ -80,12 +80,11 @@ export class WorkoutsService {
 
   }
 
-//cheesey
   getWeekGraphData(_userid: string): Promise<any[]> {
 
     return new Promise((resolve, reject) => {
       this._getGraphData(_userid).then((result) => {
-        return resolve(result.weekData);
+        return resolve(result.weekData)
       });
     });
 
