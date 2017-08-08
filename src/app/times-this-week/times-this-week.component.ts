@@ -142,7 +142,7 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
       console.log(data);
       setTimeout(() => {
         Plotly.newPlot(this.dayGraph.nativeElement, data, layout, {displayModeBar: false});
-      },2000);
+      },400);
 
 
     });
