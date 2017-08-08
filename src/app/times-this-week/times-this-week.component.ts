@@ -48,45 +48,6 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    let getDay = function (intDay: number) {
-
-
-      let day: string;
-      switch (intDay) {
-
-
-        case 1: {//next
-          day = 'Mon';
-          break;
-        }
-        case 2: {
-          day = 'Tue';
-          break;
-        }
-        case 3: {
-          day = 'Wed';
-          break;
-        }
-        case 4: {
-          day = 'Thu';
-          break;
-        }
-        case 5: {
-          day = 'Fri';
-          break;
-        }
-        case 6: { //prev
-          day = 'Sat';
-          break;
-        }
-        case 7: {
-          day = 'Sun';
-          break;
-        }
-      }
-      return day;
-    };
-
 
     this.workoutService.getDayGraphData(this.usrid).then((results) => {
       this.dayData = results;
@@ -99,28 +60,45 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit {
       data[0].x = [];
       data[0].y = [];
       data[0].marker.color = [];
-
-      let prevDayofWeek: number;
-
       this.dayData.forEach((obj) => {
-
-        while (obj._id.dayOfWeek > (prevDayofWeek + 1) || (obj._id.dayOfWeek == 1 && prevDayofWeek != 7)) {
-          let day2: string = getDay(prevDayofWeek + 1);
-          data[0].x.push(day2);
-          data[0].y.push(0);
-          data[0].marker.color.push('red');
-          prevDayofWeek++;
-          console.log(prevDayofWeek - 1);
+        console.log(obj);
+        let day: string;
+        switch (obj._id.dayOfWeek) {
+          case 1: {
+            day = 'Mon';
+            break;
+          }
+          case 2: {
+            day = 'Tue';
+            break;
+          }
+          case 3: {
+            day = 'Wed';
+            break;
+          }
+          case 4: {
+            day = 'Thu';
+            break;
+          }
+          case 5: {
+            day = 'Fri';
+            break;
+          }
+          case 6: {
+            day = 'Sat';
+            break;
+          }
+          case 7: {
+            day = 'Sun';
+            break;
+          }
         }
-
-
         let marker = obj.stretchesBool ? 'green' : 'orange';
 
-        let day = getDay(obj._id.dayOfWeek);
+
         data[0].x.push(day);
         data[0].y.push(obj.duration);
         data[0].marker.color.push(marker);
-        prevDayofWeek = obj._id.dayOfWeek;
       });
       console.log(data[0]);
       let layout = {
