@@ -137,7 +137,7 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
         bargap: 0.05
       };
       console.log(data);
-      /*Plotly.newPlot(this.dayGraph.nativeElement, data, layout, {displayModeBar: false});*/
+      Plotly.newPlot(this.dayGraph.nativeElement, data, layout, {displayModeBar: false});
 
 
     });
