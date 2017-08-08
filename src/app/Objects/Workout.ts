@@ -1,4 +1,5 @@
 import {ActivityWO} from "./ActivityWO";
+
 /**
  * Created by andromeda on 28/5/17.
  */
@@ -6,14 +7,12 @@ import {ActivityWO} from "./ActivityWO";
 
 export class Workout {
 
-  constructor(
-    public _userid?: string,
-    public duration?:number,
-    public date?:Date,
-    public stretchesDone?:boolean,
-    public averageEffort?: number,
-    public activities?:ActivityWO[]
-  )
-  {}
+  constructor(public _userid?: string,
+              public duration?: number,
+              public date?: Date,
+              public stretchesDone?: boolean,
+              public averageEffort?: number,
+              public activities?: ActivityWO[]) {
+  }
 
 }

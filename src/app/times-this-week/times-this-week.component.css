@@ -1,4 +1,4 @@
-.times-shading{
+.times-shading {
   background-color: #E0E2DC;
   height: 100%
 }
@@ -7,10 +7,12 @@
   vertical-align: middle
 }
 
-.times-height{
+.times-height {
   height: 20%;
+  min-height: 230px;
 }
-.times-caption{
+
+.times-caption {
   text-align: right;
   width: 40% !important;
 }

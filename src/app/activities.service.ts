@@ -7,12 +7,11 @@ import "rxjs/add/operator/map";
 @Injectable()
 export class ActivitiesService {
 
-  private activities:Activity[];
-  private stats: any;
-
   headers: Headers;
   options: RequestOptions;
   getsValid: boolean;
+  private activities: Activity[];
+  private stats: any;
 
   constructor(private http: Http) {
     this.activities = [];
@@ -22,38 +21,33 @@ export class ActivitiesService {
 
   }
 
-  private extractData(res) {
-    let body = res.json();
-    return body || {};
-  }
-
-  getActivityList():Promise<Activity[]>{
-    return new Promise((resolve,reject) => {
+  getActivityList(): Promise<Activity[]> {
+    return new Promise((resolve, reject) => {
       if (this.activities.length > 0) {
         resolve(this.activities);
       } else {
-      this.http.get('/api/activity', this.options).map(this.extractData).subscribe((results) => {
-        this.activities = results;
-        resolve(results);
-      });
+        this.http.get('/api/activity', this.options).map(this.extractData).subscribe((results) => {
+          this.activities = results;
+          resolve(results);
+        });
       }
 
     });
   }
 
-  addActivity(act:Activity):Promise<boolean>{
+  addActivity(act: Activity): Promise<boolean> {
 
-    return new Promise((resolve,reject) => {
-    this.http.post('/api/activity',JSON.stringify(act),this.options).map(this.extractData).subscribe((results) => {
-      if(results){
-        if (this.activities.length>0){
-          this.activities = [];
+    return new Promise((resolve, reject) => {
+      this.http.post('/api/activity', JSON.stringify(act), this.options).map(this.extractData).subscribe((results) => {
+        if (results) {
+          if (this.activities.length > 0) {
+            this.activities = [];
+          }
+          resolve(true);
+        } else {
+          resolve(false);
         }
-        resolve(true);
-      }else{
-        resolve(false);
-      }
-    });
+      });
     });
 
 
@@ -70,12 +64,10 @@ export class ActivitiesService {
 
   }
 
-
-
-
-
-
-
+  private extractData(res) {
+    let body = res.json();
+    return body || {};
+  }
 
 
 }

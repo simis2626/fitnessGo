@@ -6,6 +6,8 @@ import {AddWeightParentComponent} from "./add-weight-parent/add-weight-parent.co
 import {AddTargetComponent} from "./add-target/add-target.component";
 import {StatsComponent} from "./stats/stats.component";
 import {FitbitSuccessComponent} from "./fitbit-success/fitbit-success.component";
+import {MarketingComponent} from "./marketing/marketing.component";
+
 const routes: Routes = [
   {
     path: 'target/add',
@@ -27,8 +29,12 @@ const routes: Routes = [
     component: StatsComponent
   },
   {
+    path: 'welcome',
+    component: MarketingComponent
+  },
+  {
     path: '',
-    component:WelcomeComponent
+    component: WelcomeComponent
   }
 ];
 
@@ -36,4 +42,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

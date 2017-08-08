@@ -20,8 +20,8 @@ md-card {
   padding: 15px;
 }
 
-@media screen and (max-width: 760px) or (max-height: 910px){
-  .marketing-height{
+@media screen and (max-width: 760px) or (max-height: 910px) {
+  .marketing-height {
     height: 83%;
   }
 }

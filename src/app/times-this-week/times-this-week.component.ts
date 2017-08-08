@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from "@angular/core";
 import {WorkoutsService} from "../workouts.service";
 import {TargetWOService} from "../target-wo.service";
 import {Workout} from "../Objects/Workout";
@@ -8,37 +8,37 @@ import {Target} from "../Objects/Target";
 declare var Plotly: any;
 
 
-
 @Component({
   selector: 'app-times-this-week',
   templateUrl: './times-this-week.component.html',
   styleUrls: ['./times-this-week.component.css', '../material-shared/shared-css.css']
 })
-export class TimesThisWeekComponent implements OnInit, AfterViewInit {
+export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  wrkouts:Workout[];
-  trgt:Target;
-  cnt:number;
+  wrkouts: Workout[];
+  trgt: Target;
+  cnt: number;
   dayData: any[];
-  usrid:string;
-  public progressValue:number;
-  ready:boolean = false;
-  public spincolor:string;
+  usrid: string;
+  public progressValue: number;
+  ready: boolean = false;
+  public spincolor: string;
+  @ViewChild('dayGraph') dayGraph: ElementRef;
 
-
-  constructor(private workoutService:WorkoutsService, private targetService:TargetWOService) { }
+  constructor(private workoutService: WorkoutsService, private targetService: TargetWOService) {
+  }
 
   ngOnInit() {
     this.usrid = localStorage.getItem('id_sub');
     Promise.all([
       this.targetService.getTarget(this.usrid),
       this.workoutService.workoutsThisWeek(this.usrid),
-      ]).then((results) => {
+    ]).then((results) => {
       this.trgt = results[0];
       this.wrkouts = results[1];
       this.cnt = this.wrkouts.length;
-      this.progressValue = Math.round((this.cnt/this.trgt.number) * 100);
-      this.spincolor = this.progressValue > 99 ? "#0db721": "#5c8cac";
+      this.progressValue = Math.round((this.cnt / this.trgt.number) * 100);
+      this.spincolor = this.progressValue > 99 ? "#0db721" : "#5c8cac";
       this.ready = true;
 
 
@@ -48,23 +48,103 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    let getDay = function (intDay: number) {
+
+
+      let day: string;
+      switch (intDay) {
+
+
+        case 1: {//next
+          day = 'Mon';
+          break;
+        }
+        case 2: {
+          day = 'Tue';
+          break;
+        }
+        case 3: {
+          day = 'Wed';
+          break;
+        }
+        case 4: {
+          day = 'Thu';
+          break;
+        }
+        case 5: {
+          day = 'Fri';
+          break;
+        }
+        case 6: { //prev
+          day = 'Sat';
+          break;
+        }
+        case 7: {
+          day = 'Sun';
+          break;
+        }
+      }
+      return day;
+    };
+
 
     this.workoutService.getDayGraphData(this.usrid).then((results) => {
       this.dayData = results;
       let data = [{
         x: [],
         y: [],
+        marker: {color: []},
         type: 'bar'
       }];
       data[0].x = [];
       data[0].y = [];
+      data[0].marker.color = [];
+
+      let prevDayOfWeek: number;
+      let prevDayOfYear:number;
+      let count: number = 1;
       this.dayData.forEach((obj) => {
-        console.log(obj);
-        data[0].x.push(obj.date);
+
+        while (obj._id.dayOfYear > (prevDayOfYear + 1) ) {
+          let day2: string = getDay(prevDayOfWeek == 7 ? 1 : (prevDayOfWeek + 1));
+          data[0].x.push('Skipped' + ' - ' + day2);
+          data[0].y.push(0);
+          data[0].marker.color.push('red');
+          count++;
+          prevDayOfWeek = (prevDayOfWeek == 7 ? 1: (prevDayOfWeek +1));
+          prevDayOfYear++;
+        }
+
+
+        let marker = obj.stretchesBool ? 'green' : 'orange';
+        let dateObj = new Date(obj._id.date);
+        let dayDate = dateObj.getDate();
+        let monthDate = dateObj.getMonth() + 1;
+        let day = getDay(obj._id.dayOfWeek);
+        data[0].x.push(dayDate + '/' + monthDate + ' - ' + day);
         data[0].y.push(obj.duration);
+        data[0].marker.color.push(marker);
+        prevDayOfWeek = obj._id.dayOfWeek;
+        prevDayOfYear = obj._id.dayOfYear;
+        count++;
       });
-      console.log(data[0]);
-      Plotly.newPlot('dayGraph', data);
+      let layout = {
+        title: 'Workout time each day',
+        font: {
+          family: 'Raleway, sans-serif'
+        },
+        showlegend: false,
+        xaxis: {
+          tickangle: -45
+        },
+        bargap: 0.05
+      };
+      console.log(data);
+      setTimeout(() => {
+        Plotly.newPlot(this.dayGraph.nativeElement, data, layout, {displayModeBar: false});
+      },2000);
+
+
     });
   }
 
@@ -83,7 +163,9 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit {
 
   }
 
-
+  ngOnDestroy() {
+    console.log('destroyed');
+  }
 
 
 }

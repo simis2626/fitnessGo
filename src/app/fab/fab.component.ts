@@ -7,15 +7,15 @@ import {Component, OnInit} from "@angular/core";
 })
 export class FABComponent implements OnInit {
 
-  constructor() { }
+  open: boolean = false;
+  slideUp: boolean = false;
+
+  constructor() {
+  }
 
   ngOnInit() {
 
   }
-
-
-  open: boolean = false;
-  slideUp: boolean = false;
 
   fabClicked() {
     this.open = !this.open;

@@ -65,4 +65,5 @@ import {FitbitSuccessComponent} from "./fitbit-success/fitbit-success.component"
   providers: [AuthLocalService, Auth0AuthService, UserService, ActivitiesService, WeighInService, WorkoutsService, TargetWOService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

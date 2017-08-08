@@ -6,6 +6,7 @@ export class UserService {
 
   headers: Headers;
   options: RequestOptions;
+  userProfile: any;
 
   constructor(private http: Http) {
     this.headers = new Headers();
@@ -13,12 +14,6 @@ export class UserService {
     this.options = new RequestOptions({headers: this.headers});
 
   }
-
-  private extractData(res) {
-    let body = res.json();
-    return body || {};
-  }
-
 
   saveUser(user): Promise<boolean> {
     user._userid = localStorage.getItem('id_sub');
@@ -40,10 +35,8 @@ export class UserService {
 
   }
 
-  userProfile: any;
-
   public getProfile(): Promise<any> {
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
       if (this.userProfile) {
         localStorage.setItem('fitnessProfile', JSON.stringify(this.userProfile));
         this.saveUser(this.userProfile);
@@ -66,9 +59,14 @@ export class UserService {
     cb();
   }
 
-  public receiveProfile(profile:any): void {
-  this.userProfile = profile;
+  public receiveProfile(profile: any): void {
+    this.userProfile = profile;
 
-}
+  }
+
+  private extractData(res) {
+    let body = res.json();
+    return body || {};
+  }
 
 }

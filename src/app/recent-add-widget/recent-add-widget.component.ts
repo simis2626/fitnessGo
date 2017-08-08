@@ -8,16 +8,15 @@ import {Panel} from "../Objects/Panel";
 })
 export class RecentAddWidgetComponent implements OnInit {
 
-  constructor() { }
+  @Input() panel: Panel;
 
-
+  constructor() {
+  }
 
   ngOnInit() {
 
 
   }
-
-  @Input()panel:Panel;
 
 
 }
