@@ -4,9 +4,9 @@
     </h3>
       <md-select (change)="populateTable()" #actSelect placeholder="Activity Name" name="activity"
 
-                 [(ngModel)]="selectedActivity">
-        <md-option *ngFor="let act1 of activitylist" [value]="act1">{{act1}}</md-option>
-      </md-select>
+           [(ngModel)]="selectedActivity">
+  <md-option *ngFor="let act1 of activitylist" [value]="act1">{{act1}}</md-option>
+</md-select>
       <table *ngIf="!selectedCardio">
         <colgroup>
           <col style="background-color: #8dc9ff">

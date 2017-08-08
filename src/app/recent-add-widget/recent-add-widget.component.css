@@ -1,8 +1,8 @@
-.recent-widget-box {
+.recent-widget-box{
   width: 100%;
   /*min-width: 150px;*/
   height: 100%;
-  display: flex;
+  display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -26,15 +26,15 @@
 }
 
 @media screen and (min-width: 650px) {
-  .inline-check {
-    display: inline !important;
-    margin: 0px;
-  }
+.inline-check {
+  display: inline !important;
+  margin: 0px;
+}
 
-  .recent-widget-box {
-    flex-direction: row;
+.recent-widget-box{
+  flex-direction: row;
 
-  }
+}
 
   .card-aug {
     flex-direction: row;

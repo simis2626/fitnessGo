@@ -11,56 +11,67 @@ import {WorkoutsService} from "../workouts.service";
 @Component({
   selector: 'app-add-workout-parent',
   templateUrl: './add-workout-parent.component.html',
-  styleUrls: ['./add-workout-parent.component.css', '../material-shared/shared-css.css']
+  styleUrls: ['./add-workout-parent.component.css','../material-shared/shared-css.css']
 })
 export class AddWorkoutParentComponent implements OnInit, AfterViewInit {
 
-  public activitiesOpt: Activity[];
-  workout: Workout;
-  dirty: boolean = false;
+  constructor(public activityService: ActivitiesService, public workoutService: WorkoutsService, public snackBar: MdSnackBar, private router: Router, private route:ActivatedRoute) {
+  }
+  public activitiesOpt:Activity[];
+
+  workout:Workout;
+  dirty:boolean = false;
   submitting: boolean = false;
   public savingText: string;
-  addingListActivity: boolean;
+  addingListActivity:boolean;
   sub;
   activityID;
 
-  constructor(public activityService: ActivitiesService, public workoutService: WorkoutsService, public snackBar: MdSnackBar, private router: Router, private route: ActivatedRoute) {
-  }
 
-  lookForActivity(ele, ind, arr) {
+
+  lookForActivity(ele,ind,arr){
 
     return ele._id == this.activityID;
 
   }
 
 
+
+
+
   ngOnInit() {
-    this.workout = new Workout(localStorage.getItem('id_sub'), null, new Date(), null, null, null);
+    this.workout = new Workout(localStorage.getItem('id_sub'), null, new Date(), null,null, null);
     this.workout.activities = [];
     this.sub = this.route
       .queryParams
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.activityID = params['activity'] || 0;
-        if (this.activityID == 0) {
+        if(this.activityID == 0){
           console.log("activity ID === 0");
-          this.workout.activities.push(new ActivityWO(null, null, null, null, null, null, null, null));
+          this.workout.activities.push(new ActivityWO(null,null,null,null,null,null,null,null));
           this.activityService.getActivityList()
             .then((results) => {
               this.activitiesOpt = results;
             });
-        } else {
+        }else{
           this.activityService.getActivityList()
             .then((results) => {
-              console.log("activityID = " + this.activityID);
+            console.log("activityID = " + this.activityID);
               this.activitiesOpt = results;
               let quickAct = this.activitiesOpt.find(this.lookForActivity, this);
-              this.workout.activities.push(new ActivityWO(null, quickAct, null, null, null, null, null, null));
-              this.setDirty();
+              this.workout.activities.push(new ActivityWO(null,quickAct,null,null,null,null,null,null))
+this.setDirty();
+
+
 
 
             });
         }
+
+
+
+
 
 
       });
@@ -73,11 +84,11 @@ export class AddWorkoutParentComponent implements OnInit, AfterViewInit {
 
   }
 
-  showAddActivity() {
+  showAddActivity(){
     this.addingListActivity = true;
   }
 
-  refreshList() {
+  refreshList(){
     this.activityService.getActivityList()
       .then((results) => {
         this.activitiesOpt = results;
@@ -86,7 +97,7 @@ export class AddWorkoutParentComponent implements OnInit, AfterViewInit {
   }
 
 
-  setDirty() {
+  setDirty(){
     this.dirty = true;
   }
 

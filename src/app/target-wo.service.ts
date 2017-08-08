@@ -9,13 +9,18 @@ export class TargetWOService {
   options: RequestOptions;
   currentTarget: Target;
   getsValid: boolean;
-
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.options = new RequestOptions({headers: this.headers});
 
   }
+
+  private extractData(res) {
+    let body = res.json();
+    return body || {};
+  }
+
 
   changeTarget(target: Target): Promise<boolean> {
     this.currentTarget = null;
@@ -51,11 +56,6 @@ export class TargetWOService {
       )
     })
 
-  }
-
-  private extractData(res) {
-    let body = res.json();
-    return body || {};
   }
 
 }

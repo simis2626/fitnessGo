@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, OnInit} from "@angular/core";
 import {WorkoutsService} from "../workouts.service";
 import {TargetWOService} from "../target-wo.service";
 import {Workout} from "../Objects/Workout";
@@ -8,37 +8,37 @@ import {Target} from "../Objects/Target";
 declare var Plotly: any;
 
 
+
 @Component({
   selector: 'app-times-this-week',
   templateUrl: './times-this-week.component.html',
   styleUrls: ['./times-this-week.component.css', '../material-shared/shared-css.css']
 })
-export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TimesThisWeekComponent implements OnInit, AfterViewInit {
 
-  wrkouts: Workout[];
-  trgt: Target;
-  cnt: number;
+  wrkouts:Workout[];
+  trgt:Target;
+  cnt:number;
   dayData: any[];
-  usrid: string;
-  public progressValue: number;
-  ready: boolean = false;
-  public spincolor: string;
-  @ViewChild('dayGraph') dayGraph: ElementRef;
+  usrid:string;
+  public progressValue:number;
+  ready:boolean = false;
+  public spincolor:string;
 
-  constructor(private workoutService: WorkoutsService, private targetService: TargetWOService) {
-  }
+
+  constructor(private workoutService:WorkoutsService, private targetService:TargetWOService) { }
 
   ngOnInit() {
     this.usrid = localStorage.getItem('id_sub');
     Promise.all([
       this.targetService.getTarget(this.usrid),
       this.workoutService.workoutsThisWeek(this.usrid),
-    ]).then((results) => {
+      ]).then((results) => {
       this.trgt = results[0];
       this.wrkouts = results[1];
       this.cnt = this.wrkouts.length;
-      this.progressValue = Math.round((this.cnt / this.trgt.number) * 100);
-      this.spincolor = this.progressValue > 99 ? "#0db721" : "#5c8cac";
+      this.progressValue = Math.round((this.cnt/this.trgt.number) * 100);
+      this.spincolor = this.progressValue > 99 ? "#0db721": "#5c8cac";
       this.ready = true;
 
 
@@ -110,6 +110,7 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
           data[0].y.push(0);
           data[0].marker.color.push('red');
           prevDayofWeek++;
+          console.log(prevDayofWeek - 1);
         }
 
 
@@ -121,6 +122,7 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
         data[0].marker.color.push(marker);
         prevDayofWeek = obj._id.dayOfWeek;
       });
+      console.log(data[0]);
       let layout = {
         title: 'Workout time each day',
         font: {
@@ -132,10 +134,7 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
         },
         bargap: 0.05
       };
-
-      Plotly.newPlot(this.dayGraph.nativeElement, data, layout, {displayModeBar: false});
-
-
+      Plotly.newPlot('dayGraph', data, layout);
     });
   }
 
@@ -154,9 +153,7 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
 
   }
 
-  ngOnDestroy() {
-    console.log('destroyed');
-  }
+
 
 
 }

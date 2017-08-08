@@ -11,9 +11,6 @@ import {Router} from "@angular/router";
 })
 export class UserauthComponent implements OnInit {
 
-  trustedImage: any;
-  profile: any;
-
   constructor(private userService: UserService, private domSanit: DomSanitizer, private auth0Service: Auth0AuthService, private router: Router) {
   }
 
@@ -27,10 +24,12 @@ export class UserauthComponent implements OnInit {
     });
 
   }
+  trustedImage:any;
+  profile: any;
 
   triggerLogout() {
     this.auth0Service.logout();
-    this.router.navigateByUrl('/welcome');
+    this.router.navigateByUrl('/');
 
 
   }

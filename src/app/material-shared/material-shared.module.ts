@@ -48,5 +48,4 @@ import {
   ],
   declarations: []
 })
-export class MaterialSharedModule {
-}
+export class MaterialSharedModule { }

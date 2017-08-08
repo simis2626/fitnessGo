@@ -6,17 +6,17 @@ import {Component, OnInit} from "@angular/core";
   styleUrls: ['./marketing.component.css', '../material-shared/shared-css.css']
 })
 export class MarketingComponent implements OnInit {
-  public colnum: number;
-  public rowheight: string;
+  public colnum:number;
+  public rowheight:string;
 
   constructor() {
   }
 
   ngOnInit() {
-    if (window.innerHeight < 910 || window.innerWidth < 760) {
+    if(window.innerHeight < 910 || window.innerWidth < 760){
       this.colnum = 1;
       this.rowheight = '54%'
-    } else {
+    }else{
       this.colnum = 3;
       this.rowheight = '100%';
     }

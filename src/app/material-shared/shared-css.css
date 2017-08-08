@@ -1,10 +1,10 @@
-.flex-parent-row {
+.flex-parent-row{
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.center-panel {
+.center-panel{
   max-width: 980px;
   height: 100%;
   opacity: 0.9;
@@ -19,10 +19,10 @@
 
 }
 
-.caption {
+.caption{
   width: 70%;
 }
 
-.sub-centre {
+.sub-centre{
   width: 100%;
 }

@@ -7,12 +7,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class BrandingComponent implements OnInit {
 
-  brandCaption: string = "Tracking your fitness is easy";
+  constructor() { }
+  brandCaption:string = "Tracking your fitness is easy";
   strImage: string;
   arrImages: string[];
 
-  constructor() {
-  }
 
   refreshImage() {
     let imageNum: number = Math.floor(Math.random() * 9);
@@ -24,12 +23,19 @@ export class BrandingComponent implements OnInit {
   }
 
 
+
   ngOnInit() {
     this.arrImages = [];
     for (let i = 1; i < 10; i++) {
       this.arrImages.push("url('../../assets/" + i + ".jpg'");
     }
     this.refreshImage();
+
+
+
+
+
+
 
 
   }

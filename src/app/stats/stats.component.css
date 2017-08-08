@@ -1,28 +1,27 @@
 
 md-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
 th, td {
-  padding: 10px;
-  border-top-style: solid;
-  border-top-width: thin;
-  border-bottom-style: solid;
-  border-bottom-width: thin;
+  padding: 10px; 
+    border-top-style: solid;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
 }
-
 table {
-  border-style: solid;
+    border-style:solid;
   border-collapse: collapse;
   border-width: medium;
-
+ 
 }
 
 td {
   text-align: center;
 }
+
 
 tbody {
   padding: 0 10px;

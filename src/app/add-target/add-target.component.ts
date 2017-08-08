@@ -11,18 +11,18 @@ import {Target} from "../Objects/Target";
 })
 export class AddTargetComponent implements OnInit, AfterViewInit {
 
+  constructor(public snackBar: MdSnackBar, public targetService: TargetWOService, private router: Router) {
+  }
+
   dirty: boolean = false;
   submitting: boolean = false;
   public savingText: string;
   target: Target;
   private today: Date;
 
-  constructor(public snackBar: MdSnackBar, public targetService: TargetWOService, private router: Router) {
-  }
-
   ngOnInit() {
     this.today = new Date();
-    this.target = new Target(null, localStorage.getItem('id_sub'), this.today);
+    this.target = new Target(null,localStorage.getItem('id_sub'), this.today);
 
 
   }

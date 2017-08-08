@@ -8,37 +8,37 @@
 <app-activityadd (actAdded)="refreshList()" *ngIf="addingListActivity"></app-activityadd>
 <form *ngIf="!submitting" #form1="ngForm" id="form1" name="form1" (ngSubmit)="onSubmit()">
   <div class="flex-parent-row">
-    <div class="center-panel">
-      <md-card><h3>New Workout
-      </h3>
-        <button md-raised-button type="button" [style.background-color]="'#818B98'" (click)="showAddActivity()">
-          Add an activity to the list of options
-        </button>
-        <div>
-          <md-input-container>
-            <input mdInput placeholder="Total Duration" #TotalDuration name="TotalDuration" id="TotalDuration"
-                   [(ngModel)]="workout.duration" type="number"><span mdSuffix>min</span>
-          </md-input-container>
-        </div>
-        <div>
-          <md-input-container>
-            <input mdInput placeholder="Date" #Date name="Date" id="Date"
-                   [(ngModel)]="workout.date" type="date">
-          </md-input-container>
-        </div>
-        <div>
-          <md-checkbox placeholder="Stretches Done" #StretchesDone name="StretchesDone" id="StretchesDone"
-                       [(ngModel)]="workout.stretchesDone">Stretches Done?
-          </md-checkbox>
-        </div>
-        <!-- <div>
-          <md-input-container>
-            <input mdInput placeholder="Average Effort" #avgEffort name="avgEffort" id="avgEffort"
-                   [(ngModel)]="workout.averageEffort" type="number"><span mdSuffix>%</span>
-          </md-input-container>
-        </div> -->
-      </md-card>
-    </div>
+  <div class="center-panel">
+    <md-card><h3>New Workout
+    </h3>
+      <button md-raised-button type="button" [style.background-color]="'#818B98'" (click)="showAddActivity()">
+        Add an activity to the list of options
+      </button>
+      <div>
+        <md-input-container>
+          <input mdInput placeholder="Total Duration" #TotalDuration name="TotalDuration" id="TotalDuration"
+                 [(ngModel)]="workout.duration" type="number"><span mdSuffix>min</span>
+        </md-input-container>
+      </div>
+      <div>
+        <md-input-container>
+          <input mdInput placeholder="Date" #Date name="Date" id="Date"
+                 [(ngModel)]="workout.date" type="date">
+        </md-input-container>
+      </div>
+      <div>
+        <md-checkbox placeholder="Stretches Done" #StretchesDone name="StretchesDone" id="StretchesDone"
+                     [(ngModel)]="workout.stretchesDone">Stretches Done?
+        </md-checkbox>
+      </div>
+      <!-- <div>
+        <md-input-container>
+          <input mdInput placeholder="Average Effort" #avgEffort name="avgEffort" id="avgEffort"
+                 [(ngModel)]="workout.averageEffort" type="number"><span mdSuffix>%</span>
+        </md-input-container>
+      </div> -->
+    </md-card>
+  </div>
   </div>
   <br>
   <div *ngFor="let act of workout.activities;let ndx = index;trackBy:rturn" class="flex-parent-row">
@@ -55,19 +55,16 @@
         <md-option *ngFor="let act1 of activitiesOpt" [value]="act1">{{act1.name}}</md-option>
       </md-select></div>
         <div><md-input-container>
-            <input mdInput placeholder="Duration" type="number" #Duration{{ndx}} name="{{ndx}}Duration"
-                   id="{{ndx}}Duration"
+            <input mdInput placeholder="Duration" type="number" #Duration{{ndx}} name="{{ndx}}Duration" id="{{ndx}}Duration"
                    [(ngModel)]="act.duration"><span mdSuffix>min</span>
           </md-input-container></div>
         <div *ngIf="act.activity ? act.activity.cardio: true">
           <div><md-input-container>
-            <input mdInput placeholder="Distance" type="number" #Distance{{ndx}} name="{{ndx}}Distance"
-                   id="{{ndx}}Distance"
+            <input mdInput placeholder="Distance" type="number" #Distance{{ndx}} name="{{ndx}}Distance" id="{{ndx}}Distance"
                    [(ngModel)]="act.distance"><span mdSuffix>m</span>
           </md-input-container></div>
 <div><md-input-container>
-            <input mdInput placeholder="Intensity" type="number" #Intensity{{ndx}} name="{{ndx}}Intensity"
-                   id="{{ndx}}Intensity"
+            <input mdInput placeholder="Intensity" type="number" #Intensity{{ndx}} name="{{ndx}}Intensity" id="{{ndx}}Intensity"
                    [(ngModel)]="act.intensity">
   <md-hint align="end">1 to 10</md-hint>
           </md-input-container></div>
@@ -80,8 +77,7 @@
                    [(ngModel)]="act.weight"><span mdSuffix>kg</span>
           </md-input-container></div>
 <div><md-input-container>
-            <input mdInput placeholder="Reps" type="number" #Reps name="{{ndx}}Reps" id="{{ndx}}Reps"
-                   [(ngModel)]="act.reps">
+            <input mdInput placeholder="Reps" type="number" #Reps name="{{ndx}}Reps" id="{{ndx}}Reps" [(ngModel)]="act.reps">
           </md-input-container></div>
 
 
@@ -94,8 +90,8 @@
       </md-card>
 
 
-    </div>
   </div>
+</div>
 
 
   <br>

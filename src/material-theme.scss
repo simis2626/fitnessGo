@@ -6,6 +6,7 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+
 $primary-custom: (
   50: #5C8CAC,
   100: #5C8CAC,
@@ -74,10 +75,10 @@ $accent-custom: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 $candy-app-primary: mat-palette($primary-custom);
-$candy-app-accent: mat-palette($accent-custom);
+$candy-app-accent:  mat-palette($accent-custom);
 
 // The warn palette is optional (defaults to red).
-$candy-app-warn: mat-palette($mat-red);
+$candy-app-warn:    mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);

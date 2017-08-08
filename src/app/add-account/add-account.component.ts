@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Auth0AuthService} from "../auth0-auth.service";
 
 
@@ -9,13 +9,11 @@ import {Auth0AuthService} from "../auth0-auth.service";
 })
 export class AddAccountComponent implements OnInit {
 
-  constructor(private auth0service: Auth0AuthService) {
-  }
+  constructor(private auth0service: Auth0AuthService) { }
 
   ngOnInit() {
   }
-
-  tryLogin() {
-    this.auth0service.login();
+  tryLogin(){
+   this.auth0service.login();
   }
 }

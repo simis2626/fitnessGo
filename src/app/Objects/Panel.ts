@@ -4,9 +4,11 @@
 
 export class Panel {
 
-  constructor(public _id: number,
-              public name: string) {
-  }
+  constructor(
+    public _id:number,
+    public name:string
+
+  )  {}
 
 
 }

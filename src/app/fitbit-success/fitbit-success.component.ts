@@ -11,15 +11,6 @@ export class FitbitSuccessComponent implements OnInit {
 
   code: any;
   sub: any;
-  headers: Headers;
-  options: RequestOptions;
-
-  constructor(private http: Http, private route: ActivatedRoute) {
-    this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
-    this.options = new RequestOptions({headers: this.headers});
-
-  }
 
   ngOnInit() {
     this.sub = this.route
@@ -32,6 +23,21 @@ export class FitbitSuccessComponent implements OnInit {
         }
       });
 
+  }
+
+  headers: Headers;
+  options: RequestOptions;
+
+  constructor(private http: Http, private route: ActivatedRoute) {
+    this.headers = new Headers();
+    this.headers.append('Content-Type', 'application/json');
+    this.options = new RequestOptions({headers: this.headers});
+
+  }
+
+  private extractData(res) {
+    let body = res.json();
+    return body || {};
   }
 
   storeFitbitAuth(code: string): Promise<boolean> {
@@ -52,10 +58,14 @@ export class FitbitSuccessComponent implements OnInit {
 
   }
 
-  private extractData(res) {
-    let body = res.json();
-    return body || {};
-  }
+
+
+
+
+
+
+
+
 
 
 }

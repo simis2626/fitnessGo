@@ -20,8 +20,7 @@ export class Auth0AuthService {
     leeway: 60
   });
 
-  constructor(public router: Router, private authLocalService: AuthLocalService, private userService: UserService) {
-  }
+  constructor(public router: Router, private authLocalService:AuthLocalService, private userService: UserService) {}
 
   public login(): void {
     this.auth0.authorize();
@@ -42,6 +41,15 @@ export class Auth0AuthService {
     });
   }
 
+  private setSession(authResult): void {
+    // Set the time that the access token will expire at
+    const expiresAt = JSON.stringify((authResult.expiresIn * 604800) + new Date().getTime());
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('id_sub', authResult.idTokenPayload.sub);
+  }
+
   public logout(): void {
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
@@ -57,15 +65,6 @@ export class Auth0AuthService {
     // access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
-  }
-
-  private setSession(authResult): void {
-    // Set the time that the access token will expire at
-    const expiresAt = JSON.stringify((authResult.expiresIn * 604800) + new Date().getTime());
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
-    localStorage.setItem('id_sub', authResult.idTokenPayload.sub);
   }
 
 }
