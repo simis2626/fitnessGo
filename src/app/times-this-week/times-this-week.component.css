@@ -1,3 +1,4 @@
+
 .times-shading {
   background-color: #E0E2DC;
   height: 100%
@@ -21,5 +22,13 @@
   .condense {
     width: 30%;
   }
+}
+@media (max-width:950px){
+    .times-height{
+        height:40%;
+    }
+    .flex-col{
+        flex-direction:column;   
+    }
 }
 
