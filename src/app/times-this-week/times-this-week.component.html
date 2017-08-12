@@ -5,11 +5,12 @@
       <span style="display: inline-block; width: 3%;"></span>
       <a md-raised-button>View Calendar</a><span style="display: inline-block; width: 6%;"></span></div>
     <div *ngIf="ready" class="flex-parent-row sub-centre flex-col">
-      <div #dayGraph id="dayGraph" style="flex: 1 1 auto;min-height: 230px; background-color: #673ab7">
+      <div #dayGraph id="dayGraph" style="flex: 0 1 auto;min-height: 230px; background-color: #673ab7">
 
 
       </div>
-      <svg height="100" width="100" style="">
+      <div style="height:100px;width:100px;flex: initial;">
+      <svg height="100" width="100" style="flex:1 0 auto">
         <circle r="40" cx="50" cy="50" stroke="rgba(100,100,100,0.1)" stroke-width="10" stroke-opacity="1"
                 fill="transparent"></circle>
         <circle transform="rotate(-90 50 50)" stroke-linecap="round" cx="50" cy="50" r="40" [attr.stroke]="getColor()"
@@ -20,7 +21,8 @@
         </circle>
         <text x="35" y="55" font-weight="bold" font-family="'Roboto', sans-serif;">{{progressValue}}%</text>
       </svg>
-      <div class="condense" style=""><h3 style="height: 100%; margin: 0; padding-top: 27%"> Your goal is
+      </div>
+      <div class="condense" style="flex: 0 0 auto; min-width:150px;"><h3 style="height: 100%; margin: 0; padding-top: 27%; padding-right:30px;"> Your goal is
         {{trgt?.number}} workouts.</h3></div>
     </div>
   </div>
