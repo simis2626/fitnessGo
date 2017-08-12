@@ -137,7 +137,9 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
         xaxis: {
           tickangle: -45
         },
-        bargap: 0.05
+        bargap:0.05,
+        autosize:true
+        
       };
       console.log(data);
       setTimeout(() => {
