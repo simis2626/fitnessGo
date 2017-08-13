@@ -1,6 +1,7 @@
-<div class="flex-parent-row recent-group-height">
-  <div class="center-panel center-color flex-parent-row stack">
-    <app-recent-add-widget [style.width]="'33%'" style="flex: 1 1 auto" *ngFor="let pnl of panels"
+<div class="recent-group-height">
+<h4>These are the activities you do most.</h4><p><small>Click to start adding a workout</small></p>
+  <div class="custom-center-panel center-color flex-parent-row stack" style="flex-wrap:wrap;">
+    <app-recent-add-widget *ngFor="let pnl of panels"
                            [panel]="pnl"></app-recent-add-widget>
   </div>
 

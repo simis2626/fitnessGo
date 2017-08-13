@@ -1,15 +1,20 @@
 .recent-group-height {
   height: 20%;
-  min-height: 150px;
+  /*min-height: 150px;*/
 }
 
 .center-color {
-  background-color: #ba7faa;
+/*  background-color: #ba7faa;*/
+}
+.custom-center-panel{
+        max-width: 980px;
+    opacity: 0.9;
+    flex: 1 0 auto;
 }
 
 @media (max-width: 420px) {
   .stack {
-    flex-direction: column;
+    /*flex-direction: column;*/
   }
 
 }
