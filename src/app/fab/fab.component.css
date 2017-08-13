@@ -13,6 +13,8 @@
   left: 85%;
   will-change: transform;
   transition: transform 0.2s ease-in;
+  }
+  .squarish{
   padding-top: 10px;
     padding-right: 10px;
     padding-left: 10px;
