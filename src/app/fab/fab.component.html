@@ -3,6 +3,18 @@
 <a md-fab *ngIf="open" class="setup-slide" [class.slide-up2]="slideUp" routerLink="workout/add"><i
   class="material-icons">&#xEB43;</i>
 </a>
+<md-chip *ngIf="open" class="setup-slide" [class.slide-up3]="slideUp" [routerLink]="'/workout/add'"
+     [queryParams]="{'activity':panel[0]._id}"><i
+  class="material-icons">&#xEB43;</i>{{panel[0].name}}
+</md-chip>
+<md-chip *ngIf="open" class="setup-slide" [class.slide-up4]="slideUp" [routerLink]="'/workout/add'"
+     [queryParams]="{'activity':panel[1]._id}"><i
+  class="material-icons">&#xEB43;</i>{{panel[1].name}}
+</md-chip>
+<md-chip *ngIf="open" class="setup-slide" [class.slide-up5]="slideUp" [routerLink]="'/workout/add'"
+     [queryParams]="{'activity':panel[2]._id}"><i
+  class="material-icons">&#xEB43;</i>{{panel[2].name}}
+</md-chip>
 <!--<button md-fab *ngIf="open" class="setup-slide" [class.slide-up3]="slideUp"><i class="material-icons">&#xE192;</i>
 </button>-->
 

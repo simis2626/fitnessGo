@@ -1,6 +1,5 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-
 import {
   MdButtonModule,
   MdCardModule,
@@ -13,7 +12,8 @@ import {
   MdSelectModule,
   MdSnackBarModule,
   MdTabsModule,
-  MdToolbarModule
+  MdToolbarModule,
+  MdChipsModule
 } from "@angular/material";
 
 @NgModule({
@@ -30,7 +30,8 @@ import {
     MdSnackBarModule,
     MdDatepickerModule,
     MdNativeDateModule,
-    MdMenuModule
+    MdMenuModule,
+    MdChipsModule
   ],
   exports: [
     MdGridListModule,
@@ -44,7 +45,8 @@ import {
     MdSnackBarModule,
     MdDatepickerModule,
     MdNativeDateModule,
-    MdMenuModule
+    MdMenuModule,
+    MdChipsModule
   ],
   declarations: []
 })
