@@ -24,7 +24,6 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
   ready: boolean = false;
   public spincolor: string;
   @ViewChild('dayGraph') dayGraph: ElementRef;
-
   constructor(private workoutService: WorkoutsService, private targetService: TargetWOService) {
   }
 
@@ -138,7 +137,9 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
           tickangle: -45
         },
         bargap:0.05,
-        autosize:true
+        autosize:false,
+        height:233,
+        width:window.innerWidth<700 ? window.innerWidth : 700
         
       };
       console.log(data);
