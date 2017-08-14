@@ -32,6 +32,7 @@ import {ActivityaddComponent} from "./activityadd/activityadd.component";
 import {LoadSpinnerComponent} from "./load-spinner/load-spinner.component";
 import {StatsComponent} from "./stats/stats.component";
 import {FitbitSuccessComponent} from "./fitbit-success/fitbit-success.component";
+import { TaxFormComponent } from './tax-form/tax-form.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {FitbitSuccessComponent} from "./fitbit-success/fitbit-success.component"
     ActivityaddComponent,
     LoadSpinnerComponent,
     StatsComponent,
-    FitbitSuccessComponent
+    FitbitSuccessComponent,
+    TaxFormComponent
   ],
   imports: [
     BrowserModule,

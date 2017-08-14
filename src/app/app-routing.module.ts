@@ -7,6 +7,7 @@ import {AddTargetComponent} from "./add-target/add-target.component";
 import {StatsComponent} from "./stats/stats.component";
 import {FitbitSuccessComponent} from "./fitbit-success/fitbit-success.component";
 import {MarketingComponent} from "./marketing/marketing.component";
+import {TaxFormComponent} from "./tax-form/tax-form.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     component: MarketingComponent
+  },
+  {
+    path: 'tax',
+    component: TaxFormComponent
   },
   {
     path: '',

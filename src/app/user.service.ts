@@ -68,5 +68,22 @@ export class UserService {
     let body = res.json();
     return body || {};
   }
+  
+  
+  public getTaxInfo():Promise<any>{
+      return new Promise((resolve, reject) => {
+        this.http.get('/api/tax', this.options).map(this.extractData).subscribe((results) => {
+          resolve(results);
+        });
+      
+
+    });
+      
+      
+  }
+  
+  
+  
+  
 
 }
