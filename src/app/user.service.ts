@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions} from "@angular/http";
+import {TaxTrans} from "./Objects/Taxtrans";
 
 @Injectable()
 export class UserService {
@@ -72,7 +73,7 @@ export class UserService {
   
   public getTaxInfo():Promise<any>{
       return new Promise((resolve, reject) => {
-        this.http.get('/api/tax', this.options).map(this.extractData).subscribe((results) => {
+        this.http.get('/api/tax/groupBy/day', this.options).map(this.extractData).subscribe((results) => {
           resolve(results);
         });
       
@@ -80,6 +81,24 @@ export class UserService {
     });
       
       
+  }
+  public saveTax(tax:TaxTrans): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+
+      this.http.post('/api/tax/', JSON.stringify(tax), this.options).map(this.extractData).subscribe((results) => {
+
+        if (results) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+
+      })
+
+
+    });
+
+
   }
   
   

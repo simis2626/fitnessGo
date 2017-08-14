@@ -1,15 +1,21 @@
 <md-card *ngIf="ready">
 <div>
-    <h2>{{model[i].Day}}</h2>
+    <h2>{{model[i]._id.Day}}</h2>
     <br>
-    <h3>{{model[i].Date}}</h3>
+    <h3>{{model[i]._id.Date}}</h3>
  </div>
  <div>
- {{this.data | json}}
+ <div style="display:flex; flex-wrap:wrap" *ngFor="let tax of model[i].id; let ndx = index">
+    <div>{{model[i].id[ndx]}}</div>
+    <div>{{model[i].Details[ndx]}}</div>
+    <div>{{model[i].Cost[ndx]}}</div>
+    <div>{{model[i].Account[ndx]}}</div>
+    <div>{{model[i].Category[ndx]}}</div>
+    <div>{{model[i].claim[ndx]}}</div>
+    <div>{{model[i].note[ndx]}}</div>
+    <br>
  </div>
 
 
-
-
-
+<button (click)="nextOne">Next</button>
 </md-card>

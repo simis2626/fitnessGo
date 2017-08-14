@@ -26,5 +26,9 @@ export class TaxFormComponent implements OnInit {
           this.ready = true;
       });
   }
+  
+  nextOne(){
+      this.i = this.i +1;
+  }
 
 }
