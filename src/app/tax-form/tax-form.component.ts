@@ -41,9 +41,7 @@ export class TaxFormComponent implements OnInit {
         for (let i = 0; i < obj.id.length; i++) {
           smlArr.push({'claim': obj.claim[i], 'cost': obj.Cost[i]});
         }
-        console.log(total, smlArr);
         return total + smlArr.reduce(function (totalsml, smlObj) {
-          console.log(totalsml, smlObj);
           return smlObj.claim ? totalsml + smlObj.cost : totalsml;
         }, 0);
       }, 0);
@@ -58,7 +56,6 @@ export class TaxFormComponent implements OnInit {
     console.log(this.toSave);
     if (this.toSave.length > 0) {
       this.userService.saveTax(this.toSave).then((results) => {
-          console.log(results);
           if (results) {
             this.toSave = [];
             return;
