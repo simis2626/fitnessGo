@@ -5,7 +5,7 @@
     <h3 style="display: inline">{{model[i]._id.Date | date:'longDate'}}</h3><br><strong>Deduction Total:
     ${{deductions}}</strong>
     <md-input-container style="padding-left: 30px;width: 70px">
-      <input mdInput (focus)="saveToSave()" type="number" [placeholder]="'Day Number'" [(ngModel)]="i">
+      <input mdInput (blur)="ready2 = true;" (focus)="saveHide()" type="number" [placeholder]="'Day Number'" [(ngModel)]="i">
     </md-input-container>
   </div>
   <md-list *ngIf="ready2" style="flex: auto; overflow-y: scroll; height: 70%;overflow-x: hidden">
