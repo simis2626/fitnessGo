@@ -33,7 +33,11 @@ export class TaxFormComponent implements OnInit {
 
       });
   }
-
+  saveHide(){
+  this.ready2 = false;
+    this.saveToSave();
+  
+  }
 
   setDeduction() {
     setTimeout(() => {
