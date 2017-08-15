@@ -26,6 +26,7 @@ export class TaxFormComponent implements OnInit {
             obj.claim = obj.claim ? obj.claim : false;
               this.model.push(obj);
           });
+        this.i = parseInt(localStorage.getItem('Fitness-app-tax')) || 0;
           this.ready = true;
         this.setDeduction();
 
@@ -36,12 +37,12 @@ export class TaxFormComponent implements OnInit {
   saveHide(){
   this.ready2 = false;
     this.saveToSave();
-  
+
   }
 
   setDeduction() {
     setTimeout(() => {
-      this.deductions = this.model.reduce(function (total, obj) {
+      let numLong = (-1 * this.model.reduce(function (total, obj) {
         var smlArr = [];
         for (let i = 0; i < obj.id.length; i++) {
           smlArr.push({'claim': obj.claim[i], 'cost': obj.Cost[i]});
@@ -49,9 +50,12 @@ export class TaxFormComponent implements OnInit {
         return total + smlArr.reduce(function (totalsml, smlObj) {
           return smlObj.claim ? totalsml + smlObj.cost : totalsml;
         }, 0);
-      }, 0);
+      }, 0));
 
-    }, 100);
+      let decIndex = numLong.toString().indexOf('.', 0);
+      this.deductions = numLong.toString().substr(0, decIndex + 3);
+
+    }, 80);
 
 
   }
@@ -73,22 +77,34 @@ export class TaxFormComponent implements OnInit {
 
   }
 
+  changeI(i, dir): number {
+    const upper = 358;
+    const lower = 0;
+    if (dir == "inc") {
+      return i < 358 ? i + 1 : 358;
+    } else if (dir == "dec") {
+      return i > 0 ? i - 1 : 0;
+    }
 
 
+  }
 
+//358 and 0
 
   nextOne(){
     this.ready2 = false;
-      this.i = this.i +1;
+    this.i = this.changeI(this.i, 'inc');
     this.saveToSave();
     this.ready2 = true;
+    localStorage.setItem('Fitness-app-tax', this.i.toString());
   }
 
   prevOne() {
     this.ready2 = false;
-    this.i = this.i - 1;
+    this.i = this.changeI(this.i, 'dec');
     this.saveToSave();
     this.ready2 = true;
+    localStorage.setItem('Fitness-app-tax', this.i.toString());
   }
 
   toggleClaim(i, ndx) {
@@ -97,11 +113,10 @@ export class TaxFormComponent implements OnInit {
     const ndxSaved = this.toSave.findIndex(function (obj) {
       return obj._id == this.model[i].id[ndx];
     }, this);
-
     if (ndxSaved < 0) {
       this.toSave.push({
         '_id': this.model[i].id[ndx],
-        'claim': this.model[i].claim[i],
+        'claim': this.model[i].claim[ndx],
         'note': this.model[i].note[ndx]
       });
     } else {
@@ -115,7 +130,6 @@ export class TaxFormComponent implements OnInit {
     const noteInput = document.getElementById('note' + i + ndx);
     const inputInput = document.getElementById('input' + i + ndx);
     const noteButton = document.getElementById('button' + i + ndx);
-    console.log('triggered');
     noteInput.style.display = 'none';
     noteButton.style.display = 'block';
     noteButton.innerHTML = 'SAVED';
@@ -126,7 +140,7 @@ export class TaxFormComponent implements OnInit {
     if (ndxSaved < 0) {
       this.toSave.push({
         '_id': this.model[i].id[ndx],
-        'claim': this.model[i].claim[i],
+        'claim': this.model[i].claim[ndx],
         'note': this.model[i].note[ndx]
       });
     } else {
@@ -134,8 +148,6 @@ export class TaxFormComponent implements OnInit {
     }
 
   }
-  
-  
 
 
   triggerNote(i, ndx) {

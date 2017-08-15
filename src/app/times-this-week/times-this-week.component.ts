@@ -140,12 +140,14 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
         autosize:false,
         height:233,
         width:window.innerWidth<700 ? window.innerWidth : 700
-        
+
       };
-      console.log(data);
-      setTimeout(() => {
+      let timer = setInterval(() => {
+        if (this.ready) {
         Plotly.newPlot(this.dayGraph.nativeElement, data, layout, {displayModeBar: false});
-      },400);
+          clearInterval(timer);
+        }
+      }, 10);
 
 
     });
