@@ -11,6 +11,7 @@ export class TaxFormComponent implements OnInit {
 
   constructor(private userService:UserService) { }
     ready = false;
+    ready2 = true;
     i =0;
     model:any = [];
   toSave: any = [];
@@ -53,7 +54,6 @@ export class TaxFormComponent implements OnInit {
 
 //wqikjhw
   saveToSave() {
-    console.log(this.toSave);
     if (this.toSave.length > 0) {
       this.userService.saveTax(this.toSave).then((results) => {
           if (results) {
@@ -74,13 +74,17 @@ export class TaxFormComponent implements OnInit {
 
 
   nextOne(){
+    this.ready2 = false;
       this.i = this.i +1;
     this.saveToSave();
+    this.ready2 = true;
   }
 
   prevOne() {
+    this.ready2 = false;
     this.i = this.i - 1;
     this.saveToSave();
+    this.ready2 = true;
   }
 
   toggleClaim(i, ndx) {
@@ -126,6 +130,8 @@ export class TaxFormComponent implements OnInit {
     }
 
   }
+  
+  
 
 
   triggerNote(i, ndx) {
