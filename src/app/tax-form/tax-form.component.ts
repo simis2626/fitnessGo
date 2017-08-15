@@ -15,6 +15,7 @@ export class TaxFormComponent implements OnInit {
     model:any = [];
   toSave: any = [];
     data:any;
+  deductions: string;
 
 
   ngOnInit() {
@@ -25,10 +26,36 @@ export class TaxFormComponent implements OnInit {
               this.model.push(obj);
           });
           this.ready = true;
+        this.setDeduction();
+
+
+
       });
   }
 
+
+  setDeduction() {
+    setTimeout(() => {
+      this.deductions = this.model.reduce(function (total, obj) {
+        var smlArr = [];
+        for (let i = 0; i < obj.id.length; i++) {
+          smlArr.push({'claim': obj.claim[i], 'cost': obj.Cost[i]});
+        }
+        console.log(total, smlArr);
+        return total + smlArr.reduce(function (totalsml, smlObj) {
+          console.log(totalsml, smlObj);
+          return smlObj.claim ? totalsml + smlObj.cost : totalsml;
+        }, 0);
+      }, 0);
+
+    }, 100);
+
+
+  }
+
+//wqikjhw
   saveToSave() {
+    console.log(this.toSave);
     if (this.toSave.length > 0) {
       this.userService.saveTax(this.toSave).then((results) => {
           console.log(results);
@@ -51,15 +78,17 @@ export class TaxFormComponent implements OnInit {
 
   nextOne(){
       this.i = this.i +1;
+    this.saveToSave();
   }
 
   prevOne() {
     this.i = this.i - 1;
+    this.saveToSave();
   }
 
   toggleClaim(i, ndx) {
     this.model[i].claim[ndx] = !this.model[i].claim[ndx];
-
+    this.setDeduction();
     const ndxSaved = this.toSave.findIndex(function (obj) {
       return obj._id == this.model[i].id[ndx];
     }, this);
