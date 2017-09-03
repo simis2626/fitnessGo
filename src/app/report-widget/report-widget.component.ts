@@ -79,7 +79,7 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
       };
       var Progress = {
         x: dates,
-        y: valuesz,
+        y: this.createTargetGraphSet(),
         type: 'lines',
         name: 'progress'
       };
@@ -105,7 +105,7 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
   }
 
 
-  createTargetGraphSet() {
+  createTargetGraphSet(): any {
     let end = new Date(new Date('2017-08-25').valueOf() + (8 * 7 * 24 * 60 * 60 * 1000));
     let goal = 127;
     let start = this.weighins[0].weight;
@@ -118,7 +118,15 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
     let dateRecentWeighin = dateDiff / (24 * 60 * 60 * 1000);
     let lossNeeded = diffbyDay * dateRecentWeighin;
     this.expectedLoss = lossNeeded;
-    let graphSet: number[] = []
+    let graphSet: number[] = [];
+
+    this.weighins.forEach(function (obj, ndx, arr) {
+      let diff = new Date(obj.date).valueOf() - new Date('2017-08-25').valueOf();
+      diff = diff / (24 * 60 * 60 * 1000);
+      diff = -1 * diff * diffbyDay;
+      graphSet.push(diff);
+    });
+    return graphSet;
 
 
   }
