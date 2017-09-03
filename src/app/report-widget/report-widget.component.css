@@ -1,3 +1,18 @@
 a {
   margin: 5px 10px;
 }
+
+.weight-graph {
+  min-height: 230px;
+  align-self: center;
+  max-width: 700px;
+
+}
+
+.weight-circle {
+  height: 100px;
+  width: 100px;
+  flex: initial;
+  padding: 10px 10px;
+  display: inline-block;
+}

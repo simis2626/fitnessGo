@@ -8,7 +8,8 @@ export class WeighIn {
   constructor(public _userid?: string,
               public date?: Date,
               public weight?: number,
-              public time?: string) {
+              public time?: string,
+              public progress?: number) {
   }
 
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Headers, Http, RequestOptions} from "@angular/http";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-fitbit-success',
@@ -14,7 +14,7 @@ export class FitbitSuccessComponent implements OnInit {
   headers: Headers;
   options: RequestOptions;
 
-  constructor(private http: Http, private route: ActivatedRoute) {
+  constructor(private http: Http, private route: ActivatedRoute, private router: Router) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.options = new RequestOptions({headers: this.headers});
@@ -35,14 +35,18 @@ export class FitbitSuccessComponent implements OnInit {
   }
 
   storeFitbitAuth(code: string): Promise<boolean> {
-
+    this.http.post('/api/fitbit/trigger/' + localStorage.getItem('id_sub'), "",);
     return new Promise((resolve, reject) => {
       this.http.post('/api/fitbit', JSON.stringify({
         'code': code,
         '_userid': localStorage.getItem('id_sub')
+
       }), this.options).map(this.extractData).subscribe((results) => {
         if (results) {
           resolve(true);
+          setTimeout(() => {
+            this.router.navigateByUrl('/');
+          }, 2500);
         } else {
           resolve(false);
         }

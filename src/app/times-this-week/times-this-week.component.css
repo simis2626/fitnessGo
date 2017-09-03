@@ -1,7 +1,6 @@
 
 .times-shading {
  /* background-color: #E0E2DC;*/
-  height: 100%;
   width:100%;
 }
 
@@ -10,8 +9,6 @@
 }
 
 .times-height {
-  height: 20%;
-  min-height: 230px;
 }
 
 .times-caption {
@@ -25,10 +22,8 @@
   }
 }
 @media (max-width:950px){
-    .times-height{
-        height:40%;
-    }
-    .flex-col{
+
+  .flex-col{
         flex-wrap:wrap;
         width:100%;
     }

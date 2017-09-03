@@ -1,18 +1,24 @@
+
 .main-fab {
-  position: absolute;
+  position: fixed;
   top: 86%;
   left: 85%;
   z-index: 90;
+  background-color: #89dc7b;
+  color: #2c2c2c;
 
 }
 
 .setup-slide {
   display: block;
-  position: absolute;
+  position: fixed;
   top: 86%;
   left: 85%;
   will-change: transform;
   transition: transform 0.2s ease-in;
+  background-color: #89dc7b;
+  color: #2c2c2c;
+
   }
   .squarish{
   padding-top: 10px;
@@ -20,9 +26,10 @@
     padding-left: 10px;
     padding-bottom: 10px;
     border-radius: 15%;
-    background-color: #dcb091;
+    height: 10%;
+    width: 20vw;
     font-weight: 900;
-    color: white;
+
 }
 
 @media screen and (min-width: 1200px) {
@@ -37,12 +44,12 @@
 
 @media screen and (max-width: 651px) {
   .main-fab {
-    top: 55%;
+    top: 85%;
     left: 80%;
   }
 
   .setup-slide {
-    top: 55%;
+    top: 85%;
     left: 80%;
   }
 }
@@ -57,24 +64,24 @@
 }
 
 .slide-up1 {
-  transform: translateY(-67px);
+  transform: translateY(-120%);
 
 }
 
 .slide-up2 {
-  transform: translateY(-134px);
+  transform: translateY(-240%);
 
 }
 
 .slide-up3 {
-  transform: translateY(-201px);
+  transform: translate(-150%, -340%);
 
 }
 .slide-up4{
-  transform: translateY(-268px);
-    
+  transform: translate(-270%, -340%);
+
 }
 .slide-up5{
-    
-  transform: translateY(-335px);
+
+  transform: translate(-30%, -340%);
 }

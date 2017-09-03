@@ -3,7 +3,37 @@
     <a md-raised-button routerLink="/activity/stats">My Stats</a>
     <a md-raised-button
        href="https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=228GFT&redirect_uri=http%3A%2F%2Ffitness.techtoedip.com%3A81%2Ffitbit_success&scope=activity%20heartrate%20profile%20weight&expires_in=604800">Get
-      my weigh-ins from Fitbit</a>
+      my weigh-ins from Fitbit</a><br>
+    <div *ngIf="weightReady" class="weight-circle">
+      <svg height="100" width="100" style="flex:1 0 auto">
+        <circle r="40" cx="50" cy="50" stroke="rgba(100,100,100,0.1)" stroke-width="10" stroke-opacity="1"
+                fill="transparent"></circle>
+        <circle transform="rotate(-90 50 50)" stroke-linecap="round" cx="50" cy="50" r="40" [attr.stroke]="getColor()"
+                stroke-dasharray="251" stroke-dashoffset="251" stroke-width="10" stroke-opacity="1" fill-opacity="0">
+          <animate attributeName="stroke-dashoffset" from="251"
+                   [attr.to]="((100-(progressValue<101 ? progressValue : 100))/100 *251) "
+                   dur="3s" repeatCount="1" fill="freeze"></animate>
+        </circle>
+        <text x="35" y="55" font-weight="bold" font-family="'Roboto', sans-serif;">
+          -{{currentWeighin.progress|number:'1.0-1'}}kg
+        </text>
+      </svg>
+    </div>
+    <h4 *ngIf="weightReady" style="display: inline-block;">
+      Current Weight:<br>
+      {{currentWeighin.weight}}kg<br>
+      Taken on:<br>
+      {{currentWeighin.date | date}}
+      <br>
+      Expected Loss:<br>
+      {{expectedLoss|number:'1.0-2'}}kg
+    </h4>
+    <div class="flex-parent-row">
+      <div *ngIf="weightReady" class="weight-graph" id="weightGraph">
+
+      </div>
+    </div>
+
   </div>
 
 </div>

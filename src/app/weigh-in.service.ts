@@ -33,6 +33,37 @@ export class WeighInService {
 
   }
 
+
+  getWeighin(userId: string): Promise<WeighIn[]> {
+    return new Promise((resolve, reject) => {
+
+      this.http.get('/api/weighin/' + userId, this.options).map(this.extractData).subscribe((results) => {
+        resolve(results)
+      });
+
+
+    });
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   private extractData(res) {
     let body = res.json();
     return body || {};
