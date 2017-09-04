@@ -1,0 +1,22 @@
+{
+  "name": "Fitness Tracker",
+  "short_name": "FT",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#8BB1B1",
+  "description": "A web app for tracking fitness activity and weight goals",
+  "orientation": "portrait",
+  "theme_color": "#8BB1B1",
+  "icons": [
+    {
+      "src": "/assets/FTLogo.png",
+      "sizes": "308x174",
+      "type": "image/png"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web"
+    }
+  ]
+}
