@@ -90,8 +90,8 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
         },
         showlegend: true,
         autosize: false,
-        height: 233,
-        width: window.innerWidth < 700 ? window.innerWidth : 700,
+        height: 290,
+        width: window.innerWidth < 745 ? window.innerWidth : 745,
         yaxis: {
           title: 'kilos'
         }
