@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions} from "@angular/http";
 import {Workout} from "./Objects/Workout";
 import {Panel} from "./Objects/Panel";
-import {GraphDataSet} from "./Objects/GraphDataSet";
 
 @Injectable()
 export class WorkoutsService {
@@ -17,7 +16,7 @@ export class WorkoutsService {
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
     this.options = new RequestOptions({headers: this.headers});
 
   }
@@ -93,7 +92,7 @@ export class WorkoutsService {
 
   }
 
-  _getGraphData(_userid: string): Promise<GraphDataSet> {
+  _getGraphData(_userid: string): Promise<any> {
 
     return new Promise((resolve, reject) => {
       if (this.getsValid && this.graphData) {

@@ -20,6 +20,7 @@ export class Auth0AuthService {
     leeway: 60
   });
 
+
   constructor(public router: Router, private authLocalService: AuthLocalService, private userService: UserService) {
   }
 
