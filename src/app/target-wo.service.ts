@@ -13,7 +13,6 @@ export class TargetWOService {
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-
     this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
     this.options = new RequestOptions({headers: this.headers});
 
@@ -45,7 +44,7 @@ export class TargetWOService {
       if (this.currentTarget && this.getsValid) {
         return resolve(this.currentTarget);
       }
-      this.http.get('/api/targetwo/' + _userId).map(this.extractData).subscribe((results) => {
+      this.http.get('/api/targetwo/' + _userId, this.options).map(this.extractData).subscribe((results) => {
         this.currentTarget = results[0];
         this.getsValid = true;
         return resolve(results[0]);
