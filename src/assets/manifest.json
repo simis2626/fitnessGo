@@ -1,7 +1,7 @@
 {
   "name": "Fitness Tracker",
   "short_name": "FT",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#8BB1B1",
   "description": "A web app for tracking fitness activity and weight goals",
@@ -9,8 +9,48 @@
   "theme_color": "#8BB1B1",
   "icons": [
     {
-      "src": "/assets/FTLogo.png",
-      "sizes": "308x174",
+      "src": "assets/logo/logo24.png",
+      "sizes": "24x24",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo/logo48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo/logo64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo/logo96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo/logo128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo/logo240.png",
+      "sizes": "240x240",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo/logo768.png",
+      "sizes": "768x768",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo/logo1024.png",
+      "sizes": "1024x1024",
       "type": "image/png"
     }
   ],
