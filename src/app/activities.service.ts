@@ -17,6 +17,7 @@ export class ActivitiesService {
     this.activities = [];
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
     this.options = new RequestOptions({headers: this.headers});
 
   }
