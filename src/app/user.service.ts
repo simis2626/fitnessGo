@@ -17,21 +17,44 @@ export class UserService {
   }
 
   saveUser(user): Promise<boolean> {
+    let tmpheaders = new Headers();
+    tmpheaders.append('Content-Type', 'application/json');
+    tmpheaders.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
+    let tmpoptions = new RequestOptions({headers: tmpheaders});
     user._userid = localStorage.getItem('id_sub');
     return new Promise((resolve, reject) => {
+        console.log('woohoo', localStorage.getItem('id_token'));
+        if (localStorage.getItem('id_token') != 'null') {
+          this.http.post('/api/user/', JSON.stringify(user), tmpoptions).map(this.extractData).subscribe((results) => {
 
-      this.http.post('/api/user/', JSON.stringify(user), this.options).map(this.extractData).subscribe((results) => {
+            if (results) {
+              resolve(true);
+            } else {
+              resolve(false);
+            }
 
-        if (results) {
-          resolve(true);
+          });
+
+
         } else {
-          resolve(false);
+          let timer = setInterval(() => {
+            if (localStorage.getItem('id_token') != 'null') {
+              clearInterval(timer);
+              this.http.post('/api/user/', JSON.stringify(user), tmpoptions).map(this.extractData).subscribe((results) => {
+
+                if (results) {
+                  resolve(true);
+                } else {
+                  resolve(false);
+                }
+
+              });
+            }
+          }, 200)
         }
 
-      })
-
-
-    });
+      }
+    );
 
 
   }

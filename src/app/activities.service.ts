@@ -27,10 +27,22 @@ export class ActivitiesService {
       if (this.activities.length > 0) {
         resolve(this.activities);
       } else {
-        this.http.get('/api/activity', this.options).map(this.extractData).subscribe((results) => {
-          this.activities = results;
-          resolve(results);
-        });
+        if (localStorage.getItem('id_token')) {
+          this.http.get('/api/activity', this.options).map(this.extractData).subscribe((results) => {
+            this.activities = results;
+            resolve(results);
+          });
+        } else {
+          let timer = setInterval(() => {
+            if (localStorage.getItem('id_token')) {
+              clearInterval(timer);
+              this.http.get('/api/activity', this.options).map(this.extractData).subscribe((results) => {
+                this.activities = results;
+                resolve(results);
+              });
+            }
+          }, 200);
+        }
       }
 
     });
