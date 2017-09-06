@@ -91,6 +91,9 @@ self.addEventListener('fetch', function (event) {
   //Default if it is in the cache use it, otherwise use the network.
   event.respondWith(
     caches.match(event.request).then(function (response) {
+      if (response) {
+        console.log('matched from cache')
+      }
       return response || fetch(event.request);
     })
   );
