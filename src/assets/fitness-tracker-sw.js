@@ -3,7 +3,7 @@
 //#v01
 
 
-var CACHE_NAME = 'fitnessGo-static-v1';
+var CACHE_NAME = 'fitnessGo-static-v2';
 
 
 var staticURLS = ["/",
@@ -47,9 +47,10 @@ self.addEventListener('install', function (event) {
     setTimeout(function () {
       caches.open(CACHE_NAME)
         .then(function (cache) {
+          let testReq = new Request("https://fonts.googleapis.com/icon?family=Material+Icons", {"mode": "no-cors"});
           return Promise.all([
               cache.addAll(staticURLS),
-            cache.add(new Request("https://fonts.googleapis.com/icon?family=Material+Icons", {"mode": "no-cors"}))
+            cache.add(testReq)
             ]
           );
         })
