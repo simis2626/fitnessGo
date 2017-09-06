@@ -52,6 +52,7 @@ self.addEventListener('install', function (event) {
             cache.add(new Request("https://fonts.googleapis.com/icon?family=Material+Icons", {"mode": "no-cors"}))
             ]
           ).then(() => {
+
           })
         })
 
