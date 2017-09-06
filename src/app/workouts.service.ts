@@ -58,7 +58,7 @@ export class WorkoutsService {
 
       dtSunday.setDate(dtMonday.getDate() + 6);
       console.log(dtMonday.toISOString().substr(0, 10), dtSunday.toISOString().substr(0, 10));
-      this.http.post('/api/workout/from/' + dtMonday.toISOString().substr(0, 10) + '/to/' + dtSunday.toISOString().substr(0, 10), {_userid: _userid}, this.options).map(this.extractData)
+      this.http.get('/api/workout/from/' + dtMonday.toISOString().substr(0, 10) + '/to/' + dtSunday.toISOString().substr(0, 10) + '/' + _userid, this.options).map(this.extractData)
         .subscribe((results) => {
           console.log(dtMonday);
           this.thisWeekWorkouts = results;
