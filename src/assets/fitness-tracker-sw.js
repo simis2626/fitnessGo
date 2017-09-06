@@ -49,17 +49,14 @@ self.addEventListener('install', function (event) {
         .then(function (cache) {
           Promise.all([
               cache.addAll(staticURLS),
-            cache.add(new Request("https://fonts.googleapis.com/icon?family=Material+Icons", {"mode": "no-cors"})),
-            cache.add(new Request("https://static-web.runkeeper.com/build/14445/static/sparta/homepage/assets/community-reviewer-1.png", {"mode": "no-cors"})),
-            cache.add(new Request("https://static-web.runkeeper.com/build/14445/static/sparta/homepage/assets/community-reviewer-2.png", {"mode": "no-cors"})),
-            cache.add(new Request("https://static-web.runkeeper.com/build/14445/static/sparta/homepage/assets/community-reviewer-3.png", {"mode": "no-cors"}))
+            cache.add(new Request("https://fonts.googleapis.com/icon?family=Material+Icons", {"mode": "no-cors"}))
             ]
           ).then(() => {
           })
         })
 
 
-    }, 5000));
+    }, 25000));
 });
 
 
