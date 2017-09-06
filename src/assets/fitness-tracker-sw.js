@@ -51,7 +51,7 @@ self.addEventListener('install', function (event) {
         })
 
 
-    }, 4000));
+    }, 3000));
 });
 
 
