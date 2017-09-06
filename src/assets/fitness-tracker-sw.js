@@ -32,22 +32,31 @@ var staticURLS = ["/",
   "/main.bundle.js",
   "/polyfills.bundle.js",
   "/styles.bundle.css",
-  "/vendor.bundle.js",
+  "/vendor.bundle.js"/*,
   "https://fonts.googleapis.com/icon?family=Material+Icons",
   "https://static-web.runkeeper.com/build/14445/static/sparta/homepage/assets/community-reviewer-1.png",
   "https://static-web.runkeeper.com/build/14445/static/sparta/homepage/assets/community-reviewer-2.png",
-  "https://static-web.runkeeper.com/build/14445/static/sparta/homepage/assets/community-reviewer-3.png"];
+  "https://static-web.runkeeper.com/build/14445/static/sparta/homepage/assets/community-reviewer-3.png"*/];
 
 
 self.addEventListener('install', function (event) {
+
+  var requestOps = new RequestOptions();
 
 
   event.waitUntil(
     setTimeout(function () {
       caches.open(CACHE_NAME)
         .then(function (cache) {
-          return cache.addAll(staticURLS);
+          Promise.all([
+              cache.addAll(staticURLS),
+              cache.add(new Request("https://fonts.googleapis.com/icon?family=Material+Icons", {"mode": "no-cors"}))
+            ]
+          ).then(() => {
+          })
         })
+
+
     }, 5000));
 });
 
