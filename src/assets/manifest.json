@@ -40,6 +40,11 @@
       "type": "image/png"
     },
     {
+      "src": "/assets/logo/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
       "src": "assets/logo/logo240.png",
       "sizes": "240x240",
       "type": "image/png"
