@@ -47,12 +47,7 @@ self.addEventListener('install', function (event) {
     setTimeout(function () {
       caches.open(CACHE_NAME)
         .then(function (cache) {
-          let testReq = new Request("https://fonts.googleapis.com/icon?family=Material+Icons", {"mode": "no-cors"});
-          return Promise.all([
-              cache.addAll(staticURLS),
-            cache.add(testReq)
-            ]
-          );
+          return cache.addAll(staticURLS);
         })
 
 
