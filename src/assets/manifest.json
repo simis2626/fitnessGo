@@ -1,7 +1,7 @@
 {
   "name": "Fitness Tracker",
-  "display": "standalone",
-  "short_name": "FT",
+  "display": "fullscreen",
+  "short_name": "FiT",
   "start_url": "/",
   "scope": "/",
   "background_color": "#8BB1B1",
