@@ -1,4 +1,6 @@
-
+.mat-button-wrapper{
+    padding:12px 0;
+}
 .main-fab {
   position: fixed;
   top: 86%;
