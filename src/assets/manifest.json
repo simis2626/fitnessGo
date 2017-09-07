@@ -1,9 +1,9 @@
 {
   "name": "Fitness Tracker",
+  "display": "standalone",
   "short_name": "FT",
   "start_url": "/",
   "scope": "/",
-  "display": "standalone",
   "background_color": "#8BB1B1",
   "description": "A web app for tracking fitness activity and weight goals",
   "orientation": "portrait",

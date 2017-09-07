@@ -3,7 +3,7 @@
 //#v01
 
 
-var CACHE_NAME = 'fitnessGo-static-v9';
+var CACHE_NAME = 'fitnessGo-static-v10';
 
 
 var staticURLS = ["/",
@@ -26,7 +26,6 @@ var staticURLS = ["/",
   "/assets/7.jpg",
   "/assets/9.jpg",
   "/assets/8.jpg",
-  "/assets/manifest.json",
   "/assets/plotly.js",
   "/inline.bundle.js",
   "/main.bundle.js",
