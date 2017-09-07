@@ -3,7 +3,7 @@
   "display": "fullscreen",
   "short_name": "FiT",
   "start_url": "/",
-  "scope": "../",
+  "scope": "/",
   "background_color": "#8BB1B1",
   "description": "A web app for tracking fitness activity and weight goals",
   "orientation": "portrait",
