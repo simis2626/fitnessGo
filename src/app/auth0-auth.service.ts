@@ -14,9 +14,9 @@ export class Auth0AuthService {
     clientID: 'fDgufBDYp6i14X1ifFTDedkUKdikfiQu',
     domain: 'simis2626.au.auth0.com',
     responseType: 'token id_token',
-    audience: 'https://simis2626.au.auth0.com/userinfo',
+    audience: 'https://simis2626.au.auth0.com/login',
     redirectUri: 'https://fitness.fitforchange.me:81',
-    scope: 'openid',
+    scope: 'openid profile',
     leeway: 60
   });
 
