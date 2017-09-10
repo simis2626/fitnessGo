@@ -16,7 +16,7 @@ export class Auth0AuthService {
     responseType: 'token id_token',
     audience: 'https://simis2626.au.auth0.com/userinfo',
     redirectUri: 'https://fitness.fitforchange.me:81',
-    scope: 'openid profile',
+    scope: 'openid',
     leeway: 60
   });
 
@@ -64,7 +64,7 @@ export class Auth0AuthService {
   private setSession(authResult): void {
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    console.log(expiresAt);
+    console.log('expiresTime', expiresAt);
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
