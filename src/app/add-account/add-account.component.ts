@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {Auth0AuthService} from "../auth0-auth.service";
 
 
@@ -7,15 +7,21 @@ import {Auth0AuthService} from "../auth0-auth.service";
   templateUrl: './add-account.component.html',
   styleUrls: ['./add-account.component.css']
 })
-export class AddAccountComponent implements OnInit {
+export class AddAccountComponent implements AfterViewInit {
 
   constructor(private auth0service: Auth0AuthService) {
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.auth0service.renderSigin();
   }
 
   tryLogin() {
     this.auth0service.login();
   }
+
+  loginCheck(){
+    this.auth0service.handleAuthentication();
+  }
+
 }
