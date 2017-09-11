@@ -31,11 +31,7 @@ var staticURLS = ["/",
   "/main.bundle.js",
   "/polyfills.bundle.js",
   "/styles.bundle.css",
-  "/vendor.bundle.js"/*,
-  "https://fonts.googleapis.com/icon?family=Material+Icons",
-  "https://static-web.runkeeper.com/build/14445/static/sparta/homepage/assets/community-reviewer-1.png",
-  "https://static-web.runkeeper.com/build/14445/static/sparta/homepage/assets/community-reviewer-2.png",
-  "https://static-web.runkeeper.com/build/14445/static/sparta/homepage/assets/community-reviewer-3.png"*/];
+  "/vendor.bundle.js"];
 
 
 self.addEventListener('install', function (event) {

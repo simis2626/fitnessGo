@@ -7,19 +7,25 @@ import auth0 from "auth0-js";
 import {AuthLocalService} from "./auth-local.service";
 import {UserService} from "./user.service";
 
+declare var gapi: any;
+
 @Injectable()
 export class Auth0AuthService {
+
+  public auth2: any = {}; // The Sign-In object.
+  googleUser = null; // The current user.
+
+
 
   auth0 = new auth0.WebAuth({
     clientID: 'fDgufBDYp6i14X1ifFTDedkUKdikfiQu',
     domain: 'simis2626.au.auth0.com',
     responseType: 'token id_token',
-    audience: 'https://simis2626.au.auth0.com/login',
-    redirectUri: 'https://fitness.fitforchange.me:81',
+    audience: 'https://simis2626.au.auth0.com/userinfo',
+    redirectUri: 'https://fitness.fitforchange.me:81/',
     scope: 'openid profile',
     leeway: 60
   });
-
 
   constructor(public router: Router, private authLocalService: AuthLocalService, private userService: UserService) {
   }
@@ -70,5 +76,85 @@ export class Auth0AuthService {
     localStorage.setItem('expires_at', expiresAt);
     localStorage.setItem('id_sub', authResult.idTokenPayload.sub);
   }
+
+
+  /**
+   * Calls startAuth after Sign in V2 finishes setting up.
+   */
+  appStart() {
+    setTimeout(() => {
+      gapi.load('auth2', this.initSigninV2);
+
+    }, 2000);
+  };
+
+  /**
+   * Initializes Signin v2 and sets up listeners.
+   */
+  initSigninV2() {
+
+    this.auth2 = gapi.auth2.getAuthInstance();
+
+    // Listen for sign-in state changes.
+    this.auth2.isSignedIn.listen(this.signinChanged);
+
+    // Listen for changes to current user.
+    this.auth2.currentUser.listen(this.userChanged);
+
+    // Sign in the user if they are currently signed in.
+    if (this.auth2.isSignedIn.get() == true) {
+      this.auth2.signIn();
+    }
+
+    // Start with the current live values.
+    this.refreshValues();
+  };
+
+  /**
+   * Listener method for sign-out live value.
+   *
+   * @param {boolean} val the updated signed out state.
+   */
+  signinChanged(val) {
+    console.log('Signin state changed to ', val);
+  };
+
+  /**
+   * Listener method for when the user changes.
+   *
+   * @param {GoogleUser} user the updated user.
+   */
+  userChanged(user) {
+    console.log('User now: ', user);
+    this.googleUser = user;
+    this.updateGoogleUser();
+  };
+
+  /**
+   * Updates the properties in the Google User table using the current user.
+   */
+  updateGoogleUser() {
+    if (this.googleUser) {
+      console.log(this.googleUser);
+    } else {
+    }
+  };
+
+  /**
+   * Retrieves the current user and signed in states from the GoogleAuth
+   * object.
+   */
+  refreshValues() {
+    if (this.auth2) {
+      console.log('Refreshing values...');
+
+      this.googleUser = this.auth2.currentUser.get();
+
+
+      this.updateGoogleUser();
+    }
+  }
+
+
 
 }
