@@ -17,29 +17,36 @@ export class Auth0AuthService {
 
   constructor(public router: Router, private authLocalService: AuthLocalService, private userService: UserService) {
     Promise.all([
-    this.checkForAuth2(),
     this.checkForgapi()])
 
-  .then(() =>{
-        gapi.auth2.init({
-          client_id: '190002128182-ei7n8eh95nourb0sdcoh2o12cindv9rp.apps.googleusercontent.com',
-          fetch_basic_profile: true,
-          ux_mode: 'redirect'
-        }).then((obj)=>{
-          console.log('finished',obj);
+      .then(() => {
+        gapi.load('auth2', function () {
+
+
+          gapi.auth2.init({
+            client_id: '190002128182-ei7n8eh95nourb0sdcoh2o12cindv9rp.apps.googleusercontent.com',
+            fetch_basic_profile: false,
+            scope: 'openid profile email',
+            ux_mode: 'redirect',
+            redirect_uri: 'https://fitness.fitforchange.me:81'
+          }).then((obj) => {
+            console.log('finished', obj);
+          });
         });
       });
   }
   checkForAuth2():Promise<{}>{
     return new Promise((resolve, reject) =>{
-      let timer  = setInterval(()=>{
-        if('undefined' != typeof gapi.auth2) {
-          console.log(typeof gapi.auth2);
-          clearInterval(timer);
-          resolve();
-        }
+      this.checkForgapi().then(() => {
+        let timer = setInterval(() => {
+          if ('undefined' != typeof gapi.auth2) {
+            console.log(typeof gapi.auth2);
+            clearInterval(timer);
+            resolve();
+          }
 
-      },60);
+        }, 60);
+      });
     });
 
   }
@@ -60,18 +67,14 @@ export class Auth0AuthService {
 
   }
 
-
-
-
-
   public renderSigin(){
-    this.checkForgapi().then(()=>{
+    this.checkForAuth2().then(() => {
       console.log('rendering');
       gapi.signin2.render('signin-ele',{
         scope: 'profile',
         width: 120,
         height: 36,
-        longtitle: true,
+        longtitle: false,
         theme: 'dark',
         onsuccess: null,
         onfailure: null
