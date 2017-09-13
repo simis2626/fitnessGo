@@ -14,19 +14,19 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.auth0service.isAuthenticated()) {
-      this.localAuthService.setLoginState(true);
-
-
-    } else {
-      setTimeout(() => {
-        this.auth0service.handleAuthentication();
-      }, 50);
-    }
-
     this.localAuthService.loginStateChange$.subscribe((state) => {
       this.loginState = state;
     });
-
+    this.auth0service.isAuthenticated().then((blnAuthed) => {
+      this.localAuthService.setLoginState(blnAuthed);
+    });
   }
+
+
+  runSomething() {
+    this.auth0service.isAuthenticated().then((bln) => {
+      console.log(bln);
+    })
+  }
+
 }

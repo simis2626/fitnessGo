@@ -13,16 +13,17 @@ export class Auth0AuthService {
 
   public auth2: any = {}; // The Sign-In object.
   googleUser = null; // The current user.
+  authInitiated: boolean;
 
 
   constructor(public router: Router, private authLocalService: AuthLocalService, private userService: UserService) {
+    this.authInitiated = false;
     Promise.all([
-    this.checkForgapi()])
+      this.checkForgapi()])
 
       .then(() => {
+        let that = this;
         gapi.load('auth2', function () {
-
-
           gapi.auth2.init({
             client_id: '190002128182-ei7n8eh95nourb0sdcoh2o12cindv9rp.apps.googleusercontent.com',
             fetch_basic_profile: false,
@@ -30,17 +31,68 @@ export class Auth0AuthService {
             ux_mode: 'redirect',
             redirect_uri: 'https://fitness.fitforchange.me:81'
           }).then((obj) => {
-            console.log('finished', obj);
+            that.googleUser = obj;
+            that.authInitiated = true;
+            if (that.googleUser.isSignedIn.get()) {
+              that.handleAuthentication();
+            }
           });
         });
       });
   }
-  checkForAuth2():Promise<{}>{
-    return new Promise((resolve, reject) =>{
+
+
+  checkForgapi(): Promise<{}> {
+    return new Promise((resolve, reject) => {
+      let timer = setInterval(() => {
+        if ('undefined' != typeof gapi) {
+          clearInterval(timer);
+          resolve();
+        }
+
+      }, 30);
+    });
+
+  }
+
+  public renderSigin() {
+    this.checkForgapi().then(() => {
+      console.log('rendering');
+      gapi.signin2.render('signin-ele', {
+        scope: 'profile openid email',
+        width: 120,
+        height: 36,
+        longtitle: false,
+        theme: 'dark',
+        onsuccess: null,
+        onfailure: null
+      });
+    });
+
+  }
+
+  public login(): void {
+    this.googleUser.signIn();
+  }
+
+  public handleAuthentication(): void {
+
+
+  }
+
+  public logout(): void {
+    this.checkForgapi().then(() => {
+      this.googleUser.signOut();
+
+    });
+
+  }
+
+  checkForAuth2(): Promise<{}> {
+    return new Promise((resolve, reject) => {
       this.checkForgapi().then(() => {
         let timer = setInterval(() => {
           if ('undefined' != typeof gapi.auth2) {
-            console.log(typeof gapi.auth2);
             clearInterval(timer);
             resolve();
           }
@@ -52,51 +104,22 @@ export class Auth0AuthService {
   }
 
 
+  public isAuthenticated(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.checkForAuth2().then(() => {
+        let timer = setInterval(() => {
+          if (this.authInitiated) {
+            clearInterval(timer);
+            let googauth = gapi.auth2.getAuthInstance();
+            let answer = googauth.isSignedIn.get();
+            console.log(answer);
+            resolve(answer);
+          }
 
-  checkForgapi():Promise<{}>{
-    return new Promise((resolve, reject) =>{
-      let timer  = setInterval(()=>{
-        if('undefined' != typeof gapi) {
-          console.log(typeof gapi);
-          clearInterval(timer);
-          resolve();
-        }
 
-      },30);
+        }, 30);
+      });
     });
-
-  }
-
-  public renderSigin(){
-    this.checkForAuth2().then(() => {
-      console.log('rendering');
-      gapi.signin2.render('signin-ele',{
-        scope: 'profile',
-        width: 120,
-        height: 36,
-        longtitle: false,
-        theme: 'dark',
-        onsuccess: null,
-        onfailure: null
-      });});
-
-  }
-//sausages
-
-  public login(): void {
-
-  }
-
-  public handleAuthentication(): void {
-
-  }
-
-  public logout(): void {
-
-  }
-
-  public isAuthenticated(): boolean {
-    return false;
   }
 
   private setSession(authResult): void {
@@ -108,45 +131,4 @@ export class Auth0AuthService {
     localStorage.setItem('expires_at', expiresAt);
     localStorage.setItem('id_sub', authResult.idTokenPayload.sub);
   }
-
-
-  /**
-   * Calls startAuth after Sign in V2 finishes setting up.
-   */
-  appStart() {
-      gapi.load('auth2', this.initSigninV2);
-
-  };
-
-  /**
-   * Initializes Signin v2 and sets up listeners.
-   */
-  initSigninV2() {
-
-    this.auth2 = gapi.auth2.getAuthInstance();
-
-
-    // Sign in the user if they are currently signed in.
-    if (this.auth2.isSignedIn.get() == true) {
-      this.auth2.signIn();
-    }
-
-    // Start with the current live values.
-    this.refreshValues();
-  };
-  /**
-   * Retrieves the current user and signed in states from the GoogleAuth
-   * object.
-   */
-  refreshValues() {
-    if (this.auth2) {
-      console.log('Refreshing values...');
-
-      this.googleUser = this.auth2.currentUser.get();
-
-    }
-  }
-
-
-
 }
