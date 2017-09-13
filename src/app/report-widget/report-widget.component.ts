@@ -68,7 +68,7 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
         x: dates,
         y: values,
         type: 'scatter',
-        name: 'progress'
+        name: 'actual'
       };
 
       var Goal = {
@@ -81,7 +81,7 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
         x: dates,
         y: this.createTargetGraphSet(),
         type: 'lines',
-        name: 'progress'
+        name: 'expected'
       };
       let layout = {
         title: 'Weight Progress',
