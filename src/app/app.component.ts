@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
 
   constructor(private localAuthService: AuthLocalService, private auth0service: Auth0AuthService) {
   }
-
   ngOnInit() {
     this.localAuthService.loginStateChange$.subscribe((state) => {
       this.loginState = state;
@@ -21,12 +20,4 @@ export class AppComponent implements OnInit {
       this.localAuthService.setLoginState(blnAuthed);
     });
   }
-
-
-  runSomething() {
-    this.auth0service.isAuthenticated().then((bln) => {
-      console.log(bln);
-    })
-  }
-
 }

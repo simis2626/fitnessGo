@@ -27,7 +27,6 @@ export class FABComponent implements OnInit {
 
   fabClicked() {
     this.open = !this.open;
-    console.log("StateChange");
     setTimeout(() => {
 
       this.slideUp = !this.slideUp;

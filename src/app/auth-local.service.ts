@@ -10,7 +10,6 @@ export class AuthLocalService {
 
   constructor() {
   }
-
   userLoggedIn(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       resolve(this.loginState)
@@ -18,7 +17,6 @@ export class AuthLocalService {
   }
 
   setLoginState(state: boolean) {
-    console.log("loginState set to", state);
     this.loginState = state;
     this.LoginStateChange.next(state);
   }

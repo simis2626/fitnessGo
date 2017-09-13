@@ -13,15 +13,16 @@ export class AddAccountComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.auth0service.renderSigin();
+    this.auth0service.isAuthenticated().then((bln) => {
+      if (!bln) {
+        this.auth0service.renderSigin();
+      }
+    });
   }
 
   tryLogin() {
     this.auth0service.login();
   }
 
-  loginCheck(){
-    this.auth0service.handleAuthentication();
-  }
 
 }

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {WorkoutsService} from "../workouts.service";
 import {TargetWOService} from "../target-wo.service";
 import {Workout} from "../Objects/Workout";
@@ -13,7 +13,7 @@ declare var Plotly: any;
   templateUrl: './times-this-week.component.html',
   styleUrls: ['./times-this-week.component.css', '../material-shared/shared-css.css']
 })
-export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TimesThisWeekComponent implements OnInit, AfterViewInit {
 
   wrkouts: Workout[];
   trgt: Target;
@@ -168,9 +168,6 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit, OnDestroy 
 
   }
 
-  ngOnDestroy() {
-    console.log('destroyed');
-  }
 
 
 }
