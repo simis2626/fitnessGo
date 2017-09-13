@@ -106,7 +106,7 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
 
 
   createTargetGraphSet(): any {
-    let end = new Date(new Date('2017-08-25').valueOf() + (8 * 7 * 24 * 60 * 60 * 1000));
+    let end = new Date(new Date('2017-08-25').valueOf() + (12 * 7 * 24 * 60 * 60 * 1000));
     let goal = 127;
     let start = this.weighins[0].weight;
     let desiredDifference = start - goal;
