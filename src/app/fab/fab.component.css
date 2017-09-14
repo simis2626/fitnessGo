@@ -58,7 +58,7 @@
 
 .setup-rotate {
   will-change: transform;
-  transition: transform 2s ease-in;
+  transition: transform 0.2s ease-in;
 }
 
 .rotate-go {
