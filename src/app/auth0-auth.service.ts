@@ -109,16 +109,6 @@ export class Auth0AuthService {
     }
   }
 
-  private setSession(authResult): void {
-    // Set the time that the access token will expire at
-    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
-    localStorage.setItem('id_sub', authResult.idTokenPayload.sub);
-  }
-
-
   public isAuthenticated(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.checkForAuth2().then(() => {
@@ -127,11 +117,21 @@ export class Auth0AuthService {
             clearInterval(timer);
             let googauth = gapi.auth2.getAuthInstance();
             let answer = googauth.isSignedIn.get();
+            answer ? this.setSession(googauth.currentUser.get().getAuthResponse()) : console.log('not logged in');
             resolve(answer);
           }
         }, 5);
       });
     });
+  }
+
+  private setSession(authResult): void {
+    // Set the time that the access token will expire at
+    const expiresAt = JSON.stringify((authResult.expires_in * 1000) + new Date().getTime());
+    localStorage.setItem('access_token', authResult.access_token);
+    localStorage.setItem('id_token', authResult.id_token);
+    localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('id_sub', 'google-oauth2|' + gapi.auth2.getAuthInstance().currentUser.get().getId());
   }
 
 }
