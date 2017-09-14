@@ -3,20 +3,10 @@
 //#v01
 
 
-var CACHE_NAME = 'fitnessGo-static-v1';
+var CACHE_NAME = 'fitnessGo-static-v009';
 
 
 var staticURLS = ["/",
-  "/assets/logo/logo24.png",
-  "/assets/logo/logo48.png",
-  "/assets/logo/logo64.png",
-  "/assets/logo/logo96.png",
-  "/assets/logo/logo128.png",
-  "/assets/logo/logo144.png",
-  "/assets/logo/logo240.png",
-  "/assets/logo/logo512.png",
-  "/assets/logo/logo768.png",
-  "/assets/logo/logo1024.png",
   "/assets/1.jpg",
   "/assets/2.jpg",
   "/assets/3.jpg",
@@ -58,7 +48,7 @@ self.addEventListener('fetch', function (event) {
     return;
   }
   //Ones you want live data for
-  if (/api/.test(requestURL.pathname)) {
+  if (/\/api\//.test(requestURL.pathname)) {
 
     event.respondWith(
       caches.open(CACHE_NAME).then(function (cache) {
@@ -86,9 +76,6 @@ self.addEventListener('fetch', function (event) {
   //Default if it is in the cache use it, otherwise use the network.
   event.respondWith(
     caches.match(event.request).then(function (response) {
-      if (response) {
-        console.log('matched from cache')
-      }
       return response || fetch(event.request);
     })
   );

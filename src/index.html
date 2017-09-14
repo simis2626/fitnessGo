@@ -4,8 +4,8 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="/assets/logo/logo192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="google-signin-client_id"
-        content="190002128182-ei7n8eh95nourb0sdcoh2o12cindv9rp.apps.googleusercontent.com">
+  <!--<meta name="google-signin-client_id"
+        content="190002128182-ei7n8eh95nourb0sdcoh2o12cindv9rp.apps.googleusercontent.com">-->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script>
     /*global navigator*/
@@ -13,7 +13,6 @@
       navigator.serviceWorker
         .register('/fitness-tracker-sw.js')
         .then(function (reg) {
-          console.log('Registered');
         });
     }
   </script>
