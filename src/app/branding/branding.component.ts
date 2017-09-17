@@ -18,7 +18,7 @@ export class BrandingComponent implements OnInit {
     let imageNum: number = Math.floor(Math.random() * 9);
     this.strImage = this.arrImages[imageNum];
     setInterval(() => {
-      imageNum = Math.floor(Math.random() * 9 + 1);
+      imageNum = Math.floor(Math.random() * 9);
       this.strImage = this.arrImages[imageNum];
     }, 12000);
   }
@@ -28,11 +28,6 @@ export class BrandingComponent implements OnInit {
     this.arrImages = [];
     for (let i = 1; i < 10; i++) {
       this.arrImages.push("url('../../assets/" + i + ".jpg'");
-    }
-    console.log(this.arrImages);
-
-    for (let i2 = 0; i2 < 40; i2++) {
-      console.log(Math.floor(Math.random() * 9));
     }
 
     this.refreshImage();
