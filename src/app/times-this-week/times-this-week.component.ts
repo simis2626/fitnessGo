@@ -100,8 +100,9 @@ export class TimesThisWeekComponent implements OnInit, AfterViewInit {
       data[0].marker.color = [];
 
       let prevDayOfWeek: number;
-      let prevDayOfYear:number;
+      let prevDayOfYear: number = this.dayData[0]._id.dayOfYear - 1;
       let count: number = 1;
+
       this.dayData.forEach((obj) => {
 
         while (obj._id.dayOfYear > (prevDayOfYear + 1) ) {
