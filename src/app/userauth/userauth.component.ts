@@ -3,6 +3,7 @@ import {UserService} from "../user.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Auth0AuthService} from "../auth0-auth.service";
 import {Router} from "@angular/router";
+import {UserProfile} from "../Objects/UserProfile";
 
 @Component({
   selector: 'app-userauth',
@@ -12,20 +13,20 @@ import {Router} from "@angular/router";
 export class UserauthComponent implements OnInit {
 
   trustedImage: any;
-  profile: any;
+  profile: UserProfile;
 
   constructor(private userService: UserService, private domSanit: DomSanitizer, private auth0Service: Auth0AuthService, private router: Router) {
   }
 
   ngOnInit() {
-    this.userService.getProfile().then((result) => {
-      this.profile = result;
-
-      if (this.profile) {
-        this.trustedImage = this.domSanit.bypassSecurityTrustStyle("url('" + this.profile.picture + "')");
-      }
+    this.auth0Service.isAuthenticated().then(() => {
+      this.userService.getProfile().then((result) => {
+        this.profile = result;
+        if (this.profile) {
+          this.trustedImage = this.domSanit.bypassSecurityTrustStyle("url('" + this.profile.picture + "')");
+        }
+      });
     });
-
   }
 
   triggerLogout() {

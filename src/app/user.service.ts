@@ -1,12 +1,13 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions} from "@angular/http";
+import {UserProfile} from "./Objects/UserProfile";
 
 @Injectable()
 export class UserService {
 
   headers: Headers;
   options: RequestOptions;
-  userProfile: any;
+  userProfile: UserProfile;
 
   constructor(private http: Http) {
     this.headers = new Headers();
@@ -21,9 +22,8 @@ export class UserService {
     tmpheaders.append('Content-Type', 'application/json');
     tmpheaders.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
     let tmpoptions = new RequestOptions({headers: tmpheaders});
-    user._userid = localStorage.getItem('id_sub');
+    //user._userid = localStorage.getItem('id_sub');
     return new Promise((resolve, reject) => {
-        console.log('woohoo', localStorage.getItem('id_token'));
         if (localStorage.getItem('id_token') != 'null') {
           this.http.post('/api/user/', JSON.stringify(user), tmpoptions).map(this.extractData).subscribe((results) => {
 
@@ -63,28 +63,23 @@ export class UserService {
     return new Promise((resolve, reject) => {
       if (this.userProfile) {
         localStorage.setItem('fitnessProfile', JSON.stringify(this.userProfile));
-        this.saveUser(this.userProfile);
+
+        //TODO:Remove this comment
+        //this.saveUser(this.userProfile);
         resolve(this.userProfile);
       } else {
         this.userProfile = JSON.parse(localStorage.getItem('fitnessProfile'));
-        this.saveUser(this.userProfile);
+        //this.saveUser(this.userProfile);
         resolve(this.userProfile);
       }
     });
   }
 
-  public getRemoteProfile(cb): void {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
-      throw new Error('Access token must exist to fetch profile');
-    }
-
-    const self = this;
-    cb();
-  }
 
   public receiveProfile(profile: any): void {
-    this.userProfile = profile;
+
+    this.userProfile = new UserProfile(profile.getId(), profile.getName(), profile.getGivenName(), profile.getImageUrl(), profile.getEmail(), profile.getFamilyName());
+
 
   }
 
