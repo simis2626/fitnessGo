@@ -1,33 +1,33 @@
-<md-card style="display:flex; flex-direction: column;height: 84%" *ngIf="ready">
+<mat-card style="display:flex; flex-direction: column;height: 84%" *ngIf="ready">
   <div>
     <h2 style="display: inline">{{model[i]._id.Day}} </h2><span style="width: 30%"></span>
 
     <h3 style="display: inline">{{model[i]._id.Date | date:'longDate'}}</h3><br><strong>Deduction Total:
     ${{deductions}}</strong>
-    <md-input-container style="padding-left: 30px;width: 70px">
-      <input mdInput (blur)="ready2 = true;" (focus)="saveHide()" type="number" [placeholder]="'Day Number'" [(ngModel)]="i">
-    </md-input-container>
+    <mat-form-field style="padding-left: 30px;width: 70px">
+      <input matInput (blur)="ready2 = true;" (focus)="saveHide()" type="number" [placeholder]="'Day Number'" [(ngModel)]="i">
+    </mat-form-field>
   </div>
-  <md-list *ngIf="ready2" style="flex: auto; overflow-y: scroll; height: 70%;overflow-x: hidden">
+  <mat-list *ngIf="ready2" style="flex: auto; overflow-y: scroll; height: 70%;overflow-x: hidden">
     <div style="display: flex; flex-wrap: wrap;" *ngFor="let tax of model[i].id; let ndx = index">
-      <md-list-item style="flex: 4;">
+      <mat-list-item style="flex: 4;">
         <!-- <div>{{model[i].id[ndx]}}</div> -->
-        <div md-line>{{model[i].Details[ndx]}}</div>
-        <div md-line>${{model[i].Cost[ndx]}}</div>
-        <div md-line>Account: {{model[i].Account[ndx]}}</div>
-        <div md-line>Category: {{model[i].Category[ndx]}}</div>
+        <div matLine>{{model[i].Details[ndx]}}</div>
+        <div matLine>${{model[i].Cost[ndx]}}</div>
+        <div matLine>Account: {{model[i].Account[ndx]}}</div>
+        <div matLine>Category: {{model[i].Category[ndx]}}</div>
         <br>
-      </md-list-item>
+      </mat-list-item>
       <div style="flex: 0; flex-basis: 88px">
-        <button *ngIf="model[i].claim[ndx]" md-button (click)="triggerNote(i,ndx)" id="button{{i}}{{ndx}}">NOTE</button>
-        <md-input-container id="note{{i}}{{ndx}}" style="display:none">
-          <input mdInput type="text" id="input{{i}}{{ndx}}" (blur)="hideAndSave(i,ndx)" [(ngModel)]="model[i].note[ndx]"
+        <button *ngIf="model[i].claim[ndx]" mat-button (click)="triggerNote(i,ndx)" id="button{{i}}{{ndx}}">NOTE</button>
+        <mat-form-field id="note{{i}}{{ndx}}" style="display:none">
+          <input matInput type="text" id="input{{i}}{{ndx}}" (blur)="hideAndSave(i,ndx)" [(ngModel)]="model[i].note[ndx]"
                  #note{{i}}{{ndx}}>
-        </md-input-container>
+        </mat-form-field>
 
 
       </div>
-      <md-list-item style="flex: 1 0 40px;" (click)="toggleClaim(i,ndx)">
+      <mat-list-item style="flex: 1 0 40px;" (click)="toggleClaim(i,ndx)">
         <!-- Green -->
         <svg *ngIf="model[i].claim[ndx]" xmlns="http://www.w3.org/2000/svg"  version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="100%" height="100%">
 <g>
@@ -347,13 +347,13 @@
 </g>
 </svg>
 
-      </md-list-item>
+      </mat-list-item>
 
     </div>
 
-  </md-list>
+  </mat-list>
   <div style="display: flex">
-    <button style="flex: 1;" md-button (click)="prevOne()">BACK</button>
-    <button md-button style="flex: 3;" (click)="nextOne()">NEXT</button>
+    <button style="flex: 1;" mat-button (click)="prevOne()">BACK</button>
+    <button mat-button style="flex: 3;" (click)="nextOne()">NEXT</button>
   </div>
-</md-card>
+</mat-card>

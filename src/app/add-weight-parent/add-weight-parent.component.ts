@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {MdSnackBar} from "@angular/material";
+import {MatSnackBar} from "@angular/material";
 import {WeighIn} from "../Objects/WeighIn";
 import {WeighInService} from "../weigh-in.service";
 
@@ -18,7 +18,7 @@ export class AddWeightParentComponent implements OnInit, AfterViewInit {
   weighIn: WeighIn;
   private today: Date;
 
-  constructor(public snackBar: MdSnackBar, public weighinService: WeighInService, private router: Router) {
+  constructor(public snackBar: MatSnackBar, public weighinService: WeighInService, private router: Router) {
   }
 
   ngOnInit() {

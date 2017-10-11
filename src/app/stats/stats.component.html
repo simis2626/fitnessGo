@@ -1,12 +1,12 @@
 <div class="flex-parent-row">
   <div class="center-panel">
-    <md-card><h3>Personal best and recent performance
+    <mat-card><h3>Personal best and recent performance
     </h3>
-      <md-select (change)="populateTable()" #actSelect placeholder="Activity Name" name="activity"
+      <mat-select (change)="populateTable()" #actSelect placeholder="Activity Name" name="activity"
 
                  [(ngModel)]="selectedActivity">
-        <md-option *ngFor="let act1 of activitylist" [value]="act1">{{act1}}</md-option>
-      </md-select>
+        <mat-option *ngFor="let act1 of activitylist" [value]="act1">{{act1}}</mat-option>
+      </mat-select>
       <table *ngIf="!selectedCardio">
         <colgroup>
           <col style="background-color: #8dc9ff">
@@ -53,6 +53,6 @@
       </table>
 
 
-    </md-card>
+    </mat-card>
   </div>
 </div>

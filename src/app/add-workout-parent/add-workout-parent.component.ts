@@ -3,7 +3,7 @@ import {ActivitiesService} from "../activities.service";
 import {Activity} from "../Objects/Activity";
 import {Workout} from "../Objects/Workout";
 import {ActivityWO} from "../Objects/ActivityWO";
-import {MdSnackBar} from "@angular/material";
+import {MatSnackBar} from "@angular/material";
 import {ActivatedRoute, Router} from "@angular/router";
 import {WorkoutsService} from "../workouts.service";
 
@@ -24,7 +24,7 @@ export class AddWorkoutParentComponent implements OnInit, AfterViewInit {
   sub;
   activityID;
 
-  constructor(public activityService: ActivitiesService, public workoutService: WorkoutsService, public snackBar: MdSnackBar, private router: Router, private route: ActivatedRoute) {
+  constructor(public activityService: ActivitiesService, public workoutService: WorkoutsService, public snackBar: MatSnackBar, private router: Router, private route: ActivatedRoute) {
   }
 
   lookForActivity(ele, ind, arr) {

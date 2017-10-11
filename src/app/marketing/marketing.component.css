@@ -3,7 +3,7 @@
   align-items: center;
 }
 
-md-card-title {
+mat-card-title {
   color: #5C8CAC;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-weight: 400;
@@ -15,7 +15,7 @@ img {
   margin: 0 5px 16px 5px;
 }
 
-md-card {
+mat-card {
   margin: 20px;
   padding: 15px;
 }

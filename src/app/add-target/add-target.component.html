@@ -8,16 +8,16 @@
 <form *ngIf="!submitting" #form1="ngForm" id="form1" name="form1" (ngSubmit)="onSubmit()">
   <div class="flex-parent-row">
     <div class="center-panel">
-      <md-card><h3>Set goal: How many workouts per week?
+      <mat-card><h3>Set goal: How many workouts per week?
       </h3>
-        <md-input-container>
-          <input mdInput placeholder="Workouts" #WO name="WO" id="WO"
-                 [(ngModel)]="target.number" type="number"><span mdSuffix>per week</span>
-        </md-input-container>
-        <button md-raised-button color="primary" type="submit">
+        <mat-form-field>
+          <input matInput placeholder="Workouts" #WO name="WO" id="WO"
+                 [(ngModel)]="target.number" type="number"><span matSuffix>per week</span>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">
           Save
         </button>
-      </md-card>
+      </mat-card>
     </div>
   </div>
   <br>

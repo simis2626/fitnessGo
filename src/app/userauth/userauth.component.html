@@ -1,10 +1,10 @@
-<div class="img-circular" [style.background-image]=trustedImage [mdMenuTriggerFor]="profileMenu">
+<div class="img-circular" [style.background-image]=trustedImage [matMenuTriggerFor]="profileMenu">
 </div>
 
 
-<h3 [mdMenuTriggerFor]="profileMenu">{{profile?.given_name}}&nbsp;</h3>
-<md-menu #profileMenu>
-  <button md-menu-item routerLink="/tax"> Settings</button>
-  <button md-menu-item> Help</button>
-  <button md-menu-item (click)="triggerLogout()"> Logout</button>
-</md-menu>
+<h3 [matMenuTriggerFor]="profileMenu">{{profile?.given_name}}&nbsp;</h3>
+<mat-menu #profileMenu>
+  <button mat-menu-item routerLink="/tax"> Settings</button>
+  <button mat-menu-item> Help</button>
+  <button mat-menu-item (click)="triggerLogout()"> Logout</button>
+</mat-menu>

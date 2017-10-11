@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit} from "@angular/core";
-import {MdSnackBar} from "@angular/material";
+import {MatSnackBar} from "@angular/material";
 import {TargetWOService} from "../target-wo.service";
 import {Router} from "@angular/router";
 import {Target} from "../Objects/Target";
@@ -17,7 +17,7 @@ export class AddTargetComponent implements OnInit, AfterViewInit {
   target: Target;
   private today: Date;
 
-  constructor(public snackBar: MdSnackBar, public targetService: TargetWOService, private router: Router) {
+  constructor(public snackBar: MatSnackBar, public targetService: TargetWOService, private router: Router) {
   }
 
   ngOnInit() {

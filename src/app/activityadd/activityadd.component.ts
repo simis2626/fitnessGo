@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {MdSnackBar} from "@angular/material";
+import {MatSnackBar} from "@angular/material";
 import {ActivitiesService} from "../activities.service";
 import {Router} from "@angular/router";
 import {Activity} from "../Objects/Activity";
@@ -19,7 +19,7 @@ export class ActivityaddComponent implements OnInit {
   @Output() actAdded = new EventEmitter();
   private today: Date;
 
-  constructor(public snackBar: MdSnackBar, public activityService: ActivitiesService, private router: Router) {
+  constructor(public snackBar: MatSnackBar, public activityService: ActivitiesService, private router: Router) {
   }
 
   ngOnInit() {

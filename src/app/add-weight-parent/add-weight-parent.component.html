@@ -8,30 +8,30 @@
 <form *ngIf="!submitting" #form1="ngForm" id="form1" name="form1" (ngSubmit)="onSubmit()">
   <div class="flex-parent-row">
     <div class="center-panel">
-      <md-card><h3>New Weigh-In
+      <mat-card><h3>New Weigh-In
       </h3>
         <div>
-          <md-input-container>
-            <input mdInput placeholder="Date" #Date name="Date" id="Date"
+          <mat-form-field>
+            <input matInput placeholder="Date" #Date name="Date" id="Date"
                    [(ngModel)]="weighIn.date" type="date">
-          </md-input-container>
+          </mat-form-field>
         </div>
         <div>
-          <md-select (change)="setDirty()" #timeSelect placeholder="Time" name="time" id="time"
+          <mat-select (change)="setDirty()" #timeSelect placeholder="Time" name="time" id="time"
                      [(ngModel)]="weighIn.time">
-            <md-option *ngFor="let tme of times" [value]="tme">{{tme}}</md-option>
-          </md-select>
+            <mat-option *ngFor="let tme of times" [value]="tme">{{tme}}</mat-option>
+          </mat-select>
         </div>
         <div>
-          <md-input-container>
-            <input mdInput placeholder="Weight" #weight name="weight" id="weight"
-                   [(ngModel)]="weighIn.weight" type="number"><span mdSuffix>kg</span>
-          </md-input-container>
+          <mat-form-field>
+            <input matInput placeholder="Weight" #weight name="weight" id="weight"
+                   [(ngModel)]="weighIn.weight" type="number"><span matSuffix>kg</span>
+          </mat-form-field>
         </div>
-        <button md-raised-button color="primary" type="submit">
+        <button mat-raised-button color="primary" type="submit">
           Save
         </button>
-      </md-card>
+      </mat-card>
     </div>
   </div>
   <br>

@@ -1,25 +1,25 @@
 <form *ngIf="!submitting" #form2="ngForm" id="form2" name="form2" (ngSubmit)="onSubmit()">
   <div class="flex-parent-row">
     <div class="center-panel">
-      <md-card><h3>Add a new activity to the list
+      <mat-card><h3>Add a new activity to the list
       </h3>
         <div>
-          <md-select (change)="setDirty()" #cardio placeholder="Type" name="type" id="type"
+          <mat-select (change)="setDirty()" #cardio placeholder="Type" name="type" id="type"
                      [(ngModel)]="strCardio">
-            <md-option value="Cardio">Cardio</md-option>
-            <md-option value="Weights">Weights</md-option>
-          </md-select>
+            <mat-option value="Cardio">Cardio</mat-option>
+            <mat-option value="Weights">Weights</mat-option>
+          </mat-select>
         </div>
         <div>
-          <md-input-container>
-            <input mdInput placeholder="Activity name" #nm name="Name" id="name"
+          <mat-form-field>
+            <input matInput placeholder="Activity name" #nm name="Name" id="name"
                    [(ngModel)]="activity.name" type="">
-          </md-input-container>
+          </mat-form-field>
         </div>
-        <button md-raised-button color="primary" type="submit">
+        <button mat-raised-button color="primary" type="submit">
           Save
         </button>
-      </md-card>
+      </mat-card>
     </div>
   </div>
   <br>
