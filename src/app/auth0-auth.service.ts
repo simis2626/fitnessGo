@@ -14,6 +14,8 @@ export class Auth0AuthService {
   public auth2: any = {}; // The Sign-In object.
   googleUser = null; // The current user.
   authInitiated: boolean;
+  authState:boolean;
+  waitProc:boolean = false;
 
 
   constructor(public router: Router, private authLocalService: AuthLocalService, private userService: UserService) {
@@ -29,6 +31,7 @@ export class Auth0AuthService {
             ux_mode: 'redirect',
             redirect_uri: 'https://fitness.fitforchange.me:81'
           }).then((obj) => {
+              console.log(obj);
             that.googleUser = obj;
             that.authInitiated = true;
             that.googleUser.isSignedIn.listen(that.getProfile);
@@ -47,7 +50,7 @@ export class Auth0AuthService {
           resolve();
         }
 
-      }, 30);
+      }, 400);
     });
 
   }
@@ -89,7 +92,7 @@ export class Auth0AuthService {
             resolve();
           }
 
-        }, 60);
+        }, 400);
       });
     });
 
@@ -105,29 +108,65 @@ export class Auth0AuthService {
           let googProfile = googUser.getBasicProfile();
           this.userService.receiveProfile(googProfile);
         }
-      }, 5);
+      },400);
     }
   }
+  
+  
+  private pauseForProc():Promise<any> {
+      return new Promise((resolve,reject) =>{
+          
+      if (this.waitProc) {
+          console.log("waiting...");
+        let timer2 = setInterval(()=>{
+            if(!this.waitProc){
+                console.log("finished waiting");
+                clearInterval(timer2);
+                resolve();
+            }
+            
+        },200);
+    }else{
+        console.log("didn't need to wait");
+        resolve();
+    }
+  });
+  }
+  
+  
+  
+  
+  
 
   public isAuthenticated(): Promise<boolean> {
+      
     return new Promise((resolve, reject) => {
+    this.pauseForProc().then(()=>{ 
+    if(this.authState){
+        resolve(this.authState);
+    }else{
+        this.waitProc = true;
       this.checkForAuth2().then(() => {
         let timer = setInterval(() => {
           if (this.authInitiated) {
             clearInterval(timer);
+            console.log("here");
             let googauth = gapi.auth2.getAuthInstance();
-            let answer = googauth.isSignedIn.get();
-            answer ? this.setSession(googauth.currentUser.get().getAuthResponse()) : console.log('not logged in');
-            resolve(answer);
+            this.authState = googauth.isSignedIn.get();
+            this.waitProc = false;
+            this.authState ? googauth.currentUser.get().reloadAuthResponse().then( x => this.setSession(x)) : console.log('not logged in');
+            resolve(this.authState);
           }
-        }, 5);
+        }, 30000);
       });
-    });
+    }});});
+
   }
 
   private setSession(authResult): void {
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify((authResult.expires_in * 1000) + new Date().getTime());
+    
     localStorage.setItem('access_token', authResult.access_token);
     localStorage.setItem('id_token', authResult.id_token);
     localStorage.setItem('expires_at', expiresAt);
