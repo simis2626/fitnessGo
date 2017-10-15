@@ -15,7 +15,7 @@ export class Auth0AuthService {
   googleUser = null; // The current user.
   authInitiated: boolean;
   authState:boolean;
-  waitProc:boolean = false;
+  waitProc:boolean;
 
 
   constructor(public router: Router, private authLocalService: AuthLocalService, private userService: UserService) {
