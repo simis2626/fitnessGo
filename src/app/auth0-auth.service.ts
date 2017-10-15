@@ -157,7 +157,7 @@ export class Auth0AuthService {
             this.authState ? googauth.currentUser.get().reloadAuthResponse().then( x => this.setSession(x)) : console.log('not logged in');
             resolve(this.authState);
           }
-        }, 30000);
+        }, 300);
       });
     }});});
 
