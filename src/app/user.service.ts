@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
+    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     this.options = new RequestOptions({headers: this.headers});
 
   }
@@ -20,7 +20,7 @@ export class UserService {
   saveUser(user): Promise<boolean> {
     let tmpheaders = new Headers();
     tmpheaders.append('Content-Type', 'application/json');
-    tmpheaders.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
+    tmpheaders.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     let tmpoptions = new RequestOptions({headers: tmpheaders});
     //user._userid = localStorage.getItem('id_sub');
     return new Promise((resolve, reject) => {

@@ -16,7 +16,7 @@ export class WorkoutsService {
   constructor(private http: Http) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
+    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     this.options = new RequestOptions({headers: this.headers});
 
   }
