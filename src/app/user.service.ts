@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions} from "@angular/http";
 import {UserProfile} from "./Objects/UserProfile";
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class UserService {
@@ -8,6 +9,14 @@ export class UserService {
   headers: Headers;
   options: RequestOptions;
   userProfile: UserProfile;
+  acSet: boolean = false;
+
+
+  public ACStateChange = new Subject<boolean>();
+  acStateChange$ = this.LoginStateChange.asObservable();
+
+
+
 
   constructor(private http: Http) {
     this.headers = new Headers();
@@ -17,17 +26,25 @@ export class UserService {
 
   }
 
+  get acSet() {
+    return this.acSet;
+  }
+
   saveUser(user): Promise<boolean> {
-    let tmpheaders = new Headers();
-    tmpheaders.append('Content-Type', 'application/json');
-    tmpheaders.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
-    let tmpoptions = new RequestOptions({headers: tmpheaders});
+
     return new Promise((resolve, reject) => {
-        if (localStorage.getItem('access_token') != 'null') {
+      const access_token = localStorage.getItem('access_token');
+      if (access_token == 'null') {
+        let tmpheaders = new Headers();
+        tmpheaders.append('Content-Type', 'application/json');
+        tmpheaders.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
+        let tmpoptions = new RequestOptions({headers: tmpheaders});
           this.http.post('/api/user/', JSON.stringify(user), tmpoptions).map(this.extractData).subscribe((results) => {
             if (results) {
               console.log(results.access_token);
               localStorage.setItem('access_token', results.access_token);
+              this.acSet = true;
+              this.ACStateChange.next(true);
               resolve(true);
             } else {
               resolve(false);
@@ -36,12 +53,15 @@ export class UserService {
           });
 
 
-        }
+      } else {
+        this.acSet = true;
+        this.ACStateChange.next(true);
+        resolve(true)
+      }
       }
     );
-
-
   }
+
 
   public getProfile(): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -83,6 +103,7 @@ export class UserService {
 
 
   }
+
 
   public saveTax(tax: any): Promise<boolean> {
     return new Promise((resolve, reject) => {
