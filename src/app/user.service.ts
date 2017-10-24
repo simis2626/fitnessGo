@@ -20,14 +20,14 @@ export class UserService {
   saveUser(user): Promise<boolean> {
     let tmpheaders = new Headers();
     tmpheaders.append('Content-Type', 'application/json');
-    tmpheaders.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    tmpheaders.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
     let tmpoptions = new RequestOptions({headers: tmpheaders});
-    //user._userid = localStorage.getItem('id_sub');
     return new Promise((resolve, reject) => {
-        if (localStorage.getItem('id_token') != 'null') {
+        if (localStorage.getItem('access_token') != 'null') {
           this.http.post('/api/user/', JSON.stringify(user), tmpoptions).map(this.extractData).subscribe((results) => {
-
             if (results) {
+              console.log(results.access_token);
+              localStorage.setItem('id_token',results.access_token);
               resolve(true);
             } else {
               resolve(false);
@@ -36,23 +36,7 @@ export class UserService {
           });
 
 
-        } else {
-          let timer = setInterval(() => {
-            if (localStorage.getItem('id_token') != 'null') {
-              clearInterval(timer);
-              this.http.post('/api/user/', JSON.stringify(user), tmpoptions).map(this.extractData).subscribe((results) => {
-
-                if (results) {
-                  resolve(true);
-                } else {
-                  resolve(false);
-                }
-
-              });
-            }
-          }, 200)
         }
-
       }
     );
 
@@ -69,7 +53,6 @@ export class UserService {
         resolve(this.userProfile);
       } else {
         this.userProfile = JSON.parse(localStorage.getItem('fitnessProfile'));
-        //this.saveUser(this.userProfile);
         resolve(this.userProfile);
       }
     });
@@ -79,7 +62,7 @@ export class UserService {
   public receiveProfile(profile: any): void {
 
     this.userProfile = new UserProfile(profile.getId(), profile.getName(), profile.getGivenName(), profile.getImageUrl(), profile.getEmail(), profile.getFamilyName());
-
+    this.saveUser(this.userProfile);
 
   }
 
