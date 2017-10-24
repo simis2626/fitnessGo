@@ -13,7 +13,7 @@ export class UserService {
 
 
   public ACStateChange = new Subject<boolean>();
-  acStateChange$ = this.LoginStateChange.asObservable();
+  acStateChange$ = this.ACStateChange.asObservable();
 
 
 
@@ -24,10 +24,6 @@ export class UserService {
     this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     this.options = new RequestOptions({headers: this.headers});
 
-  }
-
-  get acSet() {
-    return this.acSet;
   }
 
   saveUser(user): Promise<boolean> {
@@ -68,8 +64,6 @@ export class UserService {
       if (this.userProfile) {
         localStorage.setItem('fitnessProfile', JSON.stringify(this.userProfile));
 
-        //TODO:Remove this comment
-        //this.saveUser(this.userProfile);
         resolve(this.userProfile);
       } else {
         this.userProfile = JSON.parse(localStorage.getItem('fitnessProfile'));
