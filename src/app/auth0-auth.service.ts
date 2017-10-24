@@ -111,37 +111,12 @@ export class Auth0AuthService {
       },400);
     }
   }
-  
-  
-  private pauseForProc():Promise<any> {
-      return new Promise((resolve,reject) =>{
-          
-      if (this.waitProc) {
-          console.log("waiting...");
-        let timer2 = setInterval(()=>{
-            if(!this.waitProc){
-                console.log("finished waiting");
-                clearInterval(timer2);
-                resolve();
-            }
-            
-        },200);
-    }else{
-        console.log("didn't need to wait");
-        resolve();
-    }
-  });
-  }
-  
-  
-  
-  
-  
+
 
   public isAuthenticated(): Promise<boolean> {
-      
+
     return new Promise((resolve, reject) => {
-    this.pauseForProc().then(()=>{ 
+      this.pauseForProc().then(() => {
     if(this.authState){
         resolve(this.authState);
     }else{
@@ -163,11 +138,29 @@ export class Auth0AuthService {
 
   }
 
+  private pauseForProc(): Promise<any> {
+    return new Promise((resolve, reject) => {
+
+      if (this.waitProc) {
+        console.log("waiting...");
+        let timer2 = setInterval(() => {
+          if (!this.waitProc) {
+            console.log("finished waiting");
+            clearInterval(timer2);
+            resolve();
+          }
+
+        }, 200);
+      } else {
+        console.log("didn't need to wait");
+        resolve();
+      }
+    });
+  }
+
   private setSession(authResult): void {
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify((authResult.expires_in * 1000) + new Date().getTime());
-    
-    localStorage.setItem('access_token', authResult.access_token);
     localStorage.setItem('id_token', authResult.id_token);
     localStorage.setItem('expires_at', expiresAt);
     localStorage.setItem('id_sub', 'google-oauth2|' + gapi.auth2.getAuthInstance().currentUser.get().getId());
