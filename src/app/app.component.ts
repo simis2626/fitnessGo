@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.localAuthService.loginStateChange$.subscribe((state) => {
       this.loginState = state;
+
     });
     this.auth0service.isAuthenticated().then((blnAuthed) => {
       this.localAuthService.setLoginState(blnAuthed);

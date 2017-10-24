@@ -27,7 +27,7 @@ export class UserService {
           this.http.post('/api/user/', JSON.stringify(user), tmpoptions).map(this.extractData).subscribe((results) => {
             if (results) {
               console.log(results.access_token);
-              localStorage.setItem('id_token',results.access_token);
+              localStorage.setItem('access_token', results.access_token);
               resolve(true);
             } else {
               resolve(false);
