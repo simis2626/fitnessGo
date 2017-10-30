@@ -75,7 +75,7 @@ export class UserService {
 
   public receiveProfile(profile: any): void {
 
-    this.userProfile = new UserProfile('', '', '', '', '', '');
+    this.userProfile = new UserProfile(14, '', '', '', '', '');
     this.saveUser(this.userProfile);
 
   }
