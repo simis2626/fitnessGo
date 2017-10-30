@@ -7,6 +7,10 @@
     <mat-form-field style="padding-left: 30px;width: 70px">
       <input matInput (blur)="ready2 = true;" (focus)="saveHide()" type="number" [placeholder]="'Day Number'" [(ngModel)]="i">
     </mat-form-field>
+    <mat-form-field style="padding-left: 30px;width: 70px">
+      <input matInput (blur)="ready2 = true;" (focus)="saveHide()" type="text" [placeholder]="'Search'"
+             [(ngModel)]="searchText">
+    </mat-form-field>
   </div>
   <mat-list *ngIf="ready2" style="flex: auto; overflow-y: scroll; height: 70%;overflow-x: hidden">
     <div style="display: flex; flex-wrap: wrap;" *ngFor="let tax of model[i].id; let ndx = index">

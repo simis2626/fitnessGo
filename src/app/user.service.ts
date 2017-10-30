@@ -30,14 +30,14 @@ export class UserService {
 
     return new Promise((resolve, reject) => {
       const access_token = localStorage.getItem('access_token');
-      if (access_token == 'null') {
+      console.log(access_token);
+      if (access_token == null) {
         let tmpheaders = new Headers();
         tmpheaders.append('Content-Type', 'application/json');
         tmpheaders.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
         let tmpoptions = new RequestOptions({headers: tmpheaders});
           this.http.post('/api/user/', JSON.stringify(user), tmpoptions).map(this.extractData).subscribe((results) => {
             if (results) {
-              console.log(results.access_token);
               localStorage.setItem('access_token', results.access_token);
               this.acSet = true;
               this.ACStateChange.next(true);

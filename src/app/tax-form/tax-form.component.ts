@@ -13,6 +13,7 @@ export class TaxFormComponent implements OnInit {
     ready = false;
     ready2 = true;
     i =0;
+  searchText;
     model:any = [];
   toSave: any = [];
     data:any;

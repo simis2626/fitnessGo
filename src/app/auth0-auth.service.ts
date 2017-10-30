@@ -33,7 +33,7 @@ export class Auth0AuthService {
           }).then((obj) => {
               console.log(obj);
             that.googleUser = obj;
-            that.userService.saveUser(obj);
+            that.userService.receiveProfile(that.getProfile);
             that.authInitiated = true;
             that.googleUser.isSignedIn.listen(that.getProfile);
             that.getProfile(that.googleUser.isSignedIn.get());
