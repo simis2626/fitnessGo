@@ -35,8 +35,11 @@ export class Auth0AuthService {
             that.googleUser = obj;
             that.userService.receiveProfile(that.getProfile);
             that.authInitiated = true;
+
+            let googUser = that.googleUser.currentUser.get();
+            let googProfile = googUser.getBasicProfile();
+            that.userService.receiveProfile(googProfile);
             that.googleUser.isSignedIn.listen(that.getProfile);
-            that.getProfile(that.googleUser.isSignedIn.get());
           });
         });
       });
