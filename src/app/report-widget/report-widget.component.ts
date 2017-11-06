@@ -37,7 +37,7 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
 
 
   setProgressValue() {
-    let goal = 126;
+    let goal = 126.6;
     let start = this.weighins[0].weight;
     let desiredDifference = start - goal;
     this.progressValue = (this.currentWeighin.progress / desiredDifference) * 100;
@@ -47,7 +47,7 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
 
   createPlot() {
     if (this.weightReady) {
-      let goal = 126;
+      let goal = 126.6;
       let start = this.weighins[0].weight;
       let desiredDifference = goal - start;
 
@@ -106,14 +106,14 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
 
 
   createTargetGraphSet(): any {
-    let end = new Date(new Date('2017-10-23').valueOf() + (7 * 7 * 24 * 60 * 60 * 1000));
+    let end = new Date(new Date('2017-11-06').valueOf() + (6 * 7 * 24 * 60 * 60 * 1000));
     let goal = 127;
     let start = this.weighins[0].weight;
     let desiredDifference = start - goal;
     let daysBetween = 7 * 7;
     let diffbyDay = desiredDifference / daysBetween;
     let d1 = new Date(this.currentWeighin.date).valueOf();
-    let d2 = new Date('2017-10-23').valueOf();
+    let d2 = new Date('2017-11-06').valueOf();
     let dateDiff = d1 - d2;
     let dateRecentWeighin = dateDiff / (24 * 60 * 60 * 1000);
     let lossNeeded = diffbyDay * dateRecentWeighin;
@@ -121,7 +121,7 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
     let graphSet: number[] = [];
 
     this.weighins.forEach(function (obj, ndx, arr) {
-      let diff = new Date(obj.date).valueOf() - new Date('2017-10-23').valueOf();
+      let diff = new Date(obj.date).valueOf() - new Date('2017-11-06').valueOf();
       diff = diff / (24 * 60 * 60 * 1000);
       diff = -1 * diff * diffbyDay;
       graphSet.push(diff);
@@ -144,14 +144,14 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
 
 
   getColor() {
-    let end = new Date(new Date('2017-10-23').valueOf() + (7 * 7 * 24 * 60 * 60 * 1000));
+    let end = new Date(new Date('2017-11-06').valueOf() + (6 * 7 * 24 * 60 * 60 * 1000));
     let goal = 126;
     let start = this.weighins[0].weight;
     let desiredDifference = start - goal;
     let daysBetween = 7 * 7;
     let diffbyDay = desiredDifference / daysBetween;
     let d1 = new Date(this.currentWeighin.date).valueOf();
-    let d2 = new Date('2017-10-23').valueOf();
+    let d2 = new Date('2017-11-06').valueOf();
     let dateDiff = d1 - d2;
     let dateRecentWeighin = dateDiff / (24 * 60 * 60 * 1000);
     let lossNeeded = diffbyDay * dateRecentWeighin;
