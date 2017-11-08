@@ -107,10 +107,10 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
 
   createTargetGraphSet(): any {
     let end = new Date(new Date('2017-11-06').valueOf() + (6 * 7 * 24 * 60 * 60 * 1000));
-    let goal = 127;
+    let goal = 126.6;
     let start = this.weighins[0].weight;
     let desiredDifference = start - goal;
-    let daysBetween = 7 * 7;
+    let daysBetween = 6 * 7;
     let diffbyDay = desiredDifference / daysBetween;
     let d1 = new Date(this.currentWeighin.date).valueOf();
     let d2 = new Date('2017-11-06').valueOf();
@@ -145,10 +145,10 @@ export class ReportWidgetComponent implements OnInit, AfterViewInit {
 
   getColor() {
     let end = new Date(new Date('2017-11-06').valueOf() + (6 * 7 * 24 * 60 * 60 * 1000));
-    let goal = 126;
+    let goal = 126.6;
     let start = this.weighins[0].weight;
     let desiredDifference = start - goal;
-    let daysBetween = 7 * 7;
+    let daysBetween = 7 * 6;
     let diffbyDay = desiredDifference / daysBetween;
     let d1 = new Date(this.currentWeighin.date).valueOf();
     let d2 = new Date('2017-11-06').valueOf();
