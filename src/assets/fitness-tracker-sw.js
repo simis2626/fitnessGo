@@ -3,7 +3,7 @@
 //#v01
 
 
-var CACHE_NAME = 'fitnessGo-static-v2';
+var CACHE_NAME = 'fitnessGo-static-v3';
 
 
 var staticURLS = ["/",
